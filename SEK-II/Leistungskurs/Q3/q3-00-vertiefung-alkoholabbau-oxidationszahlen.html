@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alkoholabbau und Oxidationszahlen – Vertiefung und Hilfen</title>
+<!-- Chemie LK Q3 · Sitzung 00 · handgeschrieben. Ohne Lösungen (Repo öffentlich). URL steht im QR-Code des Aufgabenblatts: nicht umbenennen. -->
+<style>
+:root{
+  --blau:#2a7ab8; --tblau:#156e9d; --blau-hell:#e6f0f8; --orange:#d9822b; --orange-hell:#fdf1e4;
+  --violett:#7a5aa8; --gruen:#3e9a63; --grau:#6f7a85; --linie:#d5dde5; --bg:#f6f8fa; --karte:#fff; --text:#222;
+  --sans:-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.5}
+a{color:var(--tblau)}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px}
+header{background:linear-gradient(135deg,#156e9d 0%,#2a7ab8 60%,#3d8fc9 100%);color:#fff;padding:28px 0 22px}
+header .kurs{font-size:13px;letter-spacing:.06em;text-transform:uppercase;opacity:.85}
+header h1{margin:4px 0 6px;font-size:clamp(24px,4.5vw,34px);font-weight:600;line-height:1.2}
+header p{margin:0;opacity:.92;max-width:680px}
+nav{position:sticky;top:0;z-index:10;background:rgba(246,248,250,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--linie)}
+nav .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:8px;padding-bottom:8px}
+nav a{flex:none;text-decoration:none;color:var(--tblau);border:1px solid var(--linie);background:#fff;border-radius:16px;padding:3px 12px;font-size:14px;font-weight:600}
+nav a.v{color:var(--orange)}
+h2{font-size:20px;color:var(--tblau);margin:30px 0 4px}
+.hinweis{color:var(--grau);font-size:14px;margin:0 0 14px}
+/* Hilfekarten */
+.hilfen{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.hk{background:var(--karte);border:1.5px dashed #b9c4cf;border-radius:10px;padding:14px 16px}
+.hk h3{margin:0 0 2px;font-size:16px;color:var(--blau)}
+.hk .zu{font-size:13px;color:var(--grau);margin-bottom:8px}
+.stufe{display:none;margin:8px 0 0;padding:8px 10px;background:var(--blau-hell);border-radius:6px;font-size:15px}
+.stufe.offen{display:block;animation:auf .25s ease}
+@keyframes auf{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.hk button{margin-top:10px;border:1px solid var(--blau);background:#fff;color:var(--blau);border-radius:6px;padding:4px 12px;font-size:14px}
+.hk button:hover{background:var(--blau-hell)}
+.hk button[disabled]{opacity:.4;cursor:default}
+.hk .zaehler{font-size:12px;color:var(--grau);margin-left:8px}
+/* Vertiefungen */
+.v-karte{background:var(--karte);border:1px solid var(--linie);border-radius:12px;margin:14px 0;overflow:hidden}
+.v-kopf{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--linie);background:#fbfcfd}
+.v-nr{flex:none;width:42px;height:42px;border-radius:50%;background:var(--orange);color:#fff;font-weight:700;display:grid;place-items:center}
+.v-kopf h3{margin:0;font-size:18px}
+.sterne{color:var(--orange);font-size:14px;font-weight:700}
+.v-inhalt{padding:14px 16px 16px}
+.zwei{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+@media (max-width:720px){.zwei{grid-template-columns:1fr}}
+.aufgabe{display:grid;grid-template-columns:28px 1fr auto;gap:6px;background:var(--orange-hell);border-radius:8px;padding:8px 10px;margin-top:10px}
+.aufgabe .b{font-weight:700;color:var(--orange)}
+.aufgabe .ab{font-size:12px;color:var(--grau);white-space:nowrap;align-self:start;margin-top:2px}
+figure{margin:0}
+figcaption{font-size:13px;color:var(--grau);margin-top:4px}
+svg{max-width:100%;height:auto;display:block}
+.regler{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:8px 0 2px;font-size:14px}
+.regler input[type=range]{flex:1;min-width:140px;accent-color:var(--orange)}
+.knopf{border:1px solid var(--linie);background:#fff;border-radius:6px;padding:3px 10px;font-size:14px}
+.ausgabe{font-variant-numeric:tabular-nums;font-size:14px;background:#f2f5f8;border-radius:6px;padding:6px 10px;margin-top:6px}
+.legende{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;color:#444;margin-top:6px}
+.legende i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+.balken{display:grid;grid-template-columns:150px 1fr 76px;gap:6px 10px;align-items:center;font-size:14px}
+.balken .spur{background:#eef2f6;border-radius:4px;height:18px;position:relative;overflow:hidden}
+.balken .fuell{height:100%;border-radius:4px;width:0;transition:width .9s cubic-bezier(.2,.8,.2,1)}
+.balken .wert{text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:520px){.balken{grid-template-columns:100px 1fr 64px;font-size:13px}}
+.kachel-reihe{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:12px}
+.kachel{background:#f2f5f8;border-radius:8px;padding:10px 12px}
+.kachel .zahl{font-size:22px;font-weight:700;color:var(--tblau);font-variant-numeric:tabular-nums}
+.kachel .was{font-size:13px;color:#555}
+.zeitstrahl{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.zeitstrahl span{font-size:13px;background:#fff;border:1px solid var(--linie);border-radius:14px;padding:2px 10px}
+.zeitstrahl b{color:var(--orange)}
+.cta{display:inline-block;background:var(--tblau);color:#fff;text-decoration:none;font-weight:600;border-radius:8px;padding:8px 16px;margin:8px 8px 0 0}
+.cta:hover{background:var(--blau)}
+.code{font-family:Menlo,Consolas,monospace;background:#f2f5f8;border:1px solid var(--linie);border-radius:6px;padding:2px 8px;font-size:14px}
+.klein{font-size:13px;color:var(--grau)}
+footer{margin:36px 0 0;border-top:1px solid var(--linie);padding:16px 0 28px;font-size:12.5px;color:var(--grau)}
+sub,sup{font-size:.72em}
+/* Ergänzungen Generator */
+.zurueck{display:inline-block;color:#fff;opacity:.85;text-decoration:none;font-size:13px;margin-bottom:6px}
+.zurueck:hover{opacity:1;text-decoration:underline}
+.v-text p:first-child{margin-top:0}
+.fischer{display:inline-block;vertical-align:middle;margin:4px 10px 4px 0}
+.wahl{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.wahl button{border:1px solid var(--linie);background:#fff;border-radius:14px;padding:2px 10px;font-size:13px}
+.wahl button.an{background:var(--tblau);border-color:var(--tblau);color:#fff}
+.quiz-aa{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:6px;margin-top:8px}
+.quiz-aa button{border:1px solid var(--linie);background:#fff;border-radius:8px;padding:6px 4px;font-size:14px}
+.quiz-aa button.ok{background:#e3f4ea;border-color:#3e9a63}
+.quiz-aa button.falsch{background:#fbe6e3;border-color:#d0574a}
+.uebersicht{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:14px}
+.uebersicht a{display:block;background:#fff;border:1px solid var(--linie);border-radius:12px;padding:14px 16px;text-decoration:none;color:var(--text)}
+.uebersicht a:hover{border-color:var(--blau);box-shadow:0 2px 8px rgba(21,110,157,.12)}
+.uebersicht .nr{font-size:13px;color:var(--orange);font-weight:700}
+.uebersicht .t{font-weight:600;color:var(--tblau);margin:2px 0 4px}
+.uebersicht .k{font-size:13px;color:var(--grau)}
+.einheit{font-size:14px;color:var(--grau);text-transform:uppercase;letter-spacing:.05em;margin:26px 0 0}
+.qa{display:grid;gap:10px;margin-top:10px}
+.qa details{background:var(--karte);border:1px solid var(--linie);border-radius:10px}
+.qa summary{cursor:pointer;padding:12px 16px;font-weight:600;color:var(--tblau);list-style-position:outside;margin-left:18px}
+.qa details[open] summary{border-bottom:1px solid var(--linie)}
+.qa .antwort{padding:4px 16px 12px}
+.qa .antwort p{margin:10px 0}
+.qa .antwort ul{margin:8px 0;padding-left:1.3em}
+.qa .antwort li{margin-bottom:6px}
+
+</style>
+<style>
+.zaehl{display:inline-flex;align-items:center;gap:6px;margin:4px 14px 4px 0;font-size:14px}
+.zaehl button{width:28px;height:28px;border:1px solid var(--linie);background:#fff;border-radius:6px;font-weight:700;color:var(--tblau)}
+.zaehl b{min-width:18px;text-align:center;font-variant-numeric:tabular-nums}
+.warn{font-size:13px;background:var(--orange-hell);border-left:3px solid var(--orange);border-radius:4px;padding:6px 10px;margin-top:8px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="zurueck" href="q3-vertiefung-und-hilfen.html">← alle Sitzungen</a>
+    <div class="kurs">Chemie LK · Q3 · Redoxreaktionen organischer Verbindungen · Sitzung 00</div>
+    <h1>Vertiefung und Hilfen: Vom Wein zum Essig</h1>
+    <p>Hilfen zu den Aufgaben 1–5 nur bei Bedarf und stufenweise aufdecken. Vertiefungen für Schnelle: Transfer der Oxidationszahlen auf Essig, Atemalkoholtest, Restalkohol und Brennwerte.</p>
+  </div>
+</header>
+<nav><div class="wrap">
+  <a href="#hilfen">Hilfen</a><a class="v" href="#v1">V1 Essig</a><a class="v" href="#v2">V2 Atemalkohol</a><a class="v" href="#v3">V3 Restalkohol</a><a class="v" href="#v4">V4 Brennwert</a>
+</div></nav>
+
+<main class="wrap">
+
+<h2 id="hilfen">Hilfekarten</h2>
+<p class="hinweis">Erst selbst probieren. Jede Karte deckt ihre Hilfe in Stufen auf, so wenig wie möglich, so viel wie nötig.</p>
+<div class="hilfen">
+  <div class="hk">
+    <h3>Hilfe zu 1a</h3><div class="zu">Oxidationszahlen der C-Atome bestimmen</div>
+    <div class="stufe">Nehmen Sie sich ein C-Atom nach dem anderen vor. Kreisen Sie es ein und gehen Sie jede seiner Bindungen einzeln durch: Welcher Bindungspartner hat nach der Tabelle in M2 die höhere Elektronegativität? Er bekommt beide Bindungselektronen.</div><div class="stufe">Sonderfälle: Eine C–C-Bindung wird geteilt, jedes C-Atom erhält ein Elektron. Eine Doppelbindung C=O sind zwei Bindungen, also gehen vier Elektronen an das O-Atom.</div><div class="stufe">Zählen Sie die Elektronen, die das C-Atom erhält, und ziehen Sie diese Zahl von seinen 4 Valenzelektronen ab. Mehr Elektronen als 4 ergibt ein negatives Vorzeichen.</div><div class="stufe">Kontrolle: Jede C–H-Bindung trägt −1 bei, jede C–C-Bindung 0, jeder Bindungsstrich zu einem O-Atom +1. Außerdem gilt: H hat +I, O hat −II, und alle Oxidationszahlen eines neutralen Moleküls ergeben zusammen 0.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span>
+  </div>
+  <div class="hk">
+    <h3>Hilfe zu 1b</h3><div class="zu">Veränderung beschreiben und zuordnen</div>
+    <div class="stufe">Schreiben Sie die Oxidationszahlen beider C-Atome für alle drei Moleküle untereinander. Welches C-Atom ändert sich, welches nicht?</div><div class="stufe">Lesen Sie Punkt 3 in M2: Steigt oder sinkt die Oxidationszahl? Um wie viel ändert sie sich pro Schritt, und wie viele Elektronen werden damit abgegeben?</div><div class="stufe">Vergleichen Sie die Bindungspartner des C-Atoms der Methylgruppe in allen drei Formeln. Wo findet die Reaktion statt?</div><div class="stufe">Zählen Sie für das C-Atom der funktionellen Gruppe die Bindungsstriche zu O-Atomen. Formulieren Sie daraus eine Merkregel.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span>
+  </div>
+  <div class="hk">
+    <h3>Hilfe zu 2a</h3><div class="zu">Teilgleichungen und Redoxgleichung, Schritt 1</div>
+    <div class="stufe">Oxidation: Links steht Ethanol, rechts Ethanal. Wie viele Elektronen gibt das C-Atom ab? Das ist die Differenz seiner Oxidationszahlen aus 1a.</div><div class="stufe">Vergleichen Sie die Summenformeln von Ethanol und Ethanal: Welche Atome fehlen im Ethanal? Sie verlassen das Molekül als Protonen (H<sup>+</sup>), ihre Elektronen bleiben zurück.</div><div class="stufe">Reduktion: Die Teilgleichung für NAD<sup>+</sup> steht unter Abb. 1. Prüfen Sie, ob in beiden Teilgleichungen gleich viele Elektronen vorkommen, addieren Sie und kürzen Sie, was links und rechts gleich ist.</div><div class="stufe">Kontrolle: Gleiche Zahl jeder Atomsorte links und rechts? Gleiche Summe der Ladungen links und rechts?</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span>
+  </div>
+  <div class="hk">
+    <h3>Hilfe zu 2b</h3><div class="zu">Redoxgleichung Schritt 2, Rolle des Wassers</div>
+    <div class="stufe">Gehen Sie vor wie in 2a. Wie viele Elektronen gibt das C-Atom der funktionellen Gruppe auf dem Weg von Ethanal zur Ethansäure ab?</div><div class="stufe">Zählen Sie die O-Atome in Ethanal und in Ethansäure. Woher kommt das zusätzliche O-Atom? Schauen Sie über den zweiten Reaktionspfeil in M1.</div><div class="stufe">Bewährte Reihenfolge beim Ausgleichen: erst O-Atome mit H<sub>2</sub>O, dann H-Atome mit H<sup>+</sup>, dann Ladungen mit e<sup>−</sup>.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span>
+  </div>
+  <div class="hk">
+    <h3>Hilfe zu 3a</h3><div class="zu">Genau beobachten</div>
+    <div class="stufe">Achten Sie auf Farbe, Trübung und Bodensatz. Notieren Sie auch Zwischenfarben, die nur kurz auftreten.</div><div class="stufe">Glas 1 ist die Blindprobe: Vergleichen Sie jedes Glas mit Glas 1. Nur eine Abweichung von der Blindprobe zeigt eine Reaktion an.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span>
+  </div>
+  <div class="hk">
+    <h3>Hilfe zu 3b</h3><div class="zu">Redoxgleichung der Fehling-Probe</div>
+    <div class="stufe">Bestimmen Sie die Oxidationszahl von Kupfer in Cu<sup>2+</sup> und in Cu<sub>2</sub>O. Welcher Stoff wird also reduziert, welcher oxidiert?</div><div class="stufe">Propanal reagiert wie Ethanal im Abbauweg zur Carbonsäure. In alkalischer Lösung bleibt die Säure aber nicht neutral: Sie gibt ihr Proton ab und liegt als Anion vor.</div><div class="stufe">In alkalischer Lösung gleichen Sie nicht mit H<sup>+</sup>, sondern mit OH<sup>−</sup> und H<sub>2</sub>O aus. Trick: Stellen Sie die Gleichung zuerst wie im Sauren auf und geben Sie dann auf beiden Seiten so viele OH<sup>−</sup> hinzu, wie H<sup>+</sup> vorkommen (H<sup>+</sup> + OH<sup>−</sup> → H<sub>2</sub>O).</div><div class="stufe">Für ein Cu<sub>2</sub>O braucht man zwei Cu<sup>2+</sup>-Ionen. Wie viele Elektronen nehmen sie zusammen auf? Passt das zur Elektronenzahl der Oxidation?</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span>
+  </div>
+  <div class="hk">
+    <h3>Hilfe zu 3c</h3><div class="zu">Warum reagieren Ethanol und Essigsäure nicht?</div>
+    <div class="stufe">Fehling-Lösung ist ein schwaches Oxidationsmittel. Welche Oxidationszahl hat das C-Atom der funktionellen Gruppe in Ethanol, welche in Essigsäure (1a)?</div><div class="stufe">Ethanol: Welchen Schritt müsste Fehling-Lösung zuerst schaffen? Essigsäure: Kann das C-Atom der Carboxygruppe weiter oxidiert werden, ohne dass das Molekül zerfällt?</div><div class="stufe">Ethanal: Vergleichen Sie die funktionelle Gruppe von Ethanal mit der von Propanal.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span>
+  </div>
+  <div class="hk">
+    <h3>Hilfe zu 4a</h3><div class="zu">Der Methanolweg</div>
+    <div class="stufe">Methanol, Methanal und Methansäure haben jeweils nur ein C-Atom. Zeichnen Sie die Formeln aus Abb. 1 ab und ersetzen Sie die Methylgruppe durch ein H-Atom.</div><div class="stufe">Bestimmen Sie die Oxidationszahl wie in 1a. Achtung: Wo im Ethanol-Weg eine C–C-Bindung stand (Beitrag 0), steht jetzt eine C–H-Bindung. Wie verändert das die Oxidationszahl?</div><div class="stufe">Kontrolle: Auch hier steigt die Oxidationszahl in jedem Schritt um zwei, und die Summe im Molekül ist 0.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span>
+  </div>
+  <div class="hk">
+    <h3>Hilfe zu 4b</h3><div class="zu">Ethanol als Gegenmittel</div>
+    <div class="stufe">Welches Enzym oxidiert Methanol, welches Ethanol (M4)?</div><div class="stufe">Ein Enzym hat nur eine begrenzte Zahl aktiver Zentren. Was passiert, wenn zwei Stoffe um dasselbe Enzym konkurrieren und eines davon bevorzugt umgesetzt wird?</div><div class="stufe">Welcher Stoff des Methanolwegs schädigt den Sehnerv? Was folgt, wenn er langsamer oder gar nicht entsteht? Und was geschieht in der Zwischenzeit mit dem Methanol?</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span>
+  </div>
+  <div class="hk">
+    <h3>Hilfe zu 5 ★</h3><div class="zu">Disulfiram beurteilen</div>
+    <div class="stufe">Welchen der beiden Oxidationsschritte aus M1 blockiert Disulfiram? Welcher Stoff reichert sich deshalb an, und welche Oxidationszahl hat sein C-Atom?</div><div class="stufe">Sortieren Sie Ihre Argumente in zwei Spalten: Wirkweise (Warum schreckt das Medikament vom Trinken ab?) und Risiken (für den Körper, für den Erfolg der Therapie).</div><div class="stufe">Ein Urteil braucht Kriterien, z. B. Wirksamkeit, Sicherheit, Selbstbestimmung der Betroffenen. Wägen Sie ab und schließen Sie mit einem begründeten Fazit. Bewertet wird die Begründung, nicht ein bestimmtes Ergebnis.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span>
+  </div>
+</div>
+
+<h2>Vertiefungen</h2>
+<p class="hinweis">★ = vertiefend · ★★ = anspruchsvoll. Die Ergebnisse gehören in Ihre Unterlagen; die Abbildungen und Werkzeuge helfen beim Denken, sie ersetzen keine Lösung.</p>
+
+<section class="v-karte" id="v1">
+  <div class="v-kopf"><div class="v-nr">V1</div><div><div class="sterne">★</div><h3>Warum offener Wein sauer wird</h3></div></div>
+  <div class="v-inhalt"><div class="v-text"><p>Bleibt eine Weinflasche offen stehen, schmeckt der Wein nach einigen Tagen nach Essig. Verantwortlich sind Essigsäurebakterien (<i>Acetobacter</i>). Sie oxidieren Ethanol auf demselben Weg wie die Leber über Ethanal zu Ethansäure, geben die Elektronen aber am Ende an Sauerstoff aus der Luft ab. Bei der industriellen Essigherstellung wird die Maische deshalb kräftig belüftet.</p></div>
+  <div class="aufgabe"><span class="b">a)</span><span><b>Stellen</b> Sie die Redoxgleichung für die Oxidation von Ethanol zu Ethansäure mit Sauerstoff <b>auf</b> und <b>geben</b> Sie die Oxidationszahlen der beteiligten C- und O-Atome <b>an</b>.</span><span class="ab">AB II</span></div>
+  <div class="aufgabe"><span class="b">b)</span><span><b>Erklären</b> Sie, warum ein Weinkorken den Wein vor dem Sauerwerden schützt und warum Essigfabriken belüften.</span><span class="ab">AB II</span></div>
+  <div class="aufgabe"><span class="b">c)</span><span>In der Leber nimmt NAD<sup>+</sup> die Elektronen auf, nicht Sauerstoff. <b>Erläutern</b> Sie, wohin die Elektronen des NADH in der Zelle schließlich gelangen (Stichwort Atmungskette), und <b>vergleichen</b> Sie mit den Essigsäurebakterien.</span><span class="ab">AB III</span></div></div>
+</section>
+
+<section class="v-karte" id="v2">
+  <div class="v-kopf"><div class="v-nr">V2</div><div><div class="sterne">★ / ★★</div><h3>Pusten bitte: Redoxchemie im Atemalkoholtest</h3></div></div>
+  <div class="v-inhalt zwei"><div class="v-text"><p><b>Früher:</b> Im Prüfröhrchen der Polizei steckte Kieselgel, getränkt mit schwefelsaurer Kaliumdichromat-Lösung. Ethanol in der Atemluft färbte das Röhrchen von orange (Cr<sub>2</sub>O<sub>7</sub><sup>2−</sup>) nach grün (Cr<sup>3+</sup>). Je länger die grüne Zone, desto mehr Alkohol.</p><p><b>Heute:</b> Handgeräte enthalten eine elektrochemische Messzelle, im Prinzip eine kleine Brennstoffzelle: Ethanol wird an einer Platinelektrode zu Ethansäure oxidiert, Sauerstoff an der Gegenelektrode reduziert. Der Strom ist ein Maß für die Alkoholmenge.</p>
+  <div class="aufgabe"><span class="b">a)</span><span><b>Bestimmen</b> Sie die Oxidationszahlen von Chrom in Cr<sub>2</sub>O<sub>7</sub><sup>2−</sup> und Cr<sup>3+</sup> und <b>stellen</b> Sie die Redoxgleichung für die Oxidation von Ethanol zu Ethanal im sauren Milieu <b>auf</b>.</span><span class="ab">AB II</span></div>
+  <div class="aufgabe"><span class="b">b)</span><span><b>Formulieren</b> Sie die Anodenreaktion der Messzelle (Ethanol → Ethansäure) und <b>erklären</b> Sie, warum die Stromstärke von der Alkoholmenge abhängt.</span><span class="ab">AB II</span></div>
+  <div class="aufgabe"><span class="b">c)</span><span>★★ <b>Beurteilen</b> Sie, warum Dichromat-Röhrchen heute kaum noch eingesetzt werden. Berücksichtigen Sie Messgenauigkeit und Gefahrstoffe.</span><span class="ab">AB III</span></div></div>
+  <figure>
+    <svg viewBox="0 0 320 150" role="img" aria-label="Prüfröhrchen, das sich mit zunehmender Alkoholmenge von orange nach grün verfärbt">
+      <defs><linearGradient id="roehr" x1="0" x2="1"><stop offset="0" stop-color="#3e9a63"/><stop id="gstop" offset="0.3" stop-color="#3e9a63"/><stop id="ostop" offset="0.3" stop-color="#e08a2b"/><stop offset="1" stop-color="#e08a2b"/></linearGradient></defs>
+      <rect x="20" y="55" width="280" height="34" rx="17" fill="#f2f5f8" stroke="#6f7a85"/>
+      <rect x="40" y="62" width="240" height="20" rx="4" fill="url(#roehr)"/>
+      <path d="M8 72 h12" stroke="#6f7a85" stroke-width="2"/><path d="M300 72 h12" stroke="#6f7a85" stroke-width="2"/>
+      <text x="10" y="45" font-size="12" fill="#6f7a85">Atemluft →</text>
+      <g font-size="11" fill="#6f7a85"><text x="40" y="110">0</text><text x="150" y="110">Skala</text><text x="268" y="110">max.</text></g>
+    </svg>
+    <div class="regler"><label for="atem">Ethanol in der Atemluft</label><input id="atem" type="range" min="0" max="100" value="30"></div>
+    <figcaption>Modell des Prüfröhrchens: Die grüne Zone wächst mit der Menge an Ethanol, die das Dichromat reduziert. Schematisch, keine echte Skala.</figcaption>
+  </figure></div>
+</section>
+
+<section class="v-karte" id="v3">
+  <div class="v-kopf"><div class="v-nr">V3</div><div><div class="sterne">★ / ★★</div><h3>Restalkohol am Morgen</h3></div></div>
+  <div class="v-inhalt"><div class="v-text"><p>Mit der WIDMARK-Formel lässt sich die Blutalkoholkonzentration (BAK, in Promille ‰ = g Ethanol je kg Körpermasse) grob schätzen: <span class="code">BAK = A / (m · r)</span>. Dabei ist A die Masse an Ethanol in g, m die Körpermasse in kg und r ein Verteilungsfaktor (etwa 0,7 bei Männern, 0,6 bei Frauen), weil sich Ethanol nur im Körperwasser verteilt. Danach sinkt die BAK um etwa 0,1 bis 0,2 ‰ pro Stunde.</p></div>
+  <div class="zwei" style="margin-top:8px">
+    <div>
+      <div class="aufgabe"><span class="b">a)</span><span><b>Zeigen</b> Sie, dass die Abbaurate der Leber aus dem Aufgabenblatt (0,1 g je kg Körpermasse und Stunde) bei r = 0,7 einer Abnahme von etwa 0,14 ‰ pro Stunde entspricht.</span><span class="ab">AB II</span></div>
+      <div class="aufgabe"><span class="b">b)</span><span>Eine Person (70 kg, r = 0,7) trinkt bis 1 Uhr nachts vier Flaschen Bier. <b>Ermitteln</b> Sie mit dem Werkzeug, ab wann sie wieder 0,0 ‰ erreicht. Für Fahranfänger und alle unter 21 Jahren gilt in Deutschland 0,0 ‰. <b>Beurteilen</b> Sie die Aussage „Ich schlafe einfach aus, dann ist alles wieder weg.“</span><span class="ab">AB II</span></div>
+      <div class="aufgabe"><span class="b">c)</span><span>★★ Die Kurve fällt <i>linear</i>, nicht exponentiell wie beim radioaktiven Zerfall. <b>Erklären</b> Sie das. Hinweis: Die ADH ist schon bei einer Ethanol-Konzentration von etwa 1 mmol/L halb ausgelastet; 0,5 ‰ im Blut entsprechen etwa 11 mmol/L.</span><span class="ab">AB III</span></div>
+    </div>
+    <figure>
+      <div class="zaehl">Bier 0,5 L (5 %) <button type="button" data-g="bier" data-d="-1">−</button><b id="n-bier">4</b><button type="button" data-g="bier" data-d="1">+</button></div>
+      <div class="zaehl">Wein 0,2 L (12 %) <button type="button" data-g="wein" data-d="-1">−</button><b id="n-wein">0</b><button type="button" data-g="wein" data-d="1">+</button></div>
+      <div class="zaehl">Schnaps 4 cl (40 %) <button type="button" data-g="schnaps" data-d="-1">−</button><b id="n-schnaps">0</b><button type="button" data-g="schnaps" data-d="1">+</button></div>
+      <div class="regler"><label for="masse">Körpermasse</label><input id="masse" type="range" min="45" max="110" value="70"><span id="masse-v" style="min-width:52px"></span></div>
+      <div class="regler"><label for="rf">Faktor r</label><input id="rf" type="range" min="55" max="75" value="70"><span id="rf-v" style="min-width:52px"></span></div>
+      <div class="regler"><label for="abbau">Abbau</label><input id="abbau" type="range" min="10" max="20" value="15"><span id="abbau-v" style="min-width:52px"></span></div>
+      <div class="regler"><label for="ende">Trinkende</label><input id="ende" type="range" min="20" max="27" value="25"><span id="ende-v" style="min-width:52px"></span></div>
+      <svg id="bak" viewBox="0 0 440 220" role="img" aria-label="Verlauf der Blutalkoholkonzentration über die Zeit"></svg>
+      <div class="ausgabe" id="bak-out"></div>
+      <div class="warn">Grobe Schätzung, kein Messgerät: Aufnahme und Abbau schwanken von Mensch zu Mensch stark. Vereinfachung: Der ganze Alkohol ist sofort im Blut. Wer getrunken hat, fährt nicht.</div>
+    </figure>
+  </div></div>
+</section>
+
+<section class="v-karte" id="v4">
+  <div class="v-kopf"><div class="v-nr">V4</div><div><div class="sterne">★★</div><h3>Brennwert und Oxidationszahl</h3></div></div>
+  <div class="v-inhalt zwei"><div class="v-text"><p>Im Körper werden Nährstoffe und Ethanol letztlich vollständig zu Kohlenstoffdioxid oxidiert. Dort hat das C-Atom die höchste Oxidationszahl, die Kohlenstoff erreichen kann. Für Lebensmittel gelten in der EU die Brennwerte im Diagramm. Bei Molekülen mit mehreren C-Atomen hilft die <i>mittlere Oxidationszahl</i>: Mit H = +I und O = −II folgt sie aus der Summenformel, weil die Summe im neutralen Molekül 0 ist.</p>
+  <div class="aufgabe"><span class="b">a)</span><span><b>Bestimmen</b> Sie die mittlere Oxidationszahl des Kohlenstoffs in Glucose (C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>), Palmitinsäure (C<sub>16</sub>H<sub>32</sub>O<sub>2</sub>, eine Fettsäure) und Ethanol sowie in CO<sub>2</sub>.</span><span class="ab">AB II</span></div>
+  <div class="aufgabe"><span class="b">b)</span><span><b>Erklären</b> Sie mithilfe Ihrer Ergebnisse, warum Fette mehr als doppelt so viel Energie pro Gramm liefern wie Kohlenhydrate.</span><span class="ab">AB II</span></div>
+  <div class="aufgabe"><span class="b">c)</span><span><b>Berechnen</b> Sie für die drei Stoffe, wie viele Mol Elektronen pro Gramm bei der Oxidation zu CO<sub>2</sub> abgegeben werden. <b>Prüfen</b> Sie, ob der Brennwert ungefähr proportional zu dieser Größe ist, und <b>diskutieren</b> Sie Abweichungen.</span><span class="ab">AB III</span></div></div>
+  <figure>
+    <div class="klein" style="margin-bottom:6px"><b>Brennwerte in kJ/g</b> (Lebensmittel-Informationsverordnung der EU)</div>
+    <div class="balken" id="bw"></div>
+    <button type="button" class="knopf" id="bw-los" style="margin-top:10px">Balken neu zeichnen</button>
+    <figcaption>Die Werte gelten für die Stoffgruppe im Durchschnitt, nicht für ein einzelnes Molekül.</figcaption>
+  </figure></div>
+</section>
+
+<footer>
+  Chemie LK · Q3 · Redoxreaktionen organischer Verbindungen · 00 Alkoholabbau und Oxidationszahlen · Vertiefung und Hilfen<br>
+  E. M. P. Widmark (1932); Brennwerte nach Verordnung (EU) Nr. 1169/2011, Anhang XIV; Promillegrenzen nach § 24a und § 24c StVG.
+</footer>
+</main>
+
+<script>
+(function(){
+  document.querySelectorAll('.hk').forEach(function(k){
+    var stufen = k.querySelectorAll('.stufe'), btn = k.querySelector('button'), z = k.querySelector('.zaehler'), i = 0;
+    z.textContent = '0 / ' + stufen.length;
+    btn.addEventListener('click', function(){
+      if (i >= stufen.length) return;
+      stufen[i].classList.add('offen'); i++;
+      z.textContent = i + ' / ' + stufen.length;
+      if (i < stufen.length) btn.textContent = 'Stufe ' + (i + 1) + ' aufdecken';
+      else { btn.textContent = 'alle Stufen offen'; btn.disabled = true; }
+    });
+  });
+})();
+
+// V2: Prüfröhrchen
+(function(){
+  var r = document.getElementById('atem');
+  function f(){ var o = (r.value / 100).toFixed(2); document.getElementById('gstop').setAttribute('offset', o); document.getElementById('ostop').setAttribute('offset', o); }
+  r.oninput = f; f();
+})();
+
+// V3: Widmark-Rechner
+(function(){
+  var g = {bier: 4, wein: 0, schnaps: 0};
+  var gramm = {bier: 500 * 0.05 * 0.8, wein: 200 * 0.12 * 0.8, schnaps: 40 * 0.40 * 0.8};
+  var $ = function(id){ return document.getElementById(id); };
+  function uhr(h){ h = ((h % 24) + 24) % 24; var hh = Math.floor(h), mm = Math.round((h - hh) * 60); if (mm === 60) { hh = (hh + 1) % 24; mm = 0; } return hh + ':' + (mm < 10 ? '0' : '') + mm + ' Uhr'; }
+  function komma(x, n){ return x.toFixed(n).replace('.', ','); }
+  function rechne(){
+    var m = +$('masse').value, r = $('rf').value / 100, b = $('abbau').value / 100, t0 = +$('ende').value;
+    $('masse-v').textContent = m + ' kg'; $('rf-v').textContent = komma(r, 2); $('abbau-v').textContent = komma(b, 2) + ' ‰/h'; $('ende-v').textContent = uhr(t0);
+    ['bier','wein','schnaps'].forEach(function(k){ $('n-' + k).textContent = g[k]; });
+    var A = g.bier * gramm.bier + g.wein * gramm.wein + g.schnaps * gramm.schnaps;
+    var c0 = A / (m * r), dauer = c0 / b;
+    // Diagramm: 18 h ab Trinkende, y bis max(1,5 ‰; c0)
+    var W = 440, H = 220, L = 40, R = 10, T = 10, B = 30, pw = W - L - R, ph = H - T - B;
+    var ymax = Math.max(1.5, Math.ceil(c0 * 2) / 2), xmax = 18;
+    var X = function(h){ return L + h / xmax * pw; }, Y = function(c){ return T + ph - c / ymax * ph; };
+    var s = '';
+    for (var c = 0; c <= ymax + 1e-9; c += 0.5) s += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + Y(c) + '" y2="' + Y(c) + '" stroke="#eef2f6"/><text x="' + (L - 6) + '" y="' + (Y(c) + 4) + '" font-size="11" text-anchor="end" fill="#6f7a85">' + komma(c, 1) + '</text>';
+    for (var h = 0; h <= xmax; h += 3) s += '<text x="' + X(h) + '" y="' + (H - 10) + '" font-size="11" text-anchor="middle" fill="#6f7a85">' + uhr(t0 + h).replace(' Uhr', '') + '</text>';
+    s += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + Y(0.5) + '" y2="' + Y(0.5) + '" stroke="#d0574a" stroke-dasharray="5 4"/><text x="' + (W - R - 2) + '" y="' + (Y(0.5) - 4) + '" font-size="11" text-anchor="end" fill="#d0574a">0,5 ‰</text>';
+    var xe = Math.min(dauer, xmax), ce = c0 - b * xe;
+    s += '<polyline fill="none" stroke="#156e9d" stroke-width="3" stroke-linejoin="round" points="' + X(0) + ',' + Y(c0) + ' ' + X(xe) + ',' + Y(ce) + (dauer < xmax ? ' ' + X(xmax) + ',' + Y(0) : '') + '"/>';
+    s += '<line x1="' + L + '" x2="' + L + '" y1="' + T + '" y2="' + (T + ph) + '" stroke="#6f7a85"/><line x1="' + L + '" x2="' + (W - R) + '" y1="' + (T + ph) + '" y2="' + (T + ph) + '" stroke="#6f7a85"/>';
+    s += '<text x="' + (L + 4) + '" y="' + (T + 10) + '" font-size="11" fill="#6f7a85">BAK in ‰</text>';
+    $('bak').innerHTML = s;
+    $('bak-out').innerHTML = A === 0 ? 'Kein Alkohol: 0,0 ‰.' :
+      'Ethanol: ' + komma(A, 0) + ' g · Spitzenwert ≈ <b>' + komma(c0, 2) + ' ‰</b><br>unter 0,5 ‰ ab ≈ ' + (c0 <= 0.5 ? uhr(t0) : uhr(t0 + (c0 - 0.5) / b)) + ' · <b>0,0 ‰ ab ≈ ' + uhr(t0 + dauer) + '</b> (nach ' + komma(dauer, 1) + ' h)';
+  }
+  document.querySelectorAll('.zaehl button').forEach(function(k){
+    k.addEventListener('click', function(){ var n = g[k.dataset.g] + (+k.dataset.d); g[k.dataset.g] = Math.max(0, Math.min(12, n)); rechne(); });
+  });
+  ['masse','rf','abbau','ende'].forEach(function(id){ $(id).oninput = rechne; });
+  rechne();
+})();
+
+// V4: Brennwerte
+(function(){
+  var d = [['Fett', 37, '#d9822b'], ['Ethanol', 29, '#7a5aa8'], ['Kohlenhydrate', 17, '#2a7ab8'], ['Protein', 17, '#3e9a63']];
+  var box = document.getElementById('bw');
+  box.innerHTML = d.map(function(e){ return '<span>' + e[0] + '</span><div class="spur"><div class="fuell" style="background:' + e[2] + '" data-w="' + (e[1] / 40 * 100) + '"></div></div><span class="wert">' + e[1] + ' kJ/g</span>'; }).join('');
+  function los(){ var f = box.querySelectorAll('.fuell'); f.forEach(function(x){ x.style.width = 0; }); setTimeout(function(){ f.forEach(function(x){ x.style.width = x.dataset.w + '%'; }); }, 60); }
+  document.getElementById('bw-los').onclick = los;
+  if ('IntersectionObserver' in window) { new IntersectionObserver(function(e, o){ if (e[0].isIntersecting) { los(); o.disconnect(); } }).observe(box); } else los();
+})();
+</script>
+</body>
+</html>
