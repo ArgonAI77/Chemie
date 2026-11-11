@@ -5,3 +5,6 @@ https://argonai77.github.io/Chemie/SEK-II/Leistungskurs/Q3/q3-vertiefung-und-hil
 
 Fachseminar Chemie (Referendariat), Basismodul 2, Monomer 2.3 „Basiskonzepte implementieren“:
 https://argonai77.github.io/Chemie/Fachseminar/bm2-2-3-basiskonzepte-vertiefung-und-hilfen.html
+
+Fachseminar Chemie (Referendariat), Basismodul 2, Monomer 2.4 „Sicherungsphasen“:
+https://argonai77.github.io/Chemie/Fachseminar/bm2-2-4-sicherungsphasen-vertiefung-und-hilfen.html

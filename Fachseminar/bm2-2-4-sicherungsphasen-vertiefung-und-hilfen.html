@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sicherungsphasen – Vertiefung und Hilfen</title>
+<!-- Fachseminar Chemie · BM 2 · Monomer 2.4 · handgeschrieben. Ohne Lösungen (Repo öffentlich), auch ohne Referenz-Kriterienkatalog (wird in A3 selbst entwickelt). URL steht im QR-Code des Arbeitsblatts und der Präsentation: nicht umbenennen. -->
+<style>
+:root{
+  --blau:#2a7ab8; --tblau:#156e9d; --blau-hell:#e6f0f8; --orange:#d9822b; --orange-hell:#fdf1e4;
+  --violett:#7a5aa8; --gruen:#3e9a63; --grau:#6f7a85; --linie:#d5dde5; --bg:#f6f8fa; --karte:#fff; --text:#222;
+  --sans:-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.5}
+a{color:var(--tblau)}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px}
+header{background:linear-gradient(135deg,#156e9d 0%,#2a7ab8 60%,#3d8fc9 100%);color:#fff;padding:28px 0 22px}
+header .kurs{font-size:13px;letter-spacing:.06em;text-transform:uppercase;opacity:.85}
+header h1{margin:4px 0 6px;font-size:clamp(24px,4.5vw,34px);font-weight:600;line-height:1.2}
+header p{margin:0;opacity:.92;max-width:680px}
+nav{position:sticky;top:0;z-index:10;background:rgba(246,248,250,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--linie)}
+nav .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:8px;padding-bottom:8px}
+nav a{flex:none;text-decoration:none;color:var(--tblau);border:1px solid var(--linie);background:#fff;border-radius:16px;padding:3px 12px;font-size:14px;font-weight:600}
+nav a.v{color:var(--orange)}
+h2{font-size:20px;color:var(--tblau);margin:30px 0 4px}
+.hinweis{color:var(--grau);font-size:14px;margin:0 0 14px}
+/* Hilfekarten */
+.hilfen{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.hk{background:var(--karte);border:1.5px dashed #b9c4cf;border-radius:10px;padding:14px 16px}
+.hk h3{margin:0 0 2px;font-size:16px;color:var(--blau)}
+.hk .zu{font-size:13px;color:var(--grau);margin-bottom:8px}
+.stufe{display:none;margin:8px 0 0;padding:8px 10px;background:var(--blau-hell);border-radius:6px;font-size:15px}
+.stufe.offen{display:block;animation:auf .25s ease}
+@keyframes auf{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.hk button{margin-top:10px;border:1px solid var(--blau);background:#fff;color:var(--blau);border-radius:6px;padding:4px 12px;font-size:14px}
+.hk button:hover{background:var(--blau-hell)}
+.hk button[disabled]{opacity:.4;cursor:default}
+.hk .zaehler{font-size:12px;color:var(--grau);margin-left:8px}
+/* Vertiefungen */
+.v-karte{background:var(--karte);border:1px solid var(--linie);border-radius:12px;margin:14px 0;overflow:hidden}
+.v-kopf{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--linie);background:#fbfcfd}
+.v-nr{flex:none;width:42px;height:42px;border-radius:50%;background:var(--orange);color:#fff;font-weight:700;display:grid;place-items:center}
+.v-kopf h3{margin:0;font-size:18px}
+.sterne{color:var(--orange);font-size:14px;font-weight:700}
+.v-inhalt{padding:14px 16px 16px}
+.zwei{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+@media (max-width:720px){.zwei{grid-template-columns:1fr}}
+.aufgabe{display:grid;grid-template-columns:28px 1fr auto;gap:6px;background:var(--orange-hell);border-radius:8px;padding:8px 10px;margin-top:10px}
+.aufgabe .b{font-weight:700;color:var(--orange)}
+.aufgabe .ab{font-size:12px;color:var(--grau);white-space:nowrap;align-self:start;margin-top:2px}
+figure{margin:0}
+figcaption{font-size:13px;color:var(--grau);margin-top:4px}
+svg{max-width:100%;height:auto;display:block}
+.regler{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:8px 0 2px;font-size:14px}
+.regler input[type=range]{flex:1;min-width:140px;accent-color:var(--orange)}
+.knopf{border:1px solid var(--linie);background:#fff;border-radius:6px;padding:3px 10px;font-size:14px}
+.ausgabe{font-variant-numeric:tabular-nums;font-size:14px;background:#f2f5f8;border-radius:6px;padding:6px 10px;margin-top:6px}
+.legende{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;color:#444;margin-top:6px}
+.legende i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+.balken{display:grid;grid-template-columns:150px 1fr 76px;gap:6px 10px;align-items:center;font-size:14px}
+.balken .spur{background:#eef2f6;border-radius:4px;height:18px;position:relative;overflow:hidden}
+.balken .fuell{height:100%;border-radius:4px;width:0;transition:width .9s cubic-bezier(.2,.8,.2,1)}
+.balken .wert{text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:520px){.balken{grid-template-columns:100px 1fr 64px;font-size:13px}}
+.kachel-reihe{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:12px}
+.kachel{background:#f2f5f8;border-radius:8px;padding:10px 12px}
+.kachel .zahl{font-size:22px;font-weight:700;color:var(--tblau);font-variant-numeric:tabular-nums}
+.kachel .was{font-size:13px;color:#555}
+.zeitstrahl{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.zeitstrahl span{font-size:13px;background:#fff;border:1px solid var(--linie);border-radius:14px;padding:2px 10px}
+.zeitstrahl b{color:var(--orange)}
+.cta{display:inline-block;background:var(--tblau);color:#fff;text-decoration:none;font-weight:600;border-radius:8px;padding:8px 16px;margin:8px 8px 0 0}
+.cta:hover{background:var(--blau)}
+.code{font-family:Menlo,Consolas,monospace;background:#f2f5f8;border:1px solid var(--linie);border-radius:6px;padding:2px 8px;font-size:14px}
+.klein{font-size:13px;color:var(--grau)}
+footer{margin:36px 0 0;border-top:1px solid var(--linie);padding:16px 0 28px;font-size:12.5px;color:var(--grau)}
+sub,sup{font-size:.72em}
+/* Ergänzungen Generator */
+.zurueck{display:inline-block;color:#fff;opacity:.85;text-decoration:none;font-size:13px;margin-bottom:6px}
+.zurueck:hover{opacity:1;text-decoration:underline}
+.v-text p:first-child{margin-top:0}
+.fischer{display:inline-block;vertical-align:middle;margin:4px 10px 4px 0}
+.wahl{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.wahl button{border:1px solid var(--linie);background:#fff;border-radius:14px;padding:2px 10px;font-size:13px}
+.wahl button.an{background:var(--tblau);border-color:var(--tblau);color:#fff}
+.quiz-aa{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:6px;margin-top:8px}
+.quiz-aa button{border:1px solid var(--linie);background:#fff;border-radius:8px;padding:6px 4px;font-size:14px}
+.quiz-aa button.ok{background:#e3f4ea;border-color:#3e9a63}
+.quiz-aa button.falsch{background:#fbe6e3;border-color:#d0574a}
+.uebersicht{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:14px}
+.uebersicht a{display:block;background:#fff;border:1px solid var(--linie);border-radius:12px;padding:14px 16px;text-decoration:none;color:var(--text)}
+.uebersicht a:hover{border-color:var(--blau);box-shadow:0 2px 8px rgba(21,110,157,.12)}
+.uebersicht .nr{font-size:13px;color:var(--orange);font-weight:700}
+.uebersicht .t{font-weight:600;color:var(--tblau);margin:2px 0 4px}
+.uebersicht .k{font-size:13px;color:var(--grau)}
+.einheit{font-size:14px;color:var(--grau);text-transform:uppercase;letter-spacing:.05em;margin:26px 0 0}
+.qa{display:grid;gap:10px;margin-top:10px}
+.qa details{background:var(--karte);border:1px solid var(--linie);border-radius:10px}
+.qa summary{cursor:pointer;padding:12px 16px;font-weight:600;color:var(--tblau);list-style-position:outside;margin-left:18px}
+.qa details[open] summary{border-bottom:1px solid var(--linie)}
+.qa .antwort{padding:4px 16px 12px}
+.qa .antwort p{margin:10px 0}
+.qa .antwort ul{margin:8px 0;padding-left:1.3em}
+.qa .antwort li{margin-bottom:6px}
+
+</style>
+<style>
+.wahl{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px}
+.wahl button{border:1px solid var(--linie);background:#fff;border-radius:16px;padding:4px 12px;font-size:14px;color:#333}
+.wahl button.an{color:#fff;border-color:transparent;background:#156e9d}
+.wahl.fkt button.an{background:#d9822b}
+.wahl-label{font-size:13px;color:var(--grau);margin-top:8px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.vorschlag{background:#fff;border:1.5px solid var(--linie);border-radius:10px;padding:14px 16px;margin-top:10px}
+.vorschlag h4{margin:0 0 6px;font-size:16px;color:var(--tblau)}
+.vorschlag ol{margin:6px 0 0;padding-left:1.3em}
+.vorschlag li{margin-bottom:6px}
+.vorschlag .zeit{font-size:12px;color:var(--grau);font-weight:600}
+.chips span{display:inline-block;font-size:12px;background:var(--blau-hell);color:var(--tblau);border-radius:10px;padding:2px 8px;font-weight:600;margin:6px 4px 0 0}
+.saeulen{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;align-items:end;height:220px;margin-top:10px;padding:0 10px;border-bottom:1px solid var(--linie)}
+.gruppe{display:flex;gap:8px;align-items:end;justify-content:center;height:100%}
+.saeule{width:56px;border-radius:6px 6px 0 0;position:relative;transition:height .8s cubic-bezier(.2,.8,.2,1);height:0}
+.saeule b{position:absolute;top:-22px;left:0;right:0;text-align:center;font-size:14px}
+.achse{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;text-align:center;font-size:14px;color:#444;margin-top:6px}
+.krit-zeile{display:grid;grid-template-columns:28px 1fr 150px;gap:8px;align-items:center;margin-top:8px}
+.krit-zeile input[type=text]{width:100%;border:1px solid var(--linie);border-radius:6px;padding:6px 8px;font:inherit;font-size:15px}
+.krit-zeile select{border:1px solid var(--linie);border-radius:6px;padding:5px;font:inherit;font-size:14px;background:#fff}
+@media (max-width:600px){.krit-zeile{grid-template-columns:24px 1fr}.krit-zeile select{grid-column:2}}
+.bilanz{margin-top:12px;font-size:15px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="kurs">Fachseminar Chemie · Fachdidaktisches Basismodul 2 · Monomer 2.4</div>
+    <h1>Vertiefung und Hilfen: Sicherungsphasen funktional planen</h1>
+    <p>Hilfen zu den Aufgaben 1–5 des Arbeitsblatts nur bei Bedarf und stufenweise aufdecken. Vertiefungen: ein Baukasten für Sicherungen, der Testing-Effekt zum Ausprobieren und ein Werkzeug, mit dem Sie Ihre Planung an Ihren eigenen Kriterien prüfen.</p>
+  </div>
+</header>
+<nav><div class="wrap">
+  <a href="#hilfen">Hilfen</a><a class="v" href="#v1">V1 Sicherungs-Baukasten</a><a class="v" href="#v2">V2 Abrufen statt Wiederlesen</a><a class="v" href="#v3">V3 Eigene Kriterien anwenden</a>
+</div></nav>
+
+<main class="wrap">
+<h2 id="hilfen">Hilfekarten</h2>
+<p class="hinweis">Erst selbst probieren. Jede Karte deckt ihre Hilfe in Stufen auf, so wenig wie möglich, so viel wie nötig.</p>
+<div class="hilfen">
+  <div class="hk">
+    <h3>Hilfe zu 1a</h3><div class="zu">Funktionen prüfen</div>
+    <div class="stufe">Lesen Sie jede Sicherung zweimal: einmal aus Sicht der Lehrkraft (Was steht am Ende im Heft?), einmal aus Sicht einer Schülerin, die sich nicht meldet (Was musste sie selbst denken?).</div><div class="stufe">Gehen Sie die Leitfragen aus M1 einzeln durch. Ein „teilweise“ ist erlaubt, wenn eine Funktion angelegt, aber nicht eingelöst ist, z. B. ein Ergebnis festgehalten, aber fachlich ungenau.</div><div class="stufe">Achten Sie besonders auf die Einstiegsfrage jeder Stunde: Taucht sie am Ende wieder auf?</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span>
+  </div>
+  <div class="hk">
+    <h3>Hilfe zu 1b</h3><div class="zu">Merkmale ableiten</div>
+    <div class="stufe">Formulieren Sie aus jedem Mangel in A und B das positive Gegenstück: „Statt … sollte …“.</div><div class="stufe">Fragen Sie, was C anders macht, und zwar nicht bei der Methode, sondern bei der Rolle der Lernenden und der Lehrkraft.</div><div class="stufe">Denken Sie auch an die Planung vor der Stunde: Welche Ursache hat das Problem in A?</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span>
+  </div>
+  <div class="hk">
+    <h3>Hilfe zu 2a</h3><div class="zu">Methoden ordnen</div>
+    <div class="stufe">Fragen Sie bei jeder Karte: Wozu würde ich diese Methode vor allem einsetzen? Viele Methoden können mehreres; entscheiden Sie sich für die Hauptfunktion.</div><div class="stufe">Für die Aktivierung: Wie viele Lernende müssen gleichzeitig selbst etwas abrufen, formulieren oder entscheiden? Alle, einige oder nur wenige?</div><div class="stufe">Halten Sie Fälle fest, bei denen die Gruppe uneinig war. Die Begründung ist wichtiger als die Zuordnung.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span>
+  </div>
+  <div class="hk">
+    <h3>Hilfe zu 3</h3><div class="zu">Kriterienkatalog</div>
+    <div class="stufe">Sammeln Sie zuerst alle Merkmale aus 1b und die Erkenntnisse aus 2a auf Zetteln und fassen Sie ähnliche zusammen.</div><div class="stufe">Prüfen Sie, ob Ihr Katalog die ganze Stunde abdeckt: Bezug zu Ziel und Einstieg, die Rolle der Lernenden, die Qualität des Ergebnisses, die Rückmeldung und die Umsetzbarkeit.</div><div class="stufe">Formulieren Sie Prüffragen, die man mit Ja oder Nein beantworten kann, z. B. „Wird …?“ oder „Haben alle …?“. Vermeiden Sie Wörter wie „angemessen“ ohne Erläuterung.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span>
+  </div>
+  <div class="hk">
+    <h3>Hilfe zu 4a</h3><div class="zu">Sicherung planen</div>
+    <div class="stufe">Beginnen Sie beim Stundenziel: Was sollen die Lernenden am Ende erklären können? Formulieren Sie daraus die Kernaussage des Hefteintrags.</div><div class="stufe">Nutzen Sie die Problemfrage als Überschrift. Überlegen Sie dann, welche Struktur das Ergebnis braucht, im Chemieunterricht oft Beobachtung, Deutung und Formel getrennt.</div><div class="stufe">Planen Sie zwei Teile: einen, der das Ergebnis festhält, und einen, bei dem alle etwas abrufen oder anwenden. Ergänzen Sie eine Kurzfassung für den Fall, dass die Zeit nicht reicht.</div><div class="stufe">Der Baukasten in V1 liefert Kombinationen als Startpunkt.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span>
+  </div>
+  <div class="hk">
+    <h3>Hilfe zu 4b</h3><div class="zu">Planung begründen</div>
+    <div class="stufe">Nehmen Sie Ihren Kriterienkatalog aus A3 und markieren Sie die Kriterien, die Ihre Planung besonders gut erfüllt. Begründen Sie mit konkreten Elementen Ihrer Planung.</div><div class="stufe">Für das Risiko: Was passiert, wenn die Erarbeitung zehn Minuten länger dauert? Was, wenn die Diagnose zeigt, dass die Hälfte das Ziel nicht erreicht hat?</div><div class="stufe">V3 hilft, Ihre Planung systematisch an Ihren eigenen Kriterien zu prüfen.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span>
+  </div>
+  <div class="hk">
+    <h3>Hilfe zu 5</h3><div class="zu">Über die Stunde hinaus sichern</div>
+    <div class="stufe">Schauen Sie sich V2 an: Was passiert mit dem Behalten nach einer Woche, wenn Lernende abrufen statt wiederlesen?</div><div class="stufe">Verteilen Sie die Abrufaufgaben mit wachsenden Abständen, z. B. nächste Stunde, nach einer Woche, nach einigen Wochen.</div><div class="stufe">Variieren Sie die Form: zuerst einfaches Erinnern, später Anwendung auf ein neues Phänomen. Planen Sie jeweils eine kurze Rückmeldung ein.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span>
+  </div>
+</div>
+
+<h2>Vertiefungen</h2>
+<p class="hinweis">★ = vertiefend · ★★ = anspruchsvoll. Die Werkzeuge helfen beim Planen, sie ersetzen keine eigene Begründung.</p>
+
+<section class="v-karte" id="v1">
+  <div class="v-kopf"><div class="v-nr">V1</div><div><div class="sterne">★</div><h3>Sicherungs-Baukasten: Funktion × Zeit</h3></div></div>
+  <div class="v-inhalt">
+    <p>Wählen Sie, welche Funktion im Vordergrund stehen soll und wie viel Zeit Sie haben. Der Baukasten schlägt eine Kombination aus den Methodenkarten vor. Passen Sie sie an Ihre Stunde an.</p>
+    <div class="wahl-label">Hauptfunktion</div>
+    <div class="wahl fkt" id="w-f"><button class="an" data-v="fest">Festhalten</button><button data-v="struktur">Strukturieren</button><button data-v="konsol">Konsolidieren</button><button data-v="diag">Diagnostizieren</button><button data-v="rueck">Rückbezug</button></div>
+    <div class="wahl-label">verfügbare Zeit</div>
+    <div class="wahl" id="w-z"><button data-v="2">2 Minuten (Kurzfassung)</button><button class="an" data-v="6">5–6 Minuten</button><button data-v="12">10–12 Minuten</button></div>
+    <div class="vorschlag" id="vorschlag"></div>
+    <div class="aufgabe"><span class="b">a)</span><span><b>Passen</b> Sie einen Vorschlag an die Stunde aus Aufgabe 4 <b>an</b> und <b>prüfen</b> Sie, welche Ihrer eigenen Kriterien er erfüllt.</span><span class="ab">AB II</span></div>
+    <div class="aufgabe"><span class="b">b)</span><span>Vergleichen Sie den Vorschlag für 2 Minuten mit dem für 12 Minuten. <b>Beurteilen</b> Sie, welche Funktionen in der Kurzfassung erhalten bleiben müssen.</span><span class="ab">AB III</span></div>
+  </div>
+</section>
+
+<section class="v-karte" id="v2">
+  <div class="v-kopf"><div class="v-nr">V2</div><div><div class="sterne">★</div><h3>Abrufen statt Wiederlesen: der Testing-Effekt</h3></div></div>
+  <div class="v-inhalt zwei">
+    <div>
+      <p>Roediger und Karpicke (2006) ließen Studierende einen Sachtext lernen. Gruppe 1 las ihn viermal. Gruppe 2 las ihn einmal und schrieb danach dreimal aus dem Gedächtnis auf, was sie noch wusste. Getestet wurde nach fünf Minuten oder nach einer Woche.</p>
+      <div class="wahl" id="w-t"><button class="an" data-v="0">nach 5 Minuten</button><button data-v="1">nach 1 Woche</button></div>
+      <div class="saeulen"><div class="gruppe"><div class="saeule" id="s1" style="background:#6f7a85"><b></b></div></div><div class="gruppe"><div class="saeule" id="s2" style="background:#d9822b"><b></b></div></div></div>
+      <div class="achse"><span>viermal lesen</span><span>einmal lesen, dreimal abrufen</span></div>
+      <p class="klein">Erinnerte Ideenpunkte in Prozent, gerundet nach Roediger &amp; Karpicke (2006), Experiment 1.</p>
+    </div>
+    <div>
+      <div class="aufgabe"><span class="b">a)</span><span><b>Beschreiben</b> Sie, wie sich der Vorsprung der Gruppen zwischen beiden Testzeitpunkten verändert.</span><span class="ab">AB I</span></div>
+      <div class="aufgabe"><span class="b">b)</span><span>Abschreiben eines Tafelbilds, Lückentext, Partnerinterview, Exit-Ticket: <b>Ordnen</b> Sie diese Formen danach, wie stark sie Abruf verlangen, und <b>begründen</b> Sie.</span><span class="ab">AB II</span></div>
+      <div class="aufgabe"><span class="b">c)</span><span>Die Studie arbeitete mit Studierenden und einem Sachtext. <b>Beurteilen</b> Sie, unter welchen Bedingungen sich der Befund auf eine Chemiestunde übertragen lässt.</span><span class="ab">AB III</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="v-karte" id="v3">
+  <div class="v-kopf"><div class="v-nr">V3</div><div><div class="sterne">★ / ★★</div><h3>Die eigene Planung an den eigenen Kriterien prüfen</h3></div></div>
+  <div class="v-inhalt">
+    <p>Tragen Sie die Prüffragen aus Ihrem Kriterienkatalog (Aufgabe 3) ein und bewerten Sie damit Ihre Planung aus Aufgabe 4. Die Eingaben bleiben nur in Ihrem Browser gespeichert.</p>
+    <div id="krit"></div>
+    <button class="knopf" id="krit-plus" type="button" style="margin-top:10px">+ weiteres Kriterium</button>
+    <button class="knopf" id="krit-leer" type="button" style="margin-top:10px">alles leeren</button>
+    <div class="bilanz" id="bilanz"></div>
+    <div class="aufgabe"><span class="b">a)</span><span>Überarbeiten Sie Ihre Planung für jedes Kriterium mit „nein“ oder „teilweise“: <b>Geben</b> Sie eine konkrete Änderung <b>an</b>.</span><span class="ab">AB II</span></div>
+    <div class="aufgabe"><span class="b">b)</span><span><b>Beurteilen</b> Sie, welche Ihrer Kriterien jede Sicherung erfüllen muss und welche nur je nach Stundenziel wichtig sind.</span><span class="ab">AB III</span></div>
+  </div>
+</section>
+
+<footer>
+  Fachseminar Chemie · Basismodul 2 · Monomer 2.4 Sicherungsphasen · Vertiefung und Hilfen<br>
+  Gesamtplan der Fachseminare, Chemie BM 2, Monomer 2.4; Rahmenlehrplan Teil C Chemie 7–10, Anhörungsfassung. Roediger, H. L. &amp; Karpicke, J. D. (2006). Test-enhanced learning. Psychological Science, 17(3), 249–255.
+</footer>
+</main>
+
+<script>
+(function(){
+  document.querySelectorAll('.hk').forEach(function(k){
+    var stufen = k.querySelectorAll('.stufe'), btn = k.querySelector('button'), z = k.querySelector('.zaehler'), i = 0;
+    z.textContent = '0 / ' + stufen.length;
+    btn.addEventListener('click', function(){
+      if (i >= stufen.length) return;
+      stufen[i].classList.add('offen'); i++;
+      z.textContent = i + ' / ' + stufen.length;
+      if (i < stufen.length) btn.textContent = 'Stufe ' + (i + 1) + ' aufdecken';
+      else { btn.textContent = 'alle Stufen offen'; btn.disabled = true; }
+    });
+  });
+})();
+
+function gruppe(id, cb){
+  var g = document.getElementById(id);
+  g.querySelectorAll('button').forEach(function(b){
+    b.addEventListener('click', function(){
+      g.querySelectorAll('button').forEach(function(x){ x.classList.remove('an'); });
+      b.classList.add('an'); cb(b.dataset.v);
+    });
+  });
+}
+
+// V1: Baukasten
+(function(){
+  var V = {
+    fest: {
+      2: ['Problemfrage vorlesen, Lernende vervollständigen mündlich den vorbereiteten Merksatz (Karte 2)', 'Merksatz steht vorbereitet an der Tafel, wird übernommen; Hefteintrag in der nächsten Stunde als Abruf'],
+      6: ['Lückentext oder vorbereitete Tabelle (Karte 2/5) in Einzelarbeit ausfüllen', 'Abgleich mit Nachbarin oder Nachbarn, dann an der Tafel', 'Problemfrage ausdrücklich beantworten'],
+      12: ['Paare entwerfen den Hefteintrag in drei Spalten: Beobachtung, Deutung, Formel (Karte 5)', 'Zwei Paare stellen vor, die Klasse ergänzt; Lehrkraft schärft das Tafelbild (Karte 1)', 'Merksatz in eigenen Worten, Problemfrage als Überschrift beantwortet']
+    },
+    struktur: {
+      2: ['Lernende nennen die drei wichtigsten Begriffe der Stunde und ihre Verbindung', 'Vorbereitete Concept Map mit einer Lücke gemeinsam ergänzen'],
+      6: ['Vorstrukturierte Concept Map mit Lücken in Partnerarbeit ergänzen (Karte 3)', 'Vergleich mit einem Nachbarpaar, Unterschiede klären'],
+      12: ['Strukturlegetechnik mit Begriffskarten in Gruppen (Karte 4)', 'Gruppen erklären ihre Struktur; gemeinsame Version entsteht an der Tafel', 'Übertrag ins Heft mit Verbindung zur Problemfrage']
+    },
+    konsol: {
+      2: ['Partnerinterview: „Erkläre mir in zwei Sätzen …“ ohne Heft (Karte 8)'],
+      6: ['Partnerinterview mit Rollentausch (Karte 8)', 'Eine Anwendungsaufgabe einzeln lösen, Lösung kurz vergleichen'],
+      12: ['Gestufte Übungsaufgaben mit Selbstkontrolle (Karte 11)', 'Partnerinterview zur schwierigsten Aufgabe', 'Abrufaufgabe für den Beginn der nächsten Stunde ankündigen']
+    },
+    diag: {
+      2: ['Eine ABCD-Frage oder Plickers-Frage zu einer typischen Fehlvorstellung (Karte 7)'],
+      6: ['Exit-Ticket mit einer Anwendungs- und einer Begründungsfrage (Karte 6)', 'Lehrkraft sortiert nach der Stunde in drei Stapel: sicher, teilweise, nicht erreicht'],
+      12: ['Fehlerdetektiv: fehlerhafte Schülerlösung in Partnerarbeit korrigieren (Karte 10)', 'ABCD-Frage zum Transfer auf ein neues Phänomen', 'Nächste Stunde mit den häufigsten Fehlern beginnen']
+    },
+    rueck: {
+      2: ['Hypothesen vom Einstieg zeigen: Welche hat sich bestätigt? Handzeichen und eine Begründung (Karte 12)'],
+      6: ['Hypothesen prüfen und die Problemfrage in einem Satz beantworten', 'Lernlandkarte: Was wissen wir jetzt, was ist die nächste Frage?'],
+      12: ['Hypothesen prüfen, Problemfrage beantworten (Karte 12)', 'Paare formulieren den Lernzugewinn als Ich-Satz', 'Lernlandkarte ergänzen und nächste Frage der Reihe festhalten']
+    }
+  };
+  var KRIT = {fest: ['Lernprodukt', 'fachliche Qualität'], struktur: ['Lernprodukt', 'Aktivierung'], konsol: ['Aktivierung', 'Abruf'], diag: ['Diagnose', 'Aktivierung'], rueck: ['Ringschluss', 'Transparenz']};
+  var NAME = {fest: 'Festhalten', struktur: 'Strukturieren', konsol: 'Konsolidieren', diag: 'Diagnostizieren', rueck: 'Rückbezug'};
+  var s = {f: 'fest', z: '6'};
+  function zeige(){
+    var schritte = V[s.f][s.z];
+    document.getElementById('vorschlag').innerHTML = '<h4>' + NAME[s.f] + ' in ' + (s.z === '2' ? '2 Minuten' : s.z === '6' ? '5–6 Minuten' : '10–12 Minuten') + '</h4><ol>' +
+      schritte.map(function(x){ return '<li>' + x + '</li>'; }).join('') + '</ol><div class="chips">' +
+      KRIT[s.f].map(function(k){ return '<span>stärkt: ' + k + '</span>'; }).join('') + '<span>prüfen: Passt es zum Stundenziel?</span></div>';
+  }
+  gruppe('w-f', function(v){ s.f = v; zeige(); });
+  gruppe('w-z', function(v){ s.z = v; zeige(); });
+  zeige();
+})();
+
+// V2: Testing-Effekt
+(function(){
+  var D = [[81, 75], [42, 56]];
+  function setze(t){
+    [['s1', D[t][0]], ['s2', D[t][1]]].forEach(function(p){
+      var el = document.getElementById(p[0]); el.style.height = (p[1] / 100 * 200) + 'px'; el.querySelector('b').textContent = p[1] + ' %';
+    });
+  }
+  gruppe('w-t', function(v){ setze(+v); });
+  setze(0);
+})();
+
+// V3: eigene Kriterien (nur lokal gespeichert)
+(function(){
+  var KEY = 'bm24-kriterien', box = document.getElementById('krit');
+  function lade(){ try { return JSON.parse(localStorage.getItem(KEY)) || null; } catch(e){ return null; } }
+  function speichere(d){ try { localStorage.setItem(KEY, JSON.stringify(d)); } catch(e){} }
+  var daten = lade() || [{t: '', w: ''}, {t: '', w: ''}, {t: '', w: ''}, {t: '', w: ''}, {t: '', w: ''}];
+  function bilanz(){
+    var ja = daten.filter(function(d){ return d.t && d.w === 'ja'; }).length, teil = daten.filter(function(d){ return d.t && d.w === 'teilweise'; }).length,
+        nein = daten.filter(function(d){ return d.t && d.w === 'nein'; }).length, n = daten.filter(function(d){ return d.t; }).length;
+    document.getElementById('bilanz').innerHTML = n ? '<b>' + ja + ' von ' + n + '</b> Kriterien erfüllt' + (teil ? ', ' + teil + ' teilweise' : '') + (nein ? ', ' + nein + ' nicht erfüllt: Hier lohnt eine Überarbeitung.' : '.') : '<span class="klein">Tragen Sie mindestens eine Prüffrage ein.</span>';
+  }
+  function zeichne(){
+    box.innerHTML = '';
+    daten.forEach(function(d, i){
+      var z = document.createElement('div'); z.className = 'krit-zeile';
+      z.innerHTML = '<b style="color:#156e9d">K' + (i + 1) + '</b><input type="text" placeholder="Prüffrage, z. B. „Wird …?“"><select><option value="">erfüllt?</option><option>ja</option><option>teilweise</option><option>nein</option></select>';
+      var inp = z.querySelector('input'), sel = z.querySelector('select');
+      inp.value = d.t; sel.value = d.w;
+      inp.addEventListener('input', function(){ d.t = inp.value; speichere(daten); bilanz(); });
+      sel.addEventListener('change', function(){ d.w = sel.value; speichere(daten); bilanz(); });
+      box.appendChild(z);
+    });
+    bilanz();
+  }
+  document.getElementById('krit-plus').onclick = function(){ if (daten.length < 10) { daten.push({t: '', w: ''}); speichere(daten); zeichne(); } };
+  document.getElementById('krit-leer').onclick = function(){ daten = [{t: '', w: ''}, {t: '', w: ''}, {t: '', w: ''}, {t: '', w: ''}, {t: '', w: ''}]; speichere(daten); zeichne(); };
+  zeichne();
+})();
+</script>
+</body>
+</html>
