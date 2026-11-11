@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orbitale und Elektronenkonfiguration – Vertiefung und Hilfen</title>
+<!-- Chemie LK · Q3 · Orbitalmodell · Stunde 01 · handgeschrieben. Ohne Lösungen (Repo öffentlich). URL steht im QR-Code des Aufgabenblatts: nicht umbenennen. -->
+<style>
+:root{
+  --blau:#2a7ab8; --tblau:#156e9d; --blau-hell:#e6f0f8; --orange:#d9822b; --orange-hell:#fdf1e4;
+  --violett:#7a5aa8; --gruen:#3e9a63; --grau:#6f7a85; --linie:#d5dde5; --bg:#f6f8fa; --karte:#fff; --text:#222;
+  --sans:-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.5}
+a{color:var(--tblau)}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px}
+header{background:linear-gradient(135deg,#156e9d 0%,#2a7ab8 60%,#3d8fc9 100%);color:#fff;padding:28px 0 22px}
+header .kurs{font-size:13px;letter-spacing:.06em;text-transform:uppercase;opacity:.85}
+header h1{margin:4px 0 6px;font-size:clamp(24px,4.5vw,34px);font-weight:600;line-height:1.2}
+header p{margin:0;opacity:.92;max-width:680px}
+nav{position:sticky;top:0;z-index:10;background:rgba(246,248,250,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--linie)}
+nav .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:8px;padding-bottom:8px}
+nav a{flex:none;text-decoration:none;color:var(--tblau);border:1px solid var(--linie);background:#fff;border-radius:16px;padding:3px 12px;font-size:14px;font-weight:600}
+nav a.v{color:var(--orange)}
+h2{font-size:20px;color:var(--tblau);margin:30px 0 4px}
+.hinweis{color:var(--grau);font-size:14px;margin:0 0 14px}
+/* Hilfekarten */
+.hilfen{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.hk{background:var(--karte);border:1.5px dashed #b9c4cf;border-radius:10px;padding:14px 16px}
+.hk h3{margin:0 0 2px;font-size:16px;color:var(--blau)}
+.hk .zu{font-size:13px;color:var(--grau);margin-bottom:8px}
+.stufe{display:none;margin:8px 0 0;padding:8px 10px;background:var(--blau-hell);border-radius:6px;font-size:15px}
+.stufe.offen{display:block;animation:auf .25s ease}
+@keyframes auf{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.hk button{margin-top:10px;border:1px solid var(--blau);background:#fff;color:var(--blau);border-radius:6px;padding:4px 12px;font-size:14px}
+.hk button:hover{background:var(--blau-hell)}
+.hk button[disabled]{opacity:.4;cursor:default}
+.hk .zaehler{font-size:12px;color:var(--grau);margin-left:8px}
+/* Vertiefungen */
+.v-karte{background:var(--karte);border:1px solid var(--linie);border-radius:12px;margin:14px 0;overflow:hidden}
+.v-kopf{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--linie);background:#fbfcfd}
+.v-nr{flex:none;width:42px;height:42px;border-radius:50%;background:var(--orange);color:#fff;font-weight:700;display:grid;place-items:center}
+.v-kopf h3{margin:0;font-size:18px}
+.sterne{color:var(--orange);font-size:14px;font-weight:700}
+.v-inhalt{padding:14px 16px 16px}
+.zwei{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+@media (max-width:720px){.zwei{grid-template-columns:1fr}}
+.aufgabe{display:grid;grid-template-columns:28px 1fr auto;gap:6px;background:var(--orange-hell);border-radius:8px;padding:8px 10px;margin-top:10px}
+.aufgabe .b{font-weight:700;color:var(--orange)}
+.aufgabe .ab{font-size:12px;color:var(--grau);white-space:nowrap;align-self:start;margin-top:2px}
+figure{margin:0}
+figcaption{font-size:13px;color:var(--grau);margin-top:4px}
+svg{max-width:100%;height:auto;display:block}
+.regler{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:8px 0 2px;font-size:14px}
+.regler input[type=range]{flex:1;min-width:140px;accent-color:var(--orange)}
+.knopf{border:1px solid var(--linie);background:#fff;border-radius:6px;padding:3px 10px;font-size:14px}
+.ausgabe{font-variant-numeric:tabular-nums;font-size:14px;background:#f2f5f8;border-radius:6px;padding:6px 10px;margin-top:6px}
+.legende{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;color:#444;margin-top:6px}
+.legende i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+.balken{display:grid;grid-template-columns:150px 1fr 76px;gap:6px 10px;align-items:center;font-size:14px}
+.balken .spur{background:#eef2f6;border-radius:4px;height:18px;position:relative;overflow:hidden}
+.balken .fuell{height:100%;border-radius:4px;width:0;transition:width .9s cubic-bezier(.2,.8,.2,1)}
+.balken .wert{text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:520px){.balken{grid-template-columns:100px 1fr 64px;font-size:13px}}
+.kachel-reihe{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:12px}
+.kachel{background:#f2f5f8;border-radius:8px;padding:10px 12px}
+.kachel .zahl{font-size:22px;font-weight:700;color:var(--tblau);font-variant-numeric:tabular-nums}
+.kachel .was{font-size:13px;color:#555}
+.zeitstrahl{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.zeitstrahl span{font-size:13px;background:#fff;border:1px solid var(--linie);border-radius:14px;padding:2px 10px}
+.zeitstrahl b{color:var(--orange)}
+.cta{display:inline-block;background:var(--tblau);color:#fff;text-decoration:none;font-weight:600;border-radius:8px;padding:8px 16px;margin:8px 8px 0 0}
+.cta:hover{background:var(--blau)}
+.code{font-family:Menlo,Consolas,monospace;background:#f2f5f8;border:1px solid var(--linie);border-radius:6px;padding:2px 8px;font-size:14px}
+.klein{font-size:13px;color:var(--grau)}
+footer{margin:36px 0 0;border-top:1px solid var(--linie);padding:16px 0 28px;font-size:12.5px;color:var(--grau)}
+sub,sup{font-size:.72em}
+/* Ergänzungen Generator */
+.zurueck{display:inline-block;color:#fff;opacity:.85;text-decoration:none;font-size:13px;margin-bottom:6px}
+.zurueck:hover{opacity:1;text-decoration:underline}
+.v-text p:first-child{margin-top:0}
+.fischer{display:inline-block;vertical-align:middle;margin:4px 10px 4px 0}
+.wahl{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.wahl button{border:1px solid var(--linie);background:#fff;border-radius:14px;padding:2px 10px;font-size:13px}
+.wahl button.an{background:var(--tblau);border-color:var(--tblau);color:#fff}
+.quiz-aa{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:6px;margin-top:8px}
+.quiz-aa button{border:1px solid var(--linie);background:#fff;border-radius:8px;padding:6px 4px;font-size:14px}
+.quiz-aa button.ok{background:#e3f4ea;border-color:#3e9a63}
+.quiz-aa button.falsch{background:#fbe6e3;border-color:#d0574a}
+.uebersicht{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:14px}
+.uebersicht a{display:block;background:#fff;border:1px solid var(--linie);border-radius:12px;padding:14px 16px;text-decoration:none;color:var(--text)}
+.uebersicht a:hover{border-color:var(--blau);box-shadow:0 2px 8px rgba(21,110,157,.12)}
+.uebersicht .nr{font-size:13px;color:var(--orange);font-weight:700}
+.uebersicht .t{font-weight:600;color:var(--tblau);margin:2px 0 4px}
+.uebersicht .k{font-size:13px;color:var(--grau)}
+.einheit{font-size:14px;color:var(--grau);text-transform:uppercase;letter-spacing:.05em;margin:26px 0 0}
+.qa{display:grid;gap:10px;margin-top:10px}
+.qa details{background:var(--karte);border:1px solid var(--linie);border-radius:10px}
+.qa summary{cursor:pointer;padding:12px 16px;font-weight:600;color:var(--tblau);list-style-position:outside;margin-left:18px}
+.qa details[open] summary{border-bottom:1px solid var(--linie)}
+.qa .antwort{padding:4px 16px 12px}
+.qa .antwort p{margin:10px 0}
+.qa .antwort ul{margin:8px 0;padding-left:1.3em}
+.qa .antwort li{margin-bottom:6px}
+
+</style>
+<style>
+.eingabe{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px;font-size:15px}
+.eingabe input[type=text]{flex:1;min-width:220px;border:1px solid var(--linie);border-radius:6px;padding:6px 8px;font:inherit}
+.eingabe select{border:1px solid var(--linie);border-radius:6px;padding:5px;font:inherit;background:#fff}
+.aufgabe-el{font-size:18px;font-weight:700;color:var(--tblau)}
+.rm{margin-top:8px;padding:8px 10px;border-radius:6px;font-size:15px;display:none}
+.rm.ok{display:block;background:#e3f4ea;border:1px solid #3e9a63}
+.rm.nein{display:block;background:#fbe6e3;border:1px solid #d0574a}
+.kreihe{display:flex;align-items:center;gap:10px;margin-top:10px}
+.kreihe .lab{width:34px;font-weight:700}
+.kasten{width:44px;height:44px;border:2px solid #333;background:#fff;font-size:22px;line-height:40px;text-align:center;cursor:pointer;user-select:none;margin-right:-2px}
+.kasten:hover{background:var(--blau-hell)}
+.diagramm{width:100%;height:auto;margin-top:10px;background:#fff;border:1px solid var(--linie);border-radius:8px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="zurueck" href="q3-vertiefung-und-hilfen.html">← Übersicht Q3</a>
+    <div class="kurs">Chemie LK · Q3 · Orbitalmodell · Stunde 01</div>
+    <h1>Vertiefung und Hilfen: Orbitale und Elektronenkonfiguration</h1>
+    <p>Gestufte Hilfen zu den Aufgaben 1–5 nur bei Bedarf aufdecken. Die Vertiefungen gibt es nur hier: ein Trainer für Elektronenkonfigurationen mit Rückmeldung, Kästchenschreibweise zum Anklicken und die Ionisierungsenergien als Diagramm.</p>
+  </div>
+</header>
+<nav><div class="wrap">
+  <a href="#hilfen">Hilfen</a><a class="v" href="#v1">V1 Konfigurations-Trainer</a><a class="v" href="#v2">V2 Kästchen setzen</a><a class="v" href="#v3">V3 Ionisierungsenergien</a>
+</div></nav>
+
+<main class="wrap">
+<h2 id="hilfen">Hilfekarten</h2>
+<p class="hinweis">Erst selbst probieren. Jede Karte deckt ihre Hilfe in Stufen auf, so wenig wie möglich, so viel wie nötig.</p>
+<div class="hilfen">
+  <div class="hk"><h3>Hilfe zu 1a</h3><div class="zu">Quantenzahlen für n = 3</div>
+    <div class="stufe">l läuft von 0 bis n − 1. Wie viele Werte sind das für n = 3?</div><div class="stufe">Zu jedem l gehören die m-Werte von −l bis +l. Zählen Sie sie: Das ist die Zahl der Orbitale.</div><div class="stufe">Jedes Orbital fasst zwei Elektronen (Pauli).</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h3>Hilfe zu 1b</h3><div class="zu">2n<sup>2</sup> begründen</div>
+    <div class="stufe">Zählen Sie die Orbitale für n = 1, 2, 3. Welche Zahlenfolge entsteht?</div><div class="stufe">Die Summe der ersten ungeraden Zahlen 1 + 3 + 5 + … ergibt immer eine Quadratzahl.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h3>Hilfe zu 1c</h3><div class="zu">Kombinationen prüfen</div>
+    <div class="stufe">Prüfen Sie jede Kombination mit drei Fragen: Ist l kleiner als n? Liegt m zwischen −l und +l? Ist s gleich +½ oder −½?</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h3>Hilfe zu 2</h3><div class="zu">Elektronenkonfigurationen</div>
+    <div class="stufe">Ordnungszahl = Zahl der Elektronen. Füllen Sie in der Reihenfolge der Diagonalregel auf: s fasst 2, p fasst 6, d fasst 10.</div><div class="stufe">Für die Kurzschreibweise ersetzen Sie die Konfiguration des vorangehenden Edelgases durch sein Symbol in eckigen Klammern.</div><div class="stufe">Bei Eisen und Brom kommt 3d ins Spiel: Es wird nach 4s besetzt.</div><div class="stufe">Mit V1 können Sie Ihre Lösungen prüfen.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h3>Hilfe zu 3a</h3><div class="zu">Kästchenschreibweise</div>
+    <div class="stufe">s: ein Kästchen, p: drei, d: fünf. Je Kästchen höchstens zwei Pfeile in entgegengesetzter Richtung.</div><div class="stufe">Erst alle Kästchen eines Unterniveaus mit je einem Pfeil nach oben füllen, dann von links doppelt besetzen.</div><div class="stufe">Mit V2 können Sie Kästchen anklicken und Ihre Besetzung prüfen.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h3>Hilfe zu 3b</h3><div class="zu">Hund'sche Regel</div>
+    <div class="stufe">Vergleichen Sie die Zeichnung mit der Regel aus M3: Was passiert mit dem dritten 2p-Kästchen?</div><div class="stufe">Denken Sie an die Abstoßung zwischen Elektronen: Wann sind sie sich näher, in einem Orbital oder in zwei verschiedenen?</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h3>Hilfe zu 4a</h3><div class="zu">Gruppe und Periode</div>
+    <div class="stufe">Schreiben Sie die Kurzschreibweise von Na und K nebeneinander. Was ist gleich, was unterschiedlich?</div><div class="stufe">Die Periode entspricht der höchsten besetzten Hauptquantenzahl (M4).</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h3>Hilfe zu 4b</h3><div class="zu">Der d-Block</div>
+    <div class="stufe">Für welche Schale gibt es das erste d-Unterniveau? Denken Sie an l &lt; n.</div><div class="stufe">Wo steht 3d in der Diagonalregel, vor oder nach 4s? In welcher Periode wird also 3d gefüllt?</div><div class="stufe">Wie viele Orbitale hat ein d-Unterniveau, wie viele Elektronen passen hinein?</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h3>Hilfe zu 4c</h3><div class="zu">Elemente bestimmen</div>
+    <div class="stufe">Zählen Sie die Elektronen: Elektronen des Edelgaskerns plus die angegebenen. Das ist die Ordnungszahl.</div><div class="stufe">Die Periode ist die höchste Zahl vor einem Buchstaben, der Block der Buchstabe des zuletzt besetzten Unterniveaus.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h3>Hilfe zu 5a</h3><div class="zu">Eisenionen</div>
+    <div class="stufe">Beginnen Sie mit [Ar] 3d<sup>6</sup> 4s<sup>2</sup>. Entfernen Sie Elektronen zuerst aus 4s.</div><div class="stufe">Zeichnen Sie für beide Ionen das 3d-Unterniveau in Kästchen. Welches hat in jedem Kästchen genau ein Elektron?</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h3>Hilfe zu 5b ★</h3><div class="zu">Chrom und Kupfer</div>
+    <div class="stufe">Zeichnen Sie für Chrom beide Möglichkeiten in Kästchen: 3d<sup>4</sup> 4s<sup>2</sup> und 3d<sup>5</sup> 4s<sup>1</sup>. Was ist an der zweiten besonders?</div><div class="stufe">Wie groß ist der Energieunterschied zwischen 4s und 3d im Vergleich zu dem zwischen 3p und 4s? Ein kleiner Aufwand kann durch einen größeren Gewinn aufgewogen werden.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+</div>
+
+<h2>Vertiefungen</h2>
+<p class="hinweis">Nur online. ★ = vertiefend · ★★ = anspruchsvoll.</p>
+
+<section class="v-karte" id="v1">
+  <div class="v-kopf"><div class="v-nr">V1</div><div><div class="sterne">★</div><h3>Konfigurations-Trainer</h3></div></div>
+  <div class="v-inhalt">
+    <p>Wählen Sie ein Element (Z = 1 bis 36) oder lassen Sie eines zufällig ziehen. Geben Sie die Elektronenkonfiguration ein, vollständig oder mit Edelgaskern, z. B. <span class="code">[Ne] 3s2 3p4</span>. Hochzahlen können Sie als normale Ziffern schreiben; die Reihenfolge 4s 3d oder 3d 4s ist gleichgültig.</p>
+    <div class="eingabe"><select id="t-el"></select><button class="knopf" id="t-zufall" type="button">zufällig</button></div>
+    <div class="eingabe"><span class="aufgabe-el" id="t-name"></span><input type="text" id="t-in" placeholder="z. B. [Ar] 4s2"><button class="knopf" id="t-p" type="button">Prüfen</button></div>
+    <div class="rm" id="t-rm"></div>
+    <p class="klein">Chrom und Kupfer folgen den gemessenen Konfigurationen ([Ar] 3d5 4s1 bzw. [Ar] 3d10 4s1).</p>
+  </div>
+</section>
+
+<section class="v-karte" id="v2">
+  <div class="v-kopf"><div class="v-nr">V2</div><div><div class="sterne">★</div><h3>Kästchen setzen nach Pauli und Hund</h3></div></div>
+  <div class="v-inhalt">
+    <p>Wählen Sie ein Element. Klicken Sie auf die Kästchen der äußeren Unterniveaus, um sie zu füllen: leer → ↑ → ↑↓ → leer. Dann prüfen.</p>
+    <div class="eingabe"><select id="k-el"></select><button class="knopf" id="k-p" type="button">Prüfen</button><button class="knopf" id="k-reset" type="button">leeren</button></div>
+    <div id="k-feld"></div>
+    <div class="rm" id="k-rm"></div>
+  </div>
+</section>
+
+<section class="v-karte" id="v3">
+  <div class="v-kopf"><div class="v-nr">V3</div><div><div class="sterne">★★</div><h3>Ionisierungsenergien: Periodizität sichtbar machen</h3></div></div>
+  <div class="v-inhalt">
+    <p>Die erste Ionisierungsenergie ist die Energie, die nötig ist, um einem Atom im Gaszustand das am schwächsten gebundene Elektron zu entreißen. Das Diagramm zeigt sie für die Elemente 1 bis 36.</p>
+    <svg class="diagramm" id="ie" viewBox="0 0 900 340" role="img" aria-label="Erste Ionisierungsenergien der Elemente 1 bis 36"></svg>
+    <div class="aufgabe"><span class="b">a)</span><span><b>Beschreiben</b> Sie das Muster: Wo liegen die Maxima, wo die Minima? Welchen Elementen und Gruppen entsprechen sie?</span><span class="ab">AB I</span></div>
+    <div class="aufgabe"><span class="b">b)</span><span><b>Erklären</b> Sie den starken Abfall von Neon zu Natrium mit der Elektronenkonfiguration.</span><span class="ab">AB II</span></div>
+    <div class="aufgabe"><span class="b">c)</span><span>Innerhalb der 2. Periode gibt es zwei kleine „Knicke“: Bor liegt unter Beryllium, Sauerstoff unter Stickstoff. <b>Erklären</b> Sie beide mithilfe der Kästchenschreibweise.</span><span class="ab">AB III</span></div>
+    <p class="klein">Werte gerundet nach NIST Atomic Spectra Database.</p>
+  </div>
+</section>
+
+<footer>Chemie LK · Q3 · Orbitalmodell · Stunde 01 · Vertiefung und Hilfen</footer>
+</main>
+
+<script>
+(function(){
+  document.querySelectorAll('.hk').forEach(function(k){
+    var stufen = k.querySelectorAll('.stufe'), btn = k.querySelector('button'), z = k.querySelector('.zaehler'), i = 0;
+    z.textContent = '0 / ' + stufen.length;
+    btn.addEventListener('click', function(){
+      if (i >= stufen.length) return;
+      stufen[i].classList.add('offen'); i++;
+      z.textContent = i + ' / ' + stufen.length;
+      if (i < stufen.length) btn.textContent = 'Stufe ' + (i + 1) + ' aufdecken';
+      else { btn.textContent = 'alle Stufen offen'; btn.disabled = true; }
+    });
+  });
+})();
+
+var SYM = ['H','He','Li','Be','B','C','N','O','F','Ne','Na','Mg','Al','Si','P','S','Cl','Ar','K','Ca','Sc','Ti','V','Cr','Mn','Fe','Co','Ni','Cu','Zn','Ga','Ge','As','Se','Br','Kr'];
+var NAME = ['Wasserstoff','Helium','Lithium','Beryllium','Bor','Kohlenstoff','Stickstoff','Sauerstoff','Fluor','Neon','Natrium','Magnesium','Aluminium','Silicium','Phosphor','Schwefel','Chlor','Argon','Kalium','Calcium','Scandium','Titan','Vanadium','Chrom','Mangan','Eisen','Cobalt','Nickel','Kupfer','Zink','Gallium','Germanium','Arsen','Selen','Brom','Krypton'];
+var ORD = ['1s','2s','2p','3s','3p','4s','3d','4p'];
+var KAP = {s: 2, p: 6, d: 10};
+function konfig(z){
+  var k = {}, rest = z;
+  ORD.forEach(function(u){ if (rest > 0) { var n = Math.min(KAP[u[1]], rest); k[u] = n; rest -= n; } });
+  if (z === 24) { k['4s'] = 1; k['3d'] = 5; }
+  if (z === 29) { k['4s'] = 1; k['3d'] = 10; }
+  return k;
+}
+var KERN = {He: 2, Ne: 10, Ar: 18, Kr: 36};
+function parse(txt){
+  var t = txt.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g, function(c){ return '⁰¹²³⁴⁵⁶⁷⁸⁹'.indexOf(c); }).replace(/\^/g, '').replace(/,/g, ' ');
+  var k = {}, m = t.match(/\[\s*(He|Ne|Ar|Kr)\s*\]/i);
+  if (m) { var ed = m[1][0].toUpperCase() + m[1].slice(1).toLowerCase(); var kk = konfig(KERN[ed]); for (var u in kk) k[u] = kk[u]; t = t.replace(m[0], ' '); }
+  var re = /([1-7])\s*([spdf])\s*(\d{1,2})/gi, r, gefunden = false;
+  while ((r = re.exec(t)) !== null) { gefunden = true; var key = r[1] + r[2].toLowerCase(); k[key] = (k[key] || 0) + parseInt(r[3], 10); }
+  return (gefunden || m) ? k : null;
+}
+function gleich(a, b){
+  var ka = Object.keys(a).filter(function(x){ return a[x] > 0; }), kb = Object.keys(b).filter(function(x){ return b[x] > 0; });
+  if (ka.length !== kb.length) return false;
+  return ka.every(function(x){ return a[x] === b[x]; });
+}
+function summe(k){ var s = 0; for (var u in k) s += k[u]; return s; }
+
+// V1 Trainer
+(function(){
+  var sel = document.getElementById('t-el'), rm = document.getElementById('t-rm');
+  SYM.forEach(function(s, i){ var o = document.createElement('option'); o.value = i + 1; o.textContent = s + ' (Z = ' + (i + 1) + ')'; sel.appendChild(o); });
+  sel.value = 8;
+  function setze(){ document.getElementById('t-name').textContent = NAME[sel.value - 1] + ':'; document.getElementById('t-in').value = ''; rm.className = 'rm'; }
+  sel.addEventListener('change', setze);
+  document.getElementById('t-zufall').addEventListener('click', function(){ sel.value = 1 + Math.floor(Math.random() * 36); setze(); });
+  document.getElementById('t-p').addEventListener('click', function(){
+    var z = +sel.value, soll = konfig(z), ist = parse(document.getElementById('t-in').value);
+    if (!ist) { rm.className = 'rm nein'; rm.textContent = 'Die Eingabe wurde nicht erkannt. Beispiel: [Ne] 3s2 3p4'; return; }
+    if (gleich(soll, ist)) { rm.className = 'rm ok'; rm.textContent = 'Richtig.'; return; }
+    rm.className = 'rm nein';
+    var n = summe(ist);
+    if (n !== z) rm.textContent = 'Ihre Konfiguration enthält ' + n + ' Elektronen, ' + NAME[z - 1] + ' hat ' + z + '.';
+    else {
+      var zuviel = Object.keys(ist).filter(function(u){ return (KAP[u[1]] || 0) < ist[u]; });
+      if (zuviel.length) rm.textContent = 'Das Unterniveau ' + zuviel[0] + ' fasst höchstens ' + KAP[zuviel[0][1]] + ' Elektronen.';
+      else if (z === 24 || z === 29) rm.textContent = 'Die Elektronenzahl stimmt. Achtung: ' + NAME[z - 1] + ' ist eine Ausnahme (siehe Aufgabe 5b).';
+      else rm.textContent = 'Die Elektronenzahl stimmt, aber die Verteilung nicht. Prüfen Sie die Reihenfolge nach der Diagonalregel.';
+    }
+  });
+  setze();
+})();
+
+// V2 Kästchen
+(function(){
+  var sel = document.getElementById('k-el'), feld = document.getElementById('k-feld'), rm = document.getElementById('k-rm'), zust = {};
+  var AUSWAHL = [5, 6, 7, 8, 9, 15, 16, 22, 24, 25, 26, 28, 29];
+  AUSWAHL.forEach(function(z){ var o = document.createElement('option'); o.value = z; o.textContent = NAME[z - 1] + ' (' + SYM[z - 1] + ')'; sel.appendChild(o); });
+  sel.value = 8;
+  function aussen(z){
+    var k = konfig(z), hoch = 0;
+    for (var u in k) hoch = Math.max(hoch, +u[0]);
+    return ORD.filter(function(u){ return k[u] && (+u[0] === hoch || (u[1] === 'd' && +u[0] === hoch - 1) || (u[1] === 'p' && +u[0] === hoch)); });
+  }
+  function zeichne(){
+    var z = +sel.value; feld.innerHTML = ''; zust = {}; rm.className = 'rm';
+    aussen(z).forEach(function(u){
+      var n = {s: 1, p: 3, d: 5}[u[1]]; zust[u] = []; var r = document.createElement('div'); r.className = 'kreihe';
+      r.innerHTML = '<span class="lab">' + u + '</span>';
+      for (var i = 0; i < n; i++) (function(i){
+        zust[u].push(0); var k = document.createElement('div'); k.className = 'kasten';
+        k.addEventListener('click', function(){ zust[u][i] = (zust[u][i] + 1) % 3; k.textContent = ['', '↑', '↑↓'][zust[u][i]]; rm.className = 'rm'; });
+        r.appendChild(k);
+      })(i);
+      feld.appendChild(r);
+    });
+  }
+  sel.addEventListener('change', zeichne);
+  document.getElementById('k-reset').addEventListener('click', zeichne);
+  document.getElementById('k-p').addEventListener('click', function(){
+    var soll = konfig(+sel.value), fehler = [];
+    Object.keys(zust).forEach(function(u){
+      var b = zust[u], e = b.reduce(function(a, x){ return a + x; }, 0);
+      if (e !== soll[u]) { fehler.push(u + ': ' + e + ' statt ' + soll[u] + ' Elektronen'); return; }
+      var doppelt = b.filter(function(x){ return x === 2; }).length, leer = b.filter(function(x){ return x === 0; }).length;
+      if (doppelt > 0 && leer > 0) fehler.push(u + ': Hund\'sche Regel verletzt, erst alle Kästchen einzeln besetzen');
+    });
+    rm.className = 'rm ' + (fehler.length ? 'nein' : 'ok');
+    rm.textContent = fehler.length ? fehler.join(' · ') : 'Richtig besetzt.';
+  });
+  zeichne();
+})();
+
+// V3 Diagramm
+(function(){
+  var IE = [13.60,24.59,5.39,9.32,8.30,11.26,14.53,13.62,17.42,21.56,5.14,7.65,5.99,8.15,10.49,10.36,12.97,15.76,4.34,6.11,6.56,6.83,6.75,6.77,7.43,7.90,7.88,7.64,7.73,9.39,6.00,7.90,9.79,9.75,11.81,14.00];
+  var svg = document.getElementById('ie'), x0 = 50, y0 = 300, w = 830, h = 270, max = 26, s = '';
+  for (var v = 0; v <= 25; v += 5) { var y = y0 - v / max * h; s += '<line x1="' + x0 + '" x2="' + (x0 + w) + '" y1="' + y + '" y2="' + y + '" stroke="#eef2f6"/><text x="' + (x0 - 8) + '" y="' + (y + 4) + '" font-size="11" text-anchor="end" fill="#6f7a85">' + v + '</text>'; }
+  s += '<text x="14" y="160" font-size="12" fill="#6f7a85" transform="rotate(-90 14 160)">Ionisierungsenergie in eV</text>';
+  var pts = IE.map(function(e, i){ return [x0 + (i + 0.5) * w / 36, y0 - e / max * h]; });
+  s += '<polyline fill="none" stroke="#2a7ab8" stroke-width="2" points="' + pts.map(function(p){ return p.join(','); }).join(' ') + '"/>';
+  pts.forEach(function(p, i){
+    var edel = [1, 9, 17, 35].indexOf(i) >= 0, alk = [2, 10, 18].indexOf(i) >= 0;
+    s += '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="4" fill="' + (edel ? '#d9822b' : alk ? '#3e9a63' : '#2a7ab8') + '"><title>' + SYM[i] + ': ' + IE[i].toFixed(2).replace('.', ',') + ' eV</title></circle>';
+    s += '<text x="' + p[0] + '" y="' + (y0 + 16) + '" font-size="10" text-anchor="middle" fill="#444">' + SYM[i] + '</text>';
+  });
+  s += '<line x1="' + x0 + '" x2="' + (x0 + w) + '" y1="' + y0 + '" y2="' + y0 + '" stroke="#999"/>';
+  s += '<circle cx="' + (x0 + 520) + '" cy="20" r="5" fill="#d9822b"/><text x="' + (x0 + 530) + '" y="24" font-size="12">Edelgase</text><circle cx="' + (x0 + 620) + '" cy="20" r="5" fill="#3e9a63"/><text x="' + (x0 + 630) + '" y="24" font-size="12">Alkalimetalle</text>';
+  svg.innerHTML = s;
+})();
+</script>
+</body>
+</html>

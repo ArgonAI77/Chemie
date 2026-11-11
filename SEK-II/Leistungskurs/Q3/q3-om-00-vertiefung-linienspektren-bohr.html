@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linienspektren und Bohr-Modell – Vertiefung und Hilfen</title>
+<!-- Chemie LK · Q3 · Orbitalmodell · Stunde 00 · handgeschrieben. Ohne Lösungen (Repo öffentlich). URL steht im QR-Code des Aufgabenblatts: nicht umbenennen. -->
+<style>
+:root{
+  --blau:#2a7ab8; --tblau:#156e9d; --blau-hell:#e6f0f8; --orange:#d9822b; --orange-hell:#fdf1e4;
+  --violett:#7a5aa8; --gruen:#3e9a63; --grau:#6f7a85; --linie:#d5dde5; --bg:#f6f8fa; --karte:#fff; --text:#222;
+  --sans:-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.5}
+a{color:var(--tblau)}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px}
+header{background:linear-gradient(135deg,#156e9d 0%,#2a7ab8 60%,#3d8fc9 100%);color:#fff;padding:28px 0 22px}
+header .kurs{font-size:13px;letter-spacing:.06em;text-transform:uppercase;opacity:.85}
+header h1{margin:4px 0 6px;font-size:clamp(24px,4.5vw,34px);font-weight:600;line-height:1.2}
+header p{margin:0;opacity:.92;max-width:680px}
+nav{position:sticky;top:0;z-index:10;background:rgba(246,248,250,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--linie)}
+nav .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:8px;padding-bottom:8px}
+nav a{flex:none;text-decoration:none;color:var(--tblau);border:1px solid var(--linie);background:#fff;border-radius:16px;padding:3px 12px;font-size:14px;font-weight:600}
+nav a.v{color:var(--orange)}
+h2{font-size:20px;color:var(--tblau);margin:30px 0 4px}
+.hinweis{color:var(--grau);font-size:14px;margin:0 0 14px}
+/* Hilfekarten */
+.hilfen{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.hk{background:var(--karte);border:1.5px dashed #b9c4cf;border-radius:10px;padding:14px 16px}
+.hk h3{margin:0 0 2px;font-size:16px;color:var(--blau)}
+.hk .zu{font-size:13px;color:var(--grau);margin-bottom:8px}
+.stufe{display:none;margin:8px 0 0;padding:8px 10px;background:var(--blau-hell);border-radius:6px;font-size:15px}
+.stufe.offen{display:block;animation:auf .25s ease}
+@keyframes auf{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.hk button{margin-top:10px;border:1px solid var(--blau);background:#fff;color:var(--blau);border-radius:6px;padding:4px 12px;font-size:14px}
+.hk button:hover{background:var(--blau-hell)}
+.hk button[disabled]{opacity:.4;cursor:default}
+.hk .zaehler{font-size:12px;color:var(--grau);margin-left:8px}
+/* Vertiefungen */
+.v-karte{background:var(--karte);border:1px solid var(--linie);border-radius:12px;margin:14px 0;overflow:hidden}
+.v-kopf{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--linie);background:#fbfcfd}
+.v-nr{flex:none;width:42px;height:42px;border-radius:50%;background:var(--orange);color:#fff;font-weight:700;display:grid;place-items:center}
+.v-kopf h3{margin:0;font-size:18px}
+.sterne{color:var(--orange);font-size:14px;font-weight:700}
+.v-inhalt{padding:14px 16px 16px}
+.zwei{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+@media (max-width:720px){.zwei{grid-template-columns:1fr}}
+.aufgabe{display:grid;grid-template-columns:28px 1fr auto;gap:6px;background:var(--orange-hell);border-radius:8px;padding:8px 10px;margin-top:10px}
+.aufgabe .b{font-weight:700;color:var(--orange)}
+.aufgabe .ab{font-size:12px;color:var(--grau);white-space:nowrap;align-self:start;margin-top:2px}
+figure{margin:0}
+figcaption{font-size:13px;color:var(--grau);margin-top:4px}
+svg{max-width:100%;height:auto;display:block}
+.regler{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:8px 0 2px;font-size:14px}
+.regler input[type=range]{flex:1;min-width:140px;accent-color:var(--orange)}
+.knopf{border:1px solid var(--linie);background:#fff;border-radius:6px;padding:3px 10px;font-size:14px}
+.ausgabe{font-variant-numeric:tabular-nums;font-size:14px;background:#f2f5f8;border-radius:6px;padding:6px 10px;margin-top:6px}
+.legende{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;color:#444;margin-top:6px}
+.legende i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+.balken{display:grid;grid-template-columns:150px 1fr 76px;gap:6px 10px;align-items:center;font-size:14px}
+.balken .spur{background:#eef2f6;border-radius:4px;height:18px;position:relative;overflow:hidden}
+.balken .fuell{height:100%;border-radius:4px;width:0;transition:width .9s cubic-bezier(.2,.8,.2,1)}
+.balken .wert{text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:520px){.balken{grid-template-columns:100px 1fr 64px;font-size:13px}}
+.kachel-reihe{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:12px}
+.kachel{background:#f2f5f8;border-radius:8px;padding:10px 12px}
+.kachel .zahl{font-size:22px;font-weight:700;color:var(--tblau);font-variant-numeric:tabular-nums}
+.kachel .was{font-size:13px;color:#555}
+.zeitstrahl{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.zeitstrahl span{font-size:13px;background:#fff;border:1px solid var(--linie);border-radius:14px;padding:2px 10px}
+.zeitstrahl b{color:var(--orange)}
+.cta{display:inline-block;background:var(--tblau);color:#fff;text-decoration:none;font-weight:600;border-radius:8px;padding:8px 16px;margin:8px 8px 0 0}
+.cta:hover{background:var(--blau)}
+.code{font-family:Menlo,Consolas,monospace;background:#f2f5f8;border:1px solid var(--linie);border-radius:6px;padding:2px 8px;font-size:14px}
+.klein{font-size:13px;color:var(--grau)}
+footer{margin:36px 0 0;border-top:1px solid var(--linie);padding:16px 0 28px;font-size:12.5px;color:var(--grau)}
+sub,sup{font-size:.72em}
+/* Ergänzungen Generator */
+.zurueck{display:inline-block;color:#fff;opacity:.85;text-decoration:none;font-size:13px;margin-bottom:6px}
+.zurueck:hover{opacity:1;text-decoration:underline}
+.v-text p:first-child{margin-top:0}
+.fischer{display:inline-block;vertical-align:middle;margin:4px 10px 4px 0}
+.wahl{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.wahl button{border:1px solid var(--linie);background:#fff;border-radius:14px;padding:2px 10px;font-size:13px}
+.wahl button.an{background:var(--tblau);border-color:var(--tblau);color:#fff}
+.quiz-aa{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:6px;margin-top:8px}
+.quiz-aa button{border:1px solid var(--linie);background:#fff;border-radius:8px;padding:6px 4px;font-size:14px}
+.quiz-aa button.ok{background:#e3f4ea;border-color:#3e9a63}
+.quiz-aa button.falsch{background:#fbe6e3;border-color:#d0574a}
+.uebersicht{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:14px}
+.uebersicht a{display:block;background:#fff;border:1px solid var(--linie);border-radius:12px;padding:14px 16px;text-decoration:none;color:var(--text)}
+.uebersicht a:hover{border-color:var(--blau);box-shadow:0 2px 8px rgba(21,110,157,.12)}
+.uebersicht .nr{font-size:13px;color:var(--orange);font-weight:700}
+.uebersicht .t{font-weight:600;color:var(--tblau);margin:2px 0 4px}
+.uebersicht .k{font-size:13px;color:var(--grau)}
+.einheit{font-size:14px;color:var(--grau);text-transform:uppercase;letter-spacing:.05em;margin:26px 0 0}
+.qa{display:grid;gap:10px;margin-top:10px}
+.qa details{background:var(--karte);border:1px solid var(--linie);border-radius:10px}
+.qa summary{cursor:pointer;padding:12px 16px;font-weight:600;color:var(--tblau);list-style-position:outside;margin-left:18px}
+.qa details[open] summary{border-bottom:1px solid var(--linie)}
+.qa .antwort{padding:4px 16px 12px}
+.qa .antwort p{margin:10px 0}
+.qa .antwort ul{margin:8px 0;padding-left:1.3em}
+.qa .antwort li{margin-bottom:6px}
+
+</style>
+<style>
+.spektrum{position:relative;height:46px;border-radius:6px;background:linear-gradient(90deg,#6a00b8 0%,#3a00ff 15%,#0050ff 25%,#00c8ff 37%,#00e050 45%,#c8f000 53%,#ffe000 58%,#ff8a00 65%,#ff1a00 75%,#b00000 92%,#600000 100%);margin-top:10px}
+.spektrum.dunkel{background:#111}
+.spektrum .linie{position:absolute;top:0;bottom:0;width:4px;margin-left:-2px;border-radius:2px}
+.spektrum .linie.abs{background:#000;width:3px}
+.skala{display:flex;justify-content:space-between;font-size:12px;color:#555;margin-top:3px}
+.eingabe{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px;font-size:15px}
+.eingabe input[type=number]{width:110px;border:1px solid var(--linie);border-radius:6px;padding:5px 8px;font:inherit}
+.eingabe select{border:1px solid var(--linie);border-radius:6px;padding:5px;font:inherit;background:#fff}
+.rm{margin-top:8px;padding:8px 10px;border-radius:6px;font-size:15px;display:none}
+.rm.ok{display:block;background:#e3f4ea;border:1px solid #3e9a63}
+.rm.nein{display:block;background:#fbe6e3;border:1px solid #d0574a}
+.wahl{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px}
+.wahl button{border:1px solid var(--linie);background:#fff;border-radius:16px;padding:4px 12px;font-size:14px;color:#333}
+.wahl button.an{color:#fff;border-color:transparent;background:#156e9d}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="zurueck" href="q3-vertiefung-und-hilfen.html">← Übersicht Q3</a>
+    <div class="kurs">Chemie LK · Q3 · Orbitalmodell · Stunde 00</div>
+    <h1>Vertiefung und Hilfen: Linienspektren und Bohr-Modell</h1>
+    <p>Gestufte Hilfen zu den Aufgaben 1–5 nur bei Bedarf aufdecken. Die Vertiefungen gibt es nur hier: ein Rechner für Spektrallinien mit Rückmeldung, Absorption und Fraunhofer-Linien, Flammenfärbung.</p>
+  </div>
+</header>
+<nav><div class="wrap">
+  <a href="#hilfen">Hilfen</a><a class="v" href="#v1">V1 Linien berechnen</a><a class="v" href="#v2">V2 Absorption</a><a class="v" href="#v3">V3 Flammenfärbung</a>
+</div></nav>
+
+<main class="wrap">
+<h2 id="hilfen">Hilfekarten</h2>
+<p class="hinweis">Erst selbst probieren. Jede Karte deckt ihre Hilfe in Stufen auf, so wenig wie möglich, so viel wie nötig.</p>
+<div class="hilfen">
+  <div class="hk"><h3>Hilfe zu 1a</h3><div class="zu">Frequenz und Photonenenergie</div>
+    <div class="stufe">Zwei Formeln aus M1 genügen: c = λ · f und E = h · f.</div><div class="stufe">Rechnen Sie zuerst die Wellenlänge in Meter um: 656 nm = 656 · 10<sup>−9</sup> m.</div><div class="stufe">Für die Umrechnung in Elektronenvolt teilen Sie die Energie in Joule durch 1,602 · 10<sup>−19</sup> J/eV.</div><div class="stufe">Kontrolle ohne Umweg: E in eV = 1240 / λ in nm.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h3>Hilfe zu 1b</h3><div class="zu">Licht nach Energie ordnen</div>
+    <div class="stufe">Schauen Sie in Abb. 1, welche Wellenlängen zu Rot, Grün und Violett gehören.</div><div class="stufe">Steht λ in der Formel E = h · c / λ im Zähler oder im Nenner? Was folgt daraus?</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h3>Hilfe zu 2</h3><div class="zu">Was verrät ein Linienspektrum?</div>
+    <div class="stufe">Jede Linie hat eine bestimmte Wellenlänge. Welche Größe des Photons ist damit ebenfalls festgelegt?</div><div class="stufe">Woher stammt die Energie des Photons? Das Elektron gibt sie ab, wenn sich seine Energie ändert.</div><div class="stufe">Überlegen Sie: Was für ein Spektrum entstünde, wenn das Elektron jede beliebige Energie haben könnte?</div><div class="stufe">Bild zum Weiterdenken: eine Treppe und eine Rampe. Welche passt zu einem Linienspektrum?</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h3>Hilfe zu 3a</h3><div class="zu">Energieniveaus berechnen</div>
+    <div class="stufe">Setzen Sie n in E<sub>n</sub> = −13,6 eV · 1/n<sup>2</sup> ein. Für n = 2 heißt das: −13,6 eV / 4.</div><div class="stufe">Die Werte werden nach oben hin immer kleiner (betragsmäßig) und nähern sich 0.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h3>Hilfe zu 3b</h3><div class="zu">Balmer-Linien berechnen</div>
+    <div class="stufe">Die Photonenenergie ist die Differenz zweier Niveaus: ΔE = E(Start) − E(Ziel).</div><div class="stufe">Vorsicht mit den Vorzeichen: minus mal minus ergibt plus. ΔE muss positiv sein.</div><div class="stufe">Wellenlänge: λ in nm = 1240 / ΔE in eV. Vergleichen Sie mit den Zahlen unter den Linien in Abb. 2.</div><div class="stufe">Mit V1 auf dieser Seite können Sie Ihr Ergebnis prüfen.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h3>Hilfe zu 3c</h3><div class="zu">Übergänge einzeichnen</div>
+    <div class="stufe">Emission heißt: Das Elektron springt nach unten. Die Pfeile zeigen also nach unten.</div><div class="stufe">Alle sichtbaren Balmer-Linien enden auf demselben Niveau. Auf welchem?</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h3>Hilfe zu 4a</h3><div class="zu">Lage der Serien</div>
+    <div class="stufe">Die Lage einer Linie hängt nur von ΔE ab. Suchen Sie den kleinsten und den größten Sprung jeder Serie.</div><div class="stufe">Rechnen Sie die Grenzwerte mit λ = 1240 / ΔE in Nanometer um und vergleichen Sie mit 380 bis 750 nm.</div><div class="stufe">Formulieren Sie eine allgemeine Regel: Was bestimmt, ob eine Serie im UV, sichtbar oder im IR liegt?</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h3>Hilfe zu 4b</h3><div class="zu">Seriengrenze</div>
+    <div class="stufe">Schauen Sie auf das Niveauschema: Wie ändern sich die Abstände der Niveaus nach oben?</div><div class="stufe">Die kürzeste Wellenlänge gehört zum größten Sprung. Von welchem „Niveau“ aus ist der Sprung auf n = 2 am größten?</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h3>Hilfe zu 4c ★</h3><div class="zu">Ionisierungsenergie</div>
+    <div class="stufe">Was bedeutet n = ∞ und E = 0 für das Elektron?</div><div class="stufe">Ionisieren heißt: das Elektron aus dem Grundzustand ganz vom Kern lösen. Welcher Sprung im Niveauschema entspricht dem?</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h3>Hilfe zu 5</h3><div class="zu">Bohr-Sommerfeld beurteilen</div>
+    <div class="stufe">Legen Sie zwei Spalten an: „Das erklärt das Modell“ und „Das erklärt es nicht“.</div><div class="stufe">Denken Sie an: Linienspektren, Berechnung der Wellenlängen, Ionisierungsenergie, Atome mit mehreren Elektronen, Begründung der Postulate.</div><div class="stufe">Ein Urteil nennt ein Kriterium, z. B. Erklärungskraft oder Gültigkeitsbereich, und wägt beide Spalten ab.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+</div>
+
+<h2>Vertiefungen</h2>
+<p class="hinweis">Nur online. ★ = vertiefend · ★★ = anspruchsvoll.</p>
+
+<section class="v-karte" id="v1">
+  <div class="v-kopf"><div class="v-nr">V1</div><div><div class="sterne">★</div><h3>Spektrallinien berechnen und prüfen</h3></div></div>
+  <div class="v-inhalt">
+    <p>Wählen Sie einen Übergang im Wasserstoffatom, berechnen Sie die Wellenlänge selbst und tragen Sie sie ein. Danach zeigt die Seite, ob Ihr Ergebnis stimmt, und wo die Linie im Spektrum liegt.</p>
+    <div class="eingabe">von n = <select id="v1-a"></select> nach n = <select id="v1-e"><option>1</option><option selected>2</option><option>3</option><option>4</option></select>
+      <span>Ihre Wellenlänge:</span><input type="number" id="v1-l" step="1" placeholder="λ in nm"> nm <button class="knopf" id="v1-p" type="button">Prüfen</button></div>
+    <div class="rm" id="v1-rm"></div>
+    <div class="spektrum dunkel" id="v1-sp"></div><div class="skala"><span>380 nm</span><span>500</span><span>600</span><span>750 nm</span></div>
+    <p class="klein">Liegt die Linie außerhalb von 380 bis 750 nm, ist sie unsichtbar (UV links, IR rechts); sie wird dann am Rand als Pfeil angedeutet.</p>
+    <div class="aufgabe"><span class="b">a)</span><span><b>Berechnen</b> Sie die beiden unsichtbaren Balmer-Linien 7 → 2 und 8 → 2 und <b>prüfen</b> Sie sie hier.</span><span class="ab">AB I</span></div>
+    <div class="aufgabe"><span class="b">b)</span><span>Die Brackett-Serie endet auf n = 4. <b>Begründen</b> Sie ohne Rechnung, in welchem Spektralbereich sie liegt, und <b>prüfen</b> Sie mit einem Beispiel.</span><span class="ab">AB II</span></div>
+  </div>
+</section>
+
+<section class="v-karte" id="v2">
+  <div class="v-kopf"><div class="v-nr">V2</div><div><div class="sterne">★ / ★★</div><h3>Absorption: dunkle Linien im Sonnenlicht</h3></div></div>
+  <div class="v-inhalt">
+    <p>Atome geben nicht nur Photonen ab, sie nehmen auch Photonen auf, und zwar genau die mit passender Energie: Das Elektron springt dabei auf ein höheres Niveau (<b>Absorption</b>). Schickt man weißes Licht durch ein kühleres Gas, fehlen im Spektrum genau diese Wellenlängen: Es entstehen dunkle Linien auf hellem Grund. Joseph von Fraunhofer entdeckte 1814 hunderte solcher Linien im Sonnenspektrum. Sie stammen von Atomen in der äußeren, kühleren Sonnenatmosphäre.</p>
+    <div class="spektrum" id="v2-sp"></div><div class="skala"><span>380 nm</span><span>500</span><span>600</span><span>750 nm</span></div>
+    <p class="klein">Vereinfachtes Sonnenspektrum mit einigen kräftigen Fraunhofer-Linien bei 431, 486, 517, 589 und 656 nm.</p>
+    <div class="aufgabe"><span class="b">a)</span><span><b>Ordnen</b> Sie zwei der dunklen Linien dem Wasserstoff <b>zu</b> und <b>begründen</b> Sie mit Abb. 2 des Arbeitsblatts.</span><span class="ab">AB I</span></div>
+    <div class="aufgabe"><span class="b">b)</span><span><b>Erklären</b> Sie, warum Emissions- und Absorptionslinien desselben Elements bei denselben Wellenlängen liegen. Zeichnen Sie dazu einen Absorptionspfeil in das Niveauschema.</span><span class="ab">AB II</span></div>
+    <div class="aufgabe"><span class="b">c)</span><span>1868 beobachtete man im Sonnenlicht eine gelbe Linie bei 587,6 nm, die zu keinem bekannten Element passte. <b>Erläutern</b> Sie, wie man daraus auf ein neues Element (Helium) schließen konnte.</span><span class="ab">AB III</span></div>
+  </div>
+</section>
+
+<section class="v-karte" id="v3">
+  <div class="v-kopf"><div class="v-nr">V3</div><div><div class="sterne">★</div><h3>Flammenfärbung: Linien als Fingerabdruck</h3></div></div>
+  <div class="v-inhalt">
+    <p>Hält man Salze in die Brennerflamme, werden Elektronen der Metallatome angeregt und springen unter Aussendung von Licht zurück. Jedes Element zeigt typische Linien. Wählen Sie ein Element:</p>
+    <div class="wahl" id="v3-w"></div>
+    <div class="spektrum dunkel" id="v3-sp"></div><div class="skala"><span>380 nm</span><span>500</span><span>600</span><span>750 nm</span></div>
+    <p class="klein" id="v3-text"></p>
+    <div class="aufgabe"><span class="b">a)</span><span><b>Berechnen</b> Sie die Energie des Übergangs, der die gelbe Natriumlinie (589 nm) erzeugt, in eV.</span><span class="ab">AB I</span></div>
+    <div class="aufgabe"><span class="b">b)</span><span>Kalium färbt die Flamme blassviolett, obwohl seine stärkste Linie bei 766 nm im roten Grenzbereich liegt. <b>Erklären</b> Sie mithilfe der Linien, warum man beim Nachweis ein Cobaltglas verwendet, wenn Natrium als Verunreinigung vorhanden ist.</span><span class="ab">AB III</span></div>
+  </div>
+</section>
+
+<footer>Chemie LK · Q3 · Orbitalmodell · Stunde 00 · Vertiefung und Hilfen · Wellenlängen gerundet; h · c = 1240 eV · nm.</footer>
+</main>
+
+<script>
+(function(){
+  document.querySelectorAll('.hk').forEach(function(k){
+    var stufen = k.querySelectorAll('.stufe'), btn = k.querySelector('button'), z = k.querySelector('.zaehler'), i = 0;
+    z.textContent = '0 / ' + stufen.length;
+    btn.addEventListener('click', function(){
+      if (i >= stufen.length) return;
+      stufen[i].classList.add('offen'); i++;
+      z.textContent = i + ' / ' + stufen.length;
+      if (i < stufen.length) btn.textContent = 'Stufe ' + (i + 1) + ' aufdecken';
+      else { btn.textContent = 'alle Stufen offen'; btn.disabled = true; }
+    });
+  });
+})();
+
+function farbe(l){
+  var st = [[380,'#6a00b8'],[436,'#3a00ff'],[472,'#0050ff'],[517,'#00c8ff'],[546,'#00e050'],[576,'#c8f000'],[595,'#ffe000'],[620,'#ff8a00'],[658,'#ff1a00'],[720,'#b00000'],[750,'#600000']];
+  for (var i = 0; i < st.length - 1; i++) if (l <= st[i+1][0]) return st[i+1][1];
+  return '#600000';
+}
+function pos(l){ return Math.max(0, Math.min(100, (l - 380) / 370 * 100)); }
+function linie(sp, l, abs){
+  var d = document.createElement('div'); d.className = 'linie' + (abs ? ' abs' : '');
+  d.style.left = pos(l) + '%';
+  if (!abs) d.style.background = (l < 380 || l > 750) ? '#888' : farbe(l);
+  sp.appendChild(d);
+}
+
+// V1
+(function(){
+  var a = document.getElementById('v1-a'), e = document.getElementById('v1-e'), rm = document.getElementById('v1-rm'), sp = document.getElementById('v1-sp');
+  function fuelle(){
+    var ziel = +e.value, alt = a.value; a.innerHTML = '';
+    for (var n = ziel + 1; n <= 9; n++) { var o = document.createElement('option'); o.textContent = n; a.appendChild(o); }
+    if (+alt > ziel) a.value = alt;
+    rm.className = 'rm'; sp.innerHTML = '';
+  }
+  e.addEventListener('change', fuelle); a.addEventListener('change', function(){ rm.className = 'rm'; sp.innerHTML = ''; });
+  fuelle();
+  document.getElementById('v1-p').addEventListener('click', function(){
+    var na = +a.value, ne = +e.value, dE = 13.6 * (1/(ne*ne) - 1/(na*na)), l = 1240 / dE, u = +document.getElementById('v1-l').value;
+    sp.innerHTML = '';
+    if (!u) { rm.className = 'rm nein'; rm.textContent = 'Bitte zuerst eine Wellenlänge eintragen.'; return; }
+    var ok = Math.abs(u - l) / l < 0.015;
+    var bereich = l < 380 ? 'Ultraviolett' : (l > 750 ? 'Infrarot' : 'sichtbar');
+    rm.className = 'rm ' + (ok ? 'ok' : 'nein');
+    rm.innerHTML = ok ? 'Stimmt: ΔE ≈ ' + dE.toFixed(2).replace('.', ',') + ' eV, Bereich: ' + bereich + '.' : 'Noch nicht. Prüfen Sie ΔE = E(Start) − E(Ziel) und λ = 1240 / ΔE. Ihr Wert weicht um mehr als 1,5 % ab.';
+    if (ok) linie(sp, l, false);
+  });
+})();
+
+// V2
+(function(){
+  var sp = document.getElementById('v2-sp');
+  [431, 486.1, 517, 589, 656.3].forEach(function(l){ linie(sp, l, true); });
+})();
+
+// V3
+(function(){
+  var E = {
+    'Lithium': [[671, 'karminrot']], 'Natrium': [[589, 'gelb']], 'Kalium': [[766, 'blassviolett'], [404, '']],
+    'Strontium': [[641, 'rot'], [606, ''], [461, '']], 'Kupfer': [[515, 'grün'], [522, ''], [510, '']]
+  };
+  var w = document.getElementById('v3-w'), sp = document.getElementById('v3-sp'), tx = document.getElementById('v3-text');
+  Object.keys(E).forEach(function(k, i){
+    var b = document.createElement('button'); b.textContent = k; if (!i) b.className = 'an';
+    b.addEventListener('click', function(){ w.querySelectorAll('button').forEach(function(x){ x.classList.remove('an'); }); b.classList.add('an'); zeige(k); });
+    w.appendChild(b);
+  });
+  function zeige(k){
+    sp.innerHTML = '';
+    E[k].forEach(function(p){ linie(sp, p[0], false); });
+    tx.textContent = k + ': Flammenfarbe ' + E[k][0][1] + '; wichtige Linien bei ' + E[k].map(function(p){ return p[0] + ' nm'; }).join(', ') + ' (vereinfachte Auswahl).';
+  }
+  zeige('Lithium');
+})();
+</script>
+</body>
+</html>
