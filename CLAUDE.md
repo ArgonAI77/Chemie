@@ -11,4 +11,7 @@
 
 ## Öffentlich — Vorsicht
 - Repo ist public: keine Lösungen, keine Schülernamen, Noten oder personenbezogenen Daten.
+  Ausnahme (Wunsch der Lehrkraft, 12.11.2026): SEK-II/Leistungskurs/Q3/klausurvorbereitung/ enthält Lösungen zu
+  Übungsaufgaben der Klausurvorbereitung (je Block eine Seite, QR-Code pro Block). Nie Klausuraufgaben oder
+  Erwartungshorizonte hochladen. Erzeugt von Schule/Chemie/Sek II/LK/Klausuren/<Datum> <Thema>/Klausurvorbereitung/quellen/erzeugen.py.
 - PDFs, Aufgabenblätter, Erwartungshorizonte und Typst-Quellen bleiben in iCloud (.gitignore blockt *.pdf).

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Block E: Stoffmengen und Gasvolumina berechnen</title>
+<!-- Chemie LK · Q3 · Klausurvorbereitung · erzeugt aus quellen/inhalt.py (iCloud). Lösungen der ÜBUNGSAUFGABEN auf Wunsch der Lehrkraft (12.11.2026), keine Klausurinhalte. URL steht im QR-Code: nicht umbenennen. -->
+<style>:root{--blau:#2a7ab8;--tblau:#156e9d;--blau-hell:#e6f0f8;--orange:#d9822b;--orange-hell:#fdf1e4;--gruen:#2e7d4f;--gruen-hell:#e9f4ee;--grau:#6f7a85;--linie:#d5dde5;--bg:#f6f8fa;--karte:#fff;--text:#222;--sans:-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.55}
+a{color:var(--tblau)}.wrap{max-width:860px;margin:0 auto;padding:0 16px}
+header{background:linear-gradient(135deg,#156e9d 0%,#2a7ab8 60%,#3d8fc9 100%);color:#fff;padding:26px 0 20px}
+header .kurs{font-size:13px;letter-spacing:.06em;text-transform:uppercase;opacity:.85}
+header h1{margin:4px 0 6px;font-size:clamp(23px,4.5vw,32px);font-weight:600;line-height:1.2}header p{margin:0;opacity:.92}
+nav{position:sticky;top:0;z-index:5;background:rgba(246,248,250,.96);border-bottom:1px solid var(--linie)}
+nav .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:8px;padding-bottom:8px}
+nav a{flex:none;text-decoration:none;color:var(--tblau);border:1px solid var(--linie);background:#fff;border-radius:16px;padding:3px 12px;font-size:14px;font-weight:600}
+nav a.aktiv{background:var(--tblau);color:#fff;border-color:var(--tblau)}
+.hinweis{background:var(--orange-hell);border-left:4px solid var(--orange);border-radius:6px;padding:10px 14px;margin:18px 0;font-size:15px}
+.karte{background:var(--karte);border:1px solid var(--linie);border-radius:12px;padding:14px 16px;margin:14px 0}
+.material{font-size:15px}.material p{margin:6px 0}
+.tab{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:14px;margin:8px 0}
+th,td{border:1px solid var(--linie);padding:5px 8px;text-align:left;vertical-align:top}th{background:var(--blau-hell)}
+.info{border:1px solid var(--grau);border-radius:6px;padding:8px 12px;font-size:14px;margin:8px 0}
+.aufg{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:start}
+.nr{font-weight:700;color:var(--tblau)}.afb{font-size:12px;color:var(--grau);white-space:nowrap}
+details{margin-top:10px;border-radius:8px;background:var(--gruen-hell);border:1px solid #cfe5d8}
+summary{cursor:pointer;padding:7px 12px;font-weight:600;color:var(--gruen)}
+details[open] summary{border-bottom:1px solid #cfe5d8}.lsg{padding:6px 14px 10px}.lsg p{margin:6px 0}
+footer{color:var(--grau);font-size:13px;padding:24px 0 40px}
+.liste a{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--linie);border-radius:10px;padding:10px 14px;margin:8px 0}
+.liste .b{color:var(--tblau);font-weight:700}.liste .k{color:var(--grau);font-size:13px}</style>
+</head>
+<body>
+<header><div class="wrap"><div class="kurs">Chemie LK · Q3 · Klausurvorbereitung</div><h1>Block E: Stoffmengen und Gasvolumina berechnen</h1><p>Lösungen zu den Übungsaufgaben · Kompetenzen K8, K9</p></div></header>
+<nav><div class="wrap"><a href="index.html">Übersicht</a><a href="kv-a-besetzungsregeln.html">Block A</a><a href="kv-b-ionen-uebergangsmetalle.html">Block B</a><a href="kv-c-materialauswertung-see.html">Block C</a><a href="kv-d-redoxgleichungen-sauerstoff.html">Block D</a><a href="kv-e-stoechiometrie-gasvolumen.html" class="aktiv">Block E</a><a href="kv-f-oxidationsmittel-grenzwerte.html">Block F</a><a href="kv-g-fliessschema-beurteilung.html">Block G</a><a href="kv-h-redox-sauer-basisch.html">Block H</a></div></nav>
+<main class="wrap">
+<div class="hinweis">Erst selbst bearbeiten, dann vergleichen. Fachlich gleichwertige Lösungswege sind genauso richtig.</div>
+<div class="karte material"><strong>Material</strong><div class="info"><strong>Angaben:</strong> Molares Gasvolumen V(m) = 24 L/mol (20 °C, 1013 hPa); Sauerstoffanteil in Luft 21 Vol.-%; M(S) = 32,06 g/mol, M(O) = 16,00 g/mol. Alle Gasvolumina bei 20 °C und 1013 hPa.</div></div>
+<div class="karte" id="e1"><div class="aufg"><span class="nr">E1</span><span>Ein Betrieb leitet täglich 50 m³ Abwasser mit 80 mg/L Sulfit-Ionen in ein Belüftungsbecken. Nach der Behandlung enthält es noch 2,0 mg/L. Die Sulfit-Ionen werden nach 2 SO₃²⁻ + O₂ → 2 SO₄²⁻ oxidiert. <strong>Berechnen</strong> Sie die täglich umgesetzte Masse an Sulfit-Ionen und das theoretisch mindestens nötige Luftvolumen. Im Becken gehen nur etwa 10 bis 20 % des eingeblasenen Sauerstoffs ins Wasser über (Modellwert). <strong>Bewerten</strong> Sie damit Ihr Ergebnis.</span><span class="afb">AFB II/III</span></div><details><summary>Lösung E1 anzeigen</summary><div class="lsg"><p>V = 50 m³ = 50 000 L; umgesetzt: Δβ = 80 mg/L − 2,0 mg/L = 78 mg/L.</p><p>m(SO₃²⁻) = 50 000 L · 78 mg/L = 3 900 000 mg = <strong>3,9 kg</strong> pro Tag.</p><p>M(SO₃²⁻) = 32,06 + 3 · 16,00 = 80,06 g/mol; n(SO₃²⁻) = 3 900 g : 80,06 g/mol ≈ 48,7 mol.</p><p>Aus 2 : 1 folgt n(O₂) = 48,7 mol : 2 ≈ 24,4 mol; V(O₂) = 24,4 mol · 24 L/mol ≈ 585 L.</p><p>V(Luft) = 585 L : 0,21 ≈ 2 790 L ≈ <strong>2,8 m³</strong> pro Tag.</p><p><strong>Bewertung:</strong> Das ist ein stöchiometrischer Mindestwert unter der Annahme, dass der gesamte Sauerstoff reagiert. Gehen nur 10 bis 20 % in das Wasser über, wird das 5- bis 10-Fache benötigt, also etwa 14 bis 28 m³ Luft pro Tag. Der berechnete Wert eignet sich nur als Untergrenze. Für die Planung braucht man zusätzlich Erfahrungswerte (Sauerstoffübergang, weitere sauerstoffzehrende Stoffe, Reaktionsgeschwindigkeit).</p></div></details></div>
+<div class="karte" id="e2"><div class="aufg"><span class="nr">E2</span><span>Eine Biogasanlage erzeugt täglich 500 m³ Biogas mit einem Volumenanteil von 0,20 % Schwefelwasserstoff. Zur Entschwefelung wird Luft zugegeben; Bakterien oxidieren H₂S nach 2 H₂S + O₂ → 2 S + 2 H₂O. <strong>Berechnen</strong> Sie das mindestens nötige Luftvolumen und die Masse des täglich gebildeten Schwefels. In der Praxis werden etwa 4 % Luft, bezogen auf das Biogasvolumen, zudosiert (Modellangabe). <strong>Bewerten</strong> Sie diese Praxis.</span><span class="afb">AFB II/III</span></div><details><summary>Lösung E2 anzeigen</summary><div class="lsg"><p>V(H₂S) = 0,0020 · 500 m³ = 1,0 m³ = 1 000 L; n(H₂S) = 1 000 L : 24 L/mol ≈ 41,7 mol.</p><p>n(O₂) = 41,7 mol : 2 ≈ 20,8 mol; V(O₂) = 20,8 mol · 24 L/mol = 500 L; V(Luft) = 500 L : 0,21 ≈ 2 380 L ≈ <strong>2,4 m³</strong> pro Tag.</p><p>m(S) = 41,7 mol · 32,06 g/mol ≈ 1 340 g ≈ <strong>1,3 kg</strong> pro Tag.</p><p><strong>Bewertung:</strong> 4 % von 500 m³ sind 20 m³ Luft, also etwa das 8-Fache des Mindestwerts. Der Überschuss ist sinnvoll, weil nicht der ganze Sauerstoff die Bakterien erreicht und die H₂S-Entfernung sicher gelingen muss (H₂S ist giftig und korrosiv). Nach oben ist die Luftmenge begrenzt: Zu viel Luft verdünnt das Biogas, und Methan-Luft-Gemische können explosionsfähig werden.</p></div></details></div>
+</main>
+<footer class="wrap">Chemie LK · Q3 · Klausurvorbereitung · Noto La Diega</footer>
+</body>
+</html>
