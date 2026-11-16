@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Löslichkeit der Alkansäuren – Vertiefung und Hilfen</title>
+<!-- Chemie Klasse 10 · Löslichkeit der Alkansäuren (Kokosfett und Octansäure). Ohne Lösungen (Repo öffentlich). URL steht im QR-Code des Aufgabenblatts: nicht umbenennen. -->
+<style>
+:root{
+  --blau:#2a7ab8; --tblau:#156e9d; --dunkel:#0f4c6e; --blau-hell:#e8f1f8; --orange:#d9822b; --orange-hell:#fcefdf;
+  --gruen:#2e7d4f; --gruen-hell:#e6f3eb; --violett:#6c2a8c; --rot:#b03a2e;
+  --grau:#6f7a85; --linie:#d5dde5; --bg:#f6f8fa; --karte:#fff; --text:#222;
+  --sans:-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.5}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px}
+header{background:linear-gradient(135deg,#0f4c6e 0%,#156e9d 60%,#2a7ab8 100%);color:#fff;padding:28px 0 22px}
+header .kurs{font-size:13px;letter-spacing:.06em;text-transform:uppercase;opacity:.85}
+header h1{margin:4px 0 6px;font-size:clamp(24px,4.5vw,34px);font-weight:600;line-height:1.2}
+header p{margin:0;opacity:.92;max-width:680px}
+nav{position:sticky;top:0;z-index:10;background:rgba(246,248,250,.95);border-bottom:1px solid var(--linie)}
+nav .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:8px;padding-bottom:8px}
+nav a{flex:none;text-decoration:none;color:var(--dunkel);border:1px solid var(--linie);background:#fff;border-radius:16px;padding:3px 12px;font-size:14px;font-weight:600}
+nav a.v{color:var(--orange)}
+h2{font-size:21px;color:var(--dunkel);margin:32px 0 4px;scroll-margin-top:56px}
+.hinweis{color:var(--grau);font-size:14px;margin:0 0 14px}
+.hilfen{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.hk{background:var(--karte);border:1.5px dashed #b9c4cf;border-radius:10px;padding:14px 16px}
+.hk h4{margin:0 0 2px;font-size:16px;color:var(--tblau)}
+.hk .zu{font-size:13px;color:var(--grau);margin-bottom:8px}
+.stufe{display:none;margin:8px 0 0;padding:8px 10px;background:var(--blau-hell);border-radius:6px;font-size:15px}
+.stufe.offen{display:block}
+.hk button{margin-top:10px;border:1px solid var(--blau);background:#fff;color:var(--blau);border-radius:6px;padding:4px 12px;font-size:14px}
+.hk button[disabled]{opacity:.4;cursor:default}
+.hk .zaehler{font-size:12px;color:var(--grau);margin-left:8px}
+.nr{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;color:#fff;font-weight:700;font-size:14px;margin-right:6px;vertical-align:middle}
+.v-karte{background:var(--karte);border:1px solid var(--linie);border-radius:12px;margin:14px 0;padding:14px 16px;scroll-margin-top:56px}
+.aufgabe{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin:6px 0}
+.formel{font-size:20px;font-weight:600;letter-spacing:.01em}
+.wahl{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.wahl label{border:1px solid var(--linie);border-radius:6px;padding:4px 10px;background:#fff;font-size:15px;cursor:pointer}
+.wahl input{margin-right:6px}
+.knopf{border:1px solid var(--blau);background:var(--blau);color:#fff;border-radius:6px;padding:5px 14px;font-size:15px}
+.knopf.leise{background:#fff;color:var(--blau)}
+.rueck{font-size:15px;border-radius:6px;padding:8px 10px;margin-top:8px;display:none}
+.rueck.gut{display:block;background:#e3f4ea;border-left:3px solid var(--gruen)}
+.rueck.nein{display:block;background:#fbe6e3;border-left:3px solid #d0574a}
+.stand{font-size:14px;color:var(--grau)}
+table.gr{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}
+table.gr th,table.gr td{border:1px solid var(--linie);padding:6px 8px;text-align:left;vertical-align:top}
+table.gr th{background:var(--blau-hell);color:var(--dunkel)}
+footer{margin:36px 0 0;border-top:1px solid var(--linie);padding:16px 0 28px;font-size:12.5px;color:var(--grau)}
+sub,sup{font-size:.7em}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="kurs">Chemie · Klasse 10 · Alkansäuren</div>
+    <h1>Löslichkeit der Alkansäuren: Vertiefung und Hilfen</h1>
+    <p>Weitere Hilfen zu allen Teilen des Arbeitsblatts, nur bei Bedarf und stufenweise aufdecken. Für Schnelle: zwei Übungen mit sofortiger Rückmeldung.</p>
+  </div>
+</header>
+<nav><div class="wrap">
+  <a href="#werkzeug">Werkzeuge</a><a href="#t1">Teil 1</a><a href="#t2">Teil 2</a><a href="#t34">Teil 3/4</a><a href="#t5">Teil 5</a><a href="#t6">Teil 6</a><a class="v" href="#uebung1">Übung: polar?</a><a class="v" href="#uebung2">Übung: Löslichkeit</a>
+</div></nav>
+
+<main class="wrap">
+
+<h2 id="werkzeug">Werkzeuge auf einen Blick</h2>
+<table class="gr">
+  <tr><th>Werkzeug</th><th>Das Wichtigste</th></tr>
+  <tr><td>Elektronegativität (EN)</td><td>O 3,5 · N 3,0 · C 2,5 · H 2,1. Große EN-Differenz → Teilladungen δ+ und δ− → polare Bindung. Sehr kleine Differenz (≤ 0,4) → praktisch unpolar.</td></tr>
+  <tr><td>Wasserstoffbrücken</td><td>δ+-H-Atom (an O oder N) und freies Elektronenpaar eines δ−-O- oder N-Atoms im Nachbarmolekül ziehen sich an. Vergleichsweise stark.</td></tr>
+  <tr><td>Van-der-Waals-Kräfte</td><td>wirken zwischen allen Molekülen; einzeln schwach, je länger die Moleküle, desto stärker insgesamt.</td></tr>
+  <tr><td>Faustregel</td><td>„Ähnliches löst sich in Ähnlichem“: Ein Stoff löst sich gut, wenn er mit dem Lösungsmittel ähnliche Kräfte ausbilden kann wie die Lösungsmittelteilchen untereinander.</td></tr>
+</table>
+<p class="hinweis">Erst selbst probieren. Jede Karte deckt ihre Hilfe in Stufen auf: so wenig wie möglich, so viel wie nötig. Die Papierkarten am Pult entsprechen ungefähr den ersten Stufen.</p>
+
+<h2 id="t1"><span class="nr" style="background:var(--tblau)">1</span>Bau der Moleküle (Aufgabe A)</h2>
+<div class="hilfen">
+  <div class="hk"><h4>Hilfe zu 1a</h4><div class="zu">Bereiche kennzeichnen</div>
+    <div class="stufe">Die Carboxygruppe erkennst du an einem C-Atom mit einem doppelt gebundenen O-Atom und einer O–H-Gruppe.</div>
+    <div class="stufe">Achtung: Das C-Atom mit den beiden O-Atomen gehört zur Carboxygruppe, nicht zum Rest.</div>
+    <div class="stufe">Alles andere, also die Kette aus C- und H-Atomen, ist der Kohlenwasserstoffrest.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe zu 1b</h4><div class="zu">Polarität begründen</div>
+    <div class="stufe">Schreibe alle Bindungsarten auf, die in der Carboxygruppe vorkommen, und alle, die im Rest vorkommen.</div>
+    <div class="stufe">Berechne für jede Bindungsart die EN-Differenz: größerer EN-Wert minus kleinerer.</div>
+    <div class="stufe">Welches Atom zieht die Bindungselektronen stärker an? Dort entsteht δ−, beim Partner δ+.</div>
+    <div class="stufe">Formuliere: „… ist polar, weil die EN-Differenz … groß ist. … ist unpolar, weil …“</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+</div>
+
+<h2 id="t2"><span class="nr" style="background:var(--tblau)">2</span>Hypothese</h2>
+<div class="hilfen">
+  <div class="hk"><h4>Hilfe zu Teil 2</h4><div class="zu">Begründet vermuten</div>
+    <div class="stufe">Ist Wasser polar oder unpolar? Und Waschbenzin?</div>
+    <div class="stufe">Welcher Molekülteil der Säuren „passt“ zum Wasser, welcher zum Waschbenzin?</div>
+    <div class="stufe">Vergleiche bei beiden Säuren: Wie groß ist der polare Teil im Verhältnis zum unpolaren Teil?</div>
+    <div class="stufe">Eine Hypothese darf falsch sein. Wichtig ist, dass du sie mit dem Molekülbau begründest.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+</div>
+
+<h2 id="t34"><span class="nr" style="background:var(--blau)">3</span>Versuch und Beobachtungen</h2>
+<div class="hilfen">
+  <div class="hk"><h4>Hilfe zu 3/4a</h4><div class="zu">Beobachten statt deuten</div>
+    <div class="stufe">Halte das Glas nach kurzem Stehen vor einen hellen Hintergrund und schau von der Seite.</div>
+    <div class="stufe">Fragen zum Beobachten: Eine Phase oder zwei? Ist die Flüssigkeit klar oder trüb? Siehst du Tröpfchen, und schwimmen sie oben oder sinken sie ab?</div>
+    <div class="stufe">„Löst sich“ ist schon eine Deutung. Schreibe nur auf, was man sehen kann.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe zu 4b</h4><div class="zu">Mit der Hypothese vergleichen</div>
+    <div class="stufe">Gehe die vier Felder deiner Hypothesen-Tabelle einzeln durch.</div>
+    <div class="stufe">Übersetze deine Beobachtung: eine klare Phase → spricht für gute Löslichkeit; zwei Phasen → spricht für geringe Löslichkeit.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+</div>
+
+<h2 id="t5"><span class="nr" style="background:var(--orange)">5</span>Auswertung</h2>
+<div class="hilfen">
+  <div class="hk"><h4>Hilfe zu 5.1</h4><div class="zu">Essigsäure in Wasser</div>
+    <div class="stufe">Welche Kräfte halten Wassermoleküle zusammen?</div>
+    <div class="stufe">Suche in der Carboxygruppe ein δ+-H-Atom und O-Atome mit freien Elektronenpaaren.</div>
+    <div class="stufe">Zeichne ein Essigsäure-Molekül mit zwei Wassermolekülen und markiere mögliche Wasserstoffbrücken gepunktet.</div>
+    <div class="stufe">Wie groß ist der unpolare Rest der Essigsäure? Stört er viel oder wenig?</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe zu 5.2</h4><div class="zu">Kettenlänge und Wasserlöslichkeit</div>
+    <div class="stufe">Zähle die C-Atome im Rest beider Säuren. Was haben beide gemeinsam, worin unterscheiden sie sich?</div>
+    <div class="stufe">Kann ein Kohlenwasserstoffrest Wasserstoffbrücken bilden?</div>
+    <div class="stufe">Stell dir vor, ein langer Rest schiebt sich zwischen Wassermoleküle. Welche Anziehungen gehen dabei verloren, welche kommen dazu?</div>
+    <div class="stufe">Schau in M4: Ab wie vielen C-Atomen sinkt die Löslichkeit deutlich?</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe zu 5.3</h4><div class="zu">Octansäure in Waschbenzin</div>
+    <div class="stufe">Aus welchen Molekülen besteht Waschbenzin, und welche Kräfte wirken zwischen ihnen?</div>
+    <div class="stufe">Welcher Teil der Octansäure ähnelt diesen Molekülen?</div>
+    <div class="stufe">Vergleiche: Sind die Kräfte zwischen Octansäure und Waschbenzin ähnlich wie die im Waschbenzin selbst?</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe zu 5.4 ★</h4><div class="zu">Rechnen mit der Löslichkeit</div>
+    <div class="stufe">1 L = 1000 mL und 1 g = 1000 mg. Wie viel sind dann 0,7 g/L in mg pro mL?</div>
+    <div class="stufe">Vergleiche diese Masse mit der Masse eines Tropfens. Wie oft passt sie hinein?</div>
+    <div class="stufe">Was passiert mit dem Teil der Octansäure, der sich nicht lösen kann?</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+</div>
+
+<h2 id="t6"><span class="nr" style="background:var(--gruen)">6</span>Transfer: Kokosfett</h2>
+<div class="hilfen">
+  <div class="hk"><h4>Hilfe zu 6a</h4><div class="zu">Freie Octansäure</div>
+    <div class="stufe">Was hast du in Glas 3 beobachtet?</div>
+    <div class="stufe">Die Carboxygruppe ist polar. Warum reicht das trotzdem nicht? Denke an das Verhältnis von polarem zu unpolarem Teil.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe zu 6b</h4><div class="zu">Fett ist nicht gleich Fettsäure</div>
+    <div class="stufe">Welcher Stoff wurde im Versuch untersucht, und woraus besteht Kokosfett?</div>
+    <div class="stufe">Lies M5: Was passiert mit der Carboxygruppe, wenn die Fettsäure in einem Fettmolekül gebunden ist? Gibt es noch ein O–H?</div>
+    <div class="stufe">Zähle die langen unpolaren Reste in einem Fettmolekül. Ist ein Fettmolekül polarer oder unpolarer als freie Octansäure?</div>
+    <div class="stufe">Zwei verschiedene Stoffe mit verschiedenem Molekülbau: Dürfen wir Ergebnisse vom einen einfach auf den anderen übertragen?</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe zu 6c ★</h4><div class="zu">Fettfleck</div>
+    <div class="stufe">Ein Fettfleck besteht aus Fettmolekülen. Sind sie eher polar oder unpolar?</div>
+    <div class="stufe">Wende die Faustregel an: Mit welchem Lösungsmittel kann Fett ähnliche Kräfte ausbilden?</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+</div>
+
+<h2 id="uebung1">Übung 1: Polar oder unpolar?</h2>
+<p class="hinweis">Berechne die EN-Differenz (O 3,5 · N 3,0 · C 2,5 · H 2,1) und entscheide. Die Bindungen kommen auch in anderen Stoffen vor.</p>
+<div class="v-karte" id="u1">
+  <div class="aufgabe"><span class="stand" data-stand></span></div>
+  <div class="aufgabe"><span class="formel" data-frage></span></div>
+  <div class="wahl">
+    <label><input type="radio" name="u1" value="p">polar</label>
+    <label><input type="radio" name="u1" value="u">praktisch unpolar</label>
+  </div>
+  <button class="knopf" data-pruefen type="button">Prüfen</button>
+  <button class="knopf leise" data-weiter type="button">Nächste Bindung</button>
+  <div class="rueck" data-rueck></div>
+</div>
+
+<h2 id="uebung2">Übung 2: Löslichkeit vorhersagen</h2>
+<p class="hinweis">Neue Stoffe, die nicht auf dem Arbeitsblatt stehen. Löst sich der Stoff gut oder schlecht im genannten Lösungsmittel? Denke an polare und unpolare Molekülteile.</p>
+<div class="v-karte" id="u2">
+  <div class="aufgabe"><span class="stand" data-stand></span></div>
+  <div class="aufgabe"><span class="formel" data-frage></span></div>
+  <div class="wahl">
+    <label><input type="radio" name="u2" value="g">löst sich gut</label>
+    <label><input type="radio" name="u2" value="s">löst sich schlecht</label>
+  </div>
+  <button class="knopf" data-pruefen type="button">Prüfen</button>
+  <button class="knopf leise" data-weiter type="button">Nächster Stoff</button>
+  <div class="rueck" data-rueck></div>
+</div>
+
+</main>
+<footer><div class="wrap">Chemie · Klasse 10 · Löslichkeit der Alkansäuren · Noto La Diega · Hilfen ohne Lösungen</div></footer>
+
+<script>
+document.querySelectorAll(".hk").forEach(function (k) {
+  var st = k.querySelectorAll(".stufe"), b = k.querySelector("button"), z = k.querySelector(".zaehler"), n = 0;
+  function info() { z.textContent = n + " von " + st.length; }
+  info();
+  b.addEventListener("click", function () {
+    if (n < st.length) { st[n].classList.add("offen"); n++; info(); }
+    if (n < st.length) b.textContent = "Stufe " + (n + 1) + " aufdecken"; else { b.textContent = "alle Stufen offen"; b.disabled = true; }
+  });
+});
+
+function uebung(id, items, tipp, wort) {
+  var box = document.getElementById(id), i = 0, richtig = 0, gezaehlt = {};
+  var q = function (s) { return box.querySelector(s); };
+  var radios = box.querySelectorAll("input"), rueck = q("[data-rueck]");
+  function stand() { q("[data-stand]").textContent = wort + " " + (i + 1) + " von " + items.length + " · richtig: " + richtig; }
+  function zeigen() {
+    q("[data-frage]").innerHTML = items[i].f; stand();
+    radios.forEach(function (r) { r.checked = false; });
+    rueck.className = "rueck"; rueck.textContent = "";
+  }
+  q("[data-pruefen]").addEventListener("click", function () {
+    var gew = null;
+    radios.forEach(function (r) { if (r.checked) gew = r.value; });
+    if (!gew) { rueck.className = "rueck nein"; rueck.textContent = "Wähle zuerst eine Antwort."; return; }
+    if (gew === items[i].k) {
+      if (!gezaehlt[i]) richtig++;
+      rueck.className = "rueck gut"; rueck.textContent = "Richtig! " + items[i].t;
+    } else { rueck.className = "rueck nein"; rueck.textContent = "Noch nicht. " + tipp; }
+    gezaehlt[i] = true; stand();
+  });
+  q("[data-weiter]").addEventListener("click", function () { i = (i + 1) % items.length; zeigen(); });
+  zeigen();
+}
+
+uebung("u1", [
+  {f: "C–O (in Alkoholen)", k: "p", t: "EN-Differenz 1,0: δ− am O-Atom, δ+ am C-Atom."},
+  {f: "C–C", k: "u", t: "EN-Differenz 0: Die Bindungselektronen sind gleichmäßig verteilt."},
+  {f: "N–H (in Ammoniak)", k: "p", t: "EN-Differenz 0,9: δ− am N-Atom, δ+ am H-Atom. N–H-Gruppen können Wasserstoffbrücken bilden."},
+  {f: "C–H", k: "u", t: "EN-Differenz 0,4: praktisch keine Teilladungen."},
+  {f: "O–H (in Ethanol)", k: "p", t: "EN-Differenz 1,4: stark polar, Wasserstoffbrücken möglich."},
+  {f: "C=O (in Aceton)", k: "p", t: "EN-Differenz 1,0: δ− am O-Atom, δ+ am C-Atom."},
+  {f: "H–H", k: "u", t: "EN-Differenz 0: gleiche Atome, unpolar."}
+], "Berechne die EN-Differenz: größerer EN-Wert minus kleinerer. Ab etwa 0,5 entstehen deutliche Teilladungen.", "Bindung");
+
+uebung("u2", [
+  {f: "Ethanol (CH<sub>3</sub>–CH<sub>2</sub>–OH) in Wasser", k: "g", t: "Die OH-Gruppe bildet Wasserstoffbrücken zu Wasser, der unpolare Rest ist kurz: Ethanol ist mit Wasser mischbar."},
+  {f: "Hexan (C<sub>6</sub>H<sub>14</sub>) in Wasser", k: "s", t: "Hexan ist unpolar und kann keine Wasserstoffbrücken bilden: zwei Phasen."},
+  {f: "Hexan in Waschbenzin", k: "g", t: "Beide unpolar, zwischen den Molekülen wirken Van-der-Waals-Kräfte."},
+  {f: "1-Octanol (CH<sub>3</sub>–(CH<sub>2</sub>)<sub>7</sub>–OH) in Wasser", k: "s", t: "Nur eine polare OH-Gruppe, aber ein langer unpolarer Rest: kaum wasserlöslich."},
+  {f: "Glycerin (Propan-1,2,3-triol, drei OH-Gruppen) in Wasser", k: "g", t: "Drei OH-Gruppen bei nur drei C-Atomen: viele Wasserstoffbrücken, mit Wasser mischbar."},
+  {f: "Speiseöl in Waschbenzin", k: "g", t: "Fettmoleküle mit langen unpolaren Resten: Van-der-Waals-Kräfte zum Waschbenzin."},
+  {f: "Glycerin in Waschbenzin", k: "s", t: "Glycerin ist überwiegend polar; zu Waschbenzin gibt es kaum ähnliche Kräfte."},
+  {f: "Methanol (CH<sub>3</sub>–OH) in Wasser", k: "g", t: "Polare OH-Gruppe, sehr kleiner unpolarer Rest: mit Wasser mischbar."}
+], "Markiere in Gedanken den polaren und den unpolaren Teil. Welcher überwiegt? Passt er zum Lösungsmittel?", "Stoff");
+</script>
+</body>
+</html>
