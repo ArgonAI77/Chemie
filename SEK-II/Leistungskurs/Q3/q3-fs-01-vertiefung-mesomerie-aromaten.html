@@ -1,0 +1,197 @@
+<!doctype html>
+    <html lang="de">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mesomerie und aromatisches System – Vertiefung und Hilfen</title>
+    <!-- Chemie · Leistungskurs · Q3 · Farbstoffe · Stunde 01. Erzeugt von quellen/web/bauen.py. Ohne Lösungen (Repo öffentlich). URL steht in den QR-Codes: nicht umbenennen. -->
+    <style>
+:root{
+  --gruen:#2e7d4f; --gruen-d:#1f5e3a; --gruen-hell:#e6f3eb; --blau:#2a7ab8; --tblau:#156e9d; --blau-hell:#e6f0f8;
+  --orange:#d9822b; --orange-hell:#fdf1e4; --violett:#6c2a8c; --violett-hell:#f1e8f6;
+  --grau:#6f7a85; --linie:#d5dde5; --bg:#f6f8fa; --karte:#fff; --text:#222; --betroffen:#0f4c6e;
+  --sans:-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.5}
+a{color:var(--tblau)}
+button,select{font:inherit;cursor:pointer}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px}
+header{background:linear-gradient(135deg,#1f5e3a 0%,#2e7d4f 55%,#3f9a63 100%);color:#fff;padding:28px 0 22px}
+header .kurs{font-size:13px;letter-spacing:.06em;text-transform:uppercase;opacity:.85}
+header h1{margin:4px 0 6px;font-size:clamp(24px,4.5vw,34px);font-weight:600;line-height:1.2}
+header p{margin:0;opacity:.92;max-width:680px}
+nav{position:sticky;top:0;z-index:10;background:rgba(246,248,250,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--linie)}
+nav .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:8px;padding-bottom:8px}
+nav a{flex:none;text-decoration:none;color:var(--gruen-d);border:1px solid var(--linie);background:#fff;border-radius:16px;padding:3px 12px;font-size:14px;font-weight:600}
+nav a.v{color:var(--orange)}
+h2{font-size:21px;color:var(--gruen-d);margin:32px 0 4px;scroll-margin-top:56px}
+h3.teil{font-size:16px;color:var(--grau);text-transform:uppercase;letter-spacing:.05em;margin:22px 0 8px}
+.hinweis{color:var(--grau);font-size:14px;margin:0 0 14px}
+.hilfen{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.hk{background:var(--karte);border:1.5px dashed #b9c4cf;border-radius:10px;padding:14px 16px}
+.hk h4{margin:0 0 2px;font-size:16px;color:var(--gruen)}
+.hk .zu{font-size:13px;color:var(--grau);margin-bottom:8px}
+.stufe{display:none;margin:8px 0 0;padding:8px 10px;background:var(--gruen-hell);border-radius:6px;font-size:15px}
+.stufe.offen{display:block;animation:auf .25s ease}
+@keyframes auf{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.hk button{margin-top:10px;border:1px solid var(--gruen);background:#fff;color:var(--gruen);border-radius:6px;padding:4px 12px;font-size:14px}
+.hk button:hover{background:var(--gruen-hell)}
+.hk button[disabled]{opacity:.4;cursor:default}
+.hk .zaehler{font-size:12px;color:var(--grau);margin-left:8px}
+.v-karte{background:var(--karte);border:1px solid var(--linie);border-radius:12px;margin:14px 0;overflow:hidden;scroll-margin-top:56px}
+.v-kopf{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--linie);background:#fbfcfd}
+.v-nr{flex:none;width:42px;height:42px;border-radius:50%;background:var(--orange);color:#fff;font-weight:700;display:grid;place-items:center}
+.v-kopf h3{margin:0;font-size:18px}
+.v-inhalt{padding:14px 16px 16px}
+.zwei{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+@media (max-width:720px){.zwei{grid-template-columns:1fr}}
+svg{max-width:100%;height:auto;display:block}
+.knopf{border:1px solid var(--linie);background:#fff;border-radius:6px;padding:4px 12px;font-size:14px}
+.knopf.haupt{border-color:var(--gruen);color:var(--gruen);font-weight:600}
+.knopf.an{background:var(--gruen);border-color:var(--gruen);color:#fff}
+.knoepfe{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.rueck{font-size:14px;border-radius:6px;padding:8px 10px;margin-top:8px;display:none}
+.rueck.gut{display:block;background:#e3f4ea;border-left:3px solid var(--gruen)}
+.rueck.nein{display:block;background:#fbe6e3;border-left:3px solid #d0574a}
+.fall{font-size:13px;color:var(--grau)}
+.punkte{font-size:14px;color:var(--grau);margin-left:auto}
+.pedi{background:#fff;border:1px solid var(--linie);border-radius:8px;padding:8px}
+.wahl{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;font-size:15px;margin:6px 0 10px}
+.wahl select{border:1px solid var(--linie);border-radius:6px;padding:3px 8px;background:#fff}
+table.ps{border-collapse:collapse;margin:8px 0}
+table.ps td,table.ps th{border:1px solid var(--linie);width:76px;height:52px;text-align:center;font-size:18px}
+table.ps th{background:var(--blau-hell);color:var(--betroffen)}
+table.ps td.betr{background:var(--orange-hell);color:var(--orange);font-weight:700}
+table.ps .ecke{background:#f4f6f8;font-size:12px;color:var(--grau);font-weight:400}
+.ausgabe{font-variant-numeric:tabular-nums;font-size:15px;background:#f2f5f8;border-radius:6px;padding:8px 12px;margin-top:6px}
+.leiste{display:grid;grid-template-columns:120px 1fr 56px;gap:6px 10px;align-items:center;font-size:14px;margin-top:4px}
+.leiste .spur{background:#eef2f6;border-radius:4px;height:16px;overflow:hidden}
+.leiste .fuell{height:100%;background:var(--orange);width:0;transition:width .5s ease}
+canvas{max-width:100%;height:auto;border-radius:50%;display:block;margin:0 auto}
+.sim{filter:url(#deutan)}
+.klein{font-size:13px;color:var(--grau)}
+footer{margin:36px 0 0;border-top:1px solid var(--linie);padding:16px 0 28px;font-size:12.5px;color:var(--grau)}
+sup{font-size:.7em}
+.schritte{counter-reset:s;list-style:none;padding:0;margin:8px 0}
+.schritte li{counter-increment:s;position:relative;padding:6px 0 6px 40px}
+.schritte li::before{content:counter(s);position:absolute;left:0;top:4px;width:28px;height:28px;border-radius:50%;background:var(--gruen);color:#fff;font-weight:700;display:grid;place-items:center;font-size:14px}
+</style>
+    </head>
+    <body>
+    <header>
+      <div class="wrap">
+        <div class="kurs">Chemie · Leistungskurs · Q3 · Farbstoffe · Stunde 01</div>
+        <h1>Mesomerie und aromatisches System: Vertiefung und Hilfen</h1>
+        <p>Hilfen zu den Aufgaben mit Hilfekarten, nur bei Bedarf und stufenweise aufdecken. Zum Üben: Regeln für Grenzformeln an neuen Beispielen anwenden und Teilchen mit den Kriterien für aromatische Systeme prüfen.</p>
+      </div>
+    </header>
+    <nav><div class="wrap"><a href="#fs01">Hilfen Stunde 01</a><a class="v" href="#v1">V1 Grenzformel zulässig?</a><a class="v" href="#v2">V2 Aromatisch oder nicht?</a></div></nav>
+    <main class="wrap">
+    <h2 id="fs01">Hilfen zu Farbstoffe 01</h2>
+<p class="hinweis">Erst selbst probieren. Jede Karte deckt ihre Hilfe in Stufen auf: so wenig wie möglich, so viel wie nötig. Die ersten beiden Stufen entsprechen den Papierkarten am Pult.</p>
+<div class="hilfen">
+  <div class="hk"><h4>Hilfe H1</h4><div class="zu">Aufgabe 1a</div>
+    <div class="stufe">Gehen Sie für jeden Vorschlag die vier Regeln im Kasten durch: Sind alle Atome an derselben Stelle? Stimmen Elektronenzahl und Ladung? Hat jedes C- und O-Atom höchstens vier Elektronenpaare?</div>
+    <div class="stufe">Zählen Sie bei (B) die Bindungen am mittleren C-Atom und bei (C) die H-Atome am linken C-Atom und am oberen O-Atom.<br><b>Satzbaustein:</b> „(…) ist (keine) zulässige Grenzformel, weil …“</div>
+    <div class="stufe">Eine Grenzformel ist nur eine andere Schreibweise für dasselbe Teilchen. Würde sich durch die Änderung ein anderer Stoff ergeben (anderes Atom an anderer Stelle) oder ein Atom „überladen“ werden, ist es keine Grenzformel.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe H2</h4><div class="zu">Aufgabe 2a</div>
+    <div class="stufe">Cyclohexen hat eine Doppelbindung und setzt bei der Hydrierung 120 kJ/mol frei. Wie viel würden drei unabhängige Doppelbindungen freisetzen? Wie viel setzt Benzol tatsächlich frei?</div>
+    <div class="stufe"><b>Diagrammgerüst:</b> Hochachse Enthalpie. Unten: Cyclohexan. Darüber: Benzol + 3 H~2~ (… kJ/mol höher). Ganz oben: „Cyclohexatrien“ + 3 H~2~ (… kJ/mol höher). Die Differenz der beiden oberen Niveaus ist die Mesomerieenergie.</div>
+    <div class="stufe">Kontrolle: Die Mesomerieenergie des Benzols liegt in der Größenordnung von etwas mehr als 100 kJ/mol. Liegt Ihr Wert weit darüber oder darunter, prüfen Sie die Vorzeichen.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe H3</h4><div class="zu">Aufgabe 2b</div>
+    <div class="stufe">Rechnen Sie wie in 2a, nur mit zwei Doppelbindungen. Vergleichen Sie die Stabilisierung mit der des Benzols: um welchen Faktor größer?</div>
+    <div class="stufe">Vergleichen Sie die Grenzformeln: Wie viele gleichwertige Grenzformeln ohne Ladungstrennung gibt es beim Benzol? Ist das konjugierte System beim Cyclohexadien geschlossen?</div>
+    <div class="stufe">Formulieren Sie Ihren Vergleich als Je-desto-Satz: Je … das konjugierte System und je mehr gleichwertige Grenzformeln, desto … .</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe H4</h4><div class="zu">Aufgabe 3a</div>
+    <div class="stufe">Prüfen Sie Cyclooctatetraen mit den vier Kriterien für aromatische Systeme aus der Einführung. Welche Kriterien sind erfüllt, welche nicht? Was zeigen Bindungslängen und Bromwasser-Probe?</div>
+    <div class="stufe"><b>Gerüst für das Urteil:</b> „Die Aussage ist …, weil … (Kriterien, Messwerte). Daraus folgt als Grenze des Mesomeriemodells: Man kann Grenzformeln zeichnen, auch wenn … . Das Modell leistet aber …“</div>
+    <div class="stufe">Ein Modell kann man auf zwei Arten beurteilen: Was erklärt es richtig (Möglichkeiten)? Wo führt es zu falschen oder fehlenden Vorhersagen (Grenzen)? Nennen Sie zu beiden Seiten mindestens ein Beispiel.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+</div>
+
+    <h2>Vertiefungen für Schnelle</h2>
+    
+<section class="v-karte" id="v1">
+  <div class="v-kopf"><div class="v-nr">V1</div><h3>Grenzformel zulässig?</h3><span class="punkte" id="v1-punkte"></span></div>
+  <div class="v-inhalt">
+    <p>Ausgehend von einer Valenzstrichformel wird eine Änderung beschrieben. Entsteht dadurch eine <b>zulässige Grenzformel</b>?</p>
+    <p class="fall" id="v1-fall" style="font-size:17px;color:var(--text)"></p>
+    <div class="knoepfe"><button class="knopf" data-a="j">zulässig</button><button class="knopf" data-a="n">nicht zulässig</button></div>
+    <div class="rueck" id="v1-rueck"></div>
+    <div class="knoepfe"><button class="knopf haupt" id="v1-weiter">Nächstes Beispiel →</button></div>
+  </div>
+</section>
+
+<section class="v-karte" id="v2">
+  <div class="v-kopf"><div class="v-nr">V2</div><h3>Aromatisch oder nicht?</h3><span class="punkte" id="v2-punkte"></span></div>
+  <div class="v-inhalt">
+    <p>Prüfen Sie mit den vier Kriterien: Ring, eben, durchgehend konjugiert, 4n + 2 π-Elektronen. Freie Elektronenpaare, die zum konjugierten System gehören, zählen mit.</p>
+    <p class="fall" id="v2-fall" style="font-size:17px;color:var(--text)"></p>
+    <div class="knoepfe"><button class="knopf" data-a="j">aromatisch</button><button class="knopf" data-a="n">nicht aromatisch</button></div>
+    <div class="rueck" id="v2-rueck"></div>
+    <div class="knoepfe"><button class="knopf haupt" id="v2-weiter">Nächstes Teilchen →</button></div>
+  </div>
+</section>
+
+    </main>
+    <footer><div class="wrap">Chemie · Leistungskurs · Q3 · Farbstoffe · Hilfen zu Stunde 01. Ohne Lösungen.</div></footer>
+    <script>
+    // Gestufte Hilfekarten
+    (function(){
+      document.querySelectorAll('.hk').forEach(function(k){
+        var st = k.querySelectorAll('.stufe'), btn = k.querySelector('button'), z = k.querySelector('.zaehler'), n = 0;
+        z.textContent = '0 / ' + st.length;
+        btn.addEventListener('click', function(){
+          if (n < st.length) { st[n].classList.add('offen'); n++; }
+          z.textContent = n + ' / ' + st.length;
+          if (n >= st.length) { btn.textContent = 'alle Stufen offen'; btn.disabled = true; } else btn.textContent = 'Stufe ' + (n + 1) + ' aufdecken';
+        });
+      });
+    })();
+    
+function quiz(id, F){
+  var $ = function(x){ return document.getElementById(x); };
+  var reihe = F.map(function(_, i){ return i; }).sort(function(){ return Math.random() - .5; });
+  var i = 0, gut = 0, versuche = 0, fertig = false;
+  function zeige(){ $(id + '-fall').textContent = F[reihe[i % F.length]][0]; $(id + '-rueck').className = 'rueck'; fertig = false; }
+  document.querySelectorAll('#' + id + ' [data-a]').forEach(function(b){
+    b.onclick = function(){
+      if (fertig) return; fertig = true; versuche++;
+      var f = F[reihe[i % F.length]], r = $(id + '-rueck');
+      if (b.dataset.a === f[1]) { gut++; r.className = 'rueck gut'; r.textContent = 'Richtig. ' + f[2]; }
+      else { r.className = 'rueck nein'; r.textContent = 'Noch nicht. ' + f[2]; }
+      $(id + '-punkte').textContent = gut + ' von ' + versuche + ' richtig';
+    };
+  });
+  $(id + '-weiter').onclick = function(){ i++; zeige(); };
+  zeige();
+}
+// V1: andere Teilchen als auf dem Arbeitsblatt
+quiz('v1', [
+  ['Carbonat-Ion CO₃²⁻: Die C=O-Doppelbindung wird zu einem freien Elektronenpaar am O, dafür bildet ein freies Elektronenpaar eines anderen O-Atoms eine Doppelbindung zum C.', 'j', 'Nur Elektronen werden verschoben, Atome, Elektronenzahl und Ladung bleiben gleich.'],
+  ['Nitrat-Ion NO₃⁻: Ein O-Atom wird vom N-Atom gelöst und an ein anderes O-Atom gebunden.', 'n', 'Atome dürfen nicht verschoben werden; es entstünde ein anderes Teilchen.'],
+  ['Buta-1,3-dien: Ein H-Atom wandert von C1 nach C2.', 'n', 'Wandert ein H-Atom, ist das ein anderes Molekül (Isomer), keine Grenzformel.'],
+  ['Ozon O₃: Die Doppelbindung und die Ladungen wechseln vom linken zum rechten O-Atom.', 'j', 'Zwei gleichwertige Grenzformeln; beide O–O-Bindungen sind gleich lang.'],
+  ['Ethanoat-Ion: Ein O-Atom erhält zusätzlich zu zwei Bindungen drei freie Elektronenpaare.', 'n', 'Fünf Elektronenpaare am O-Atom verletzen die Oktettregel.'],
+  ['Benzol: Alle drei Doppelbindungen werden um eine Position im Ring weitergeschoben.', 'j', 'Das ist die zweite Kekulé-Grenzformel.'],
+  ['Nitrat-Ion: In einer Grenzformel trägt das Ion die Ladung 2−.', 'n', 'Alle Grenzformeln haben dieselbe Gesamtladung.']
+]);
+// V2
+quiz('v2', [
+  ['Pyridin C₅H₅N: ebener Sechsring, ein CH durch N ersetzt, drei Doppelbindungen im Ring.', 'j', '6 π-Elektronen, eben, durchgehend konjugiert: aromatisch.'],
+  ['Cyclobutadien C₄H₄: Vierring mit zwei Doppelbindungen.', 'n', '4 π-Elektronen sind keine 4n + 2.'],
+  ['Cyclohexa-1,3-dien: Sechsring mit zwei konjugierten Doppelbindungen und zwei CH₂-Gruppen.', 'n', 'Die CH₂-Gruppen unterbrechen die Konjugation im Ring.'],
+  ['Furan C₄H₄O: ebener Fünfring mit zwei C=C-Doppelbindungen; ein freies Elektronenpaar des O-Atoms gehört zum konjugierten System.', 'j', '4 + 2 = 6 π-Elektronen, eben, durchgehend konjugiert: aromatisch.'],
+  ['Cyclopentadienyl-Anion C₅H₅⁻: ebener Fünfring mit zwei Doppelbindungen und einem freien Elektronenpaar am fünften C-Atom.', 'j', '6 π-Elektronen über alle fünf Ringatome delokalisiert: aromatisch.'],
+  ['Cyclohexen: Sechsring mit einer Doppelbindung.', 'n', 'Nicht durchgehend konjugiert.'],
+  ['Thiophen C₄H₄S: ebener Fünfring wie Furan, mit S statt O.', 'j', 'Wie Furan 6 π-Elektronen: aromatisch.']
+]);
+
+    </script>
+    </body>
+    </html>
+    
