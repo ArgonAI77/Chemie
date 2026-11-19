@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Licht, Farbe und Konjugation – Vertiefung und Hilfen</title>
+<!-- Chemie · Leistungskurs · Q3 · Farbstoffe · Stunde 00. Erzeugt von quellen/web/bauen.py. Ohne Lösungen (Repo öffentlich). URL steht in den QR-Codes: nicht umbenennen. -->
+<style>
+:root{
+  --gruen:#2e7d4f; --gruen-d:#1f5e3a; --gruen-hell:#e6f3eb; --blau:#2a7ab8; --tblau:#156e9d; --blau-hell:#e6f0f8;
+  --orange:#d9822b; --orange-hell:#fdf1e4; --violett:#6c2a8c; --violett-hell:#f1e8f6;
+  --grau:#6f7a85; --linie:#d5dde5; --bg:#f6f8fa; --karte:#fff; --text:#222; --betroffen:#0f4c6e;
+  --sans:-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.5}
+a{color:var(--tblau)}
+button,select{font:inherit;cursor:pointer}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px}
+header{background:linear-gradient(135deg,#1f5e3a 0%,#2e7d4f 55%,#3f9a63 100%);color:#fff;padding:28px 0 22px}
+header .kurs{font-size:13px;letter-spacing:.06em;text-transform:uppercase;opacity:.85}
+header h1{margin:4px 0 6px;font-size:clamp(24px,4.5vw,34px);font-weight:600;line-height:1.2}
+header p{margin:0;opacity:.92;max-width:680px}
+nav{position:sticky;top:0;z-index:10;background:rgba(246,248,250,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--linie)}
+nav .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:8px;padding-bottom:8px}
+nav a{flex:none;text-decoration:none;color:var(--gruen-d);border:1px solid var(--linie);background:#fff;border-radius:16px;padding:3px 12px;font-size:14px;font-weight:600}
+nav a.v{color:var(--orange)}
+h2{font-size:21px;color:var(--gruen-d);margin:32px 0 4px;scroll-margin-top:56px}
+h3.teil{font-size:16px;color:var(--grau);text-transform:uppercase;letter-spacing:.05em;margin:22px 0 8px}
+.hinweis{color:var(--grau);font-size:14px;margin:0 0 14px}
+.hilfen{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.hk{background:var(--karte);border:1.5px dashed #b9c4cf;border-radius:10px;padding:14px 16px}
+.hk h4{margin:0 0 2px;font-size:16px;color:var(--gruen)}
+.hk .zu{font-size:13px;color:var(--grau);margin-bottom:8px}
+.stufe{display:none;margin:8px 0 0;padding:8px 10px;background:var(--gruen-hell);border-radius:6px;font-size:15px}
+.stufe.offen{display:block;animation:auf .25s ease}
+@keyframes auf{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.hk button{margin-top:10px;border:1px solid var(--gruen);background:#fff;color:var(--gruen);border-radius:6px;padding:4px 12px;font-size:14px}
+.hk button:hover{background:var(--gruen-hell)}
+.hk button[disabled]{opacity:.4;cursor:default}
+.hk .zaehler{font-size:12px;color:var(--grau);margin-left:8px}
+.v-karte{background:var(--karte);border:1px solid var(--linie);border-radius:12px;margin:14px 0;overflow:hidden;scroll-margin-top:56px}
+.v-kopf{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--linie);background:#fbfcfd}
+.v-nr{flex:none;width:42px;height:42px;border-radius:50%;background:var(--orange);color:#fff;font-weight:700;display:grid;place-items:center}
+.v-kopf h3{margin:0;font-size:18px}
+.v-inhalt{padding:14px 16px 16px}
+.zwei{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+@media (max-width:720px){.zwei{grid-template-columns:1fr}}
+svg{max-width:100%;height:auto;display:block}
+.knopf{border:1px solid var(--linie);background:#fff;border-radius:6px;padding:4px 12px;font-size:14px}
+.knopf.haupt{border-color:var(--gruen);color:var(--gruen);font-weight:600}
+.knopf.an{background:var(--gruen);border-color:var(--gruen);color:#fff}
+.knoepfe{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.rueck{font-size:14px;border-radius:6px;padding:8px 10px;margin-top:8px;display:none}
+.rueck.gut{display:block;background:#e3f4ea;border-left:3px solid var(--gruen)}
+.rueck.nein{display:block;background:#fbe6e3;border-left:3px solid #d0574a}
+.fall{font-size:13px;color:var(--grau)}
+.punkte{font-size:14px;color:var(--grau);margin-left:auto}
+.pedi{background:#fff;border:1px solid var(--linie);border-radius:8px;padding:8px}
+.wahl{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;font-size:15px;margin:6px 0 10px}
+.wahl select{border:1px solid var(--linie);border-radius:6px;padding:3px 8px;background:#fff}
+table.ps{border-collapse:collapse;margin:8px 0}
+table.ps td,table.ps th{border:1px solid var(--linie);width:76px;height:52px;text-align:center;font-size:18px}
+table.ps th{background:var(--blau-hell);color:var(--betroffen)}
+table.ps td.betr{background:var(--orange-hell);color:var(--orange);font-weight:700}
+table.ps .ecke{background:#f4f6f8;font-size:12px;color:var(--grau);font-weight:400}
+.ausgabe{font-variant-numeric:tabular-nums;font-size:15px;background:#f2f5f8;border-radius:6px;padding:8px 12px;margin-top:6px}
+.leiste{display:grid;grid-template-columns:120px 1fr 56px;gap:6px 10px;align-items:center;font-size:14px;margin-top:4px}
+.leiste .spur{background:#eef2f6;border-radius:4px;height:16px;overflow:hidden}
+.leiste .fuell{height:100%;background:var(--orange);width:0;transition:width .5s ease}
+canvas{max-width:100%;height:auto;border-radius:50%;display:block;margin:0 auto}
+.sim{filter:url(#deutan)}
+.klein{font-size:13px;color:var(--grau)}
+footer{margin:36px 0 0;border-top:1px solid var(--linie);padding:16px 0 28px;font-size:12.5px;color:var(--grau)}
+sup{font-size:.7em}
+.schritte{counter-reset:s;list-style:none;padding:0;margin:8px 0}
+.schritte li{counter-increment:s;position:relative;padding:6px 0 6px 40px}
+.schritte li::before{content:counter(s);position:absolute;left:0;top:4px;width:28px;height:28px;border-radius:50%;background:var(--gruen);color:#fff;font-weight:700;display:grid;place-items:center;font-size:14px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="kurs">Chemie · Leistungskurs · Q3 · Farbstoffe · Stunde 00</div>
+    <h1>Licht, Farbe und Konjugation: Vertiefung und Hilfen</h1>
+    <p>Hilfen zu den Aufgaben mit Hilfekarten, nur bei Bedarf und stufenweise aufdecken. Zum Üben: Komplementärfarben sicher zuordnen und am Modell beobachten, wie ein Pulsoximeter auf Sauerstoffmangel reagiert.</p>
+  </div>
+</header>
+<nav><div class="wrap"><a href="#fs00">Hilfen Stunde 00</a><a class="v" href="#v1">V1 Komplementärfarben</a><a class="v" href="#v2">V2 Pulsoximeter-Modell</a></div></nav>
+<main class="wrap">
+<h2 id="fs00">Hilfen zu Farbstoffe 00</h2>
+<p class="hinweis">Erst selbst probieren. Jede Karte deckt ihre Hilfe in Stufen auf: so wenig wie möglich, so viel wie nötig. Die ersten beiden Stufen entsprechen den Papierkarten am Pult.</p>
+<div class="hilfen">
+  <div class="hk"><h4>Hilfe H1</h4><div class="zu">Aufgabe 1b</div>
+    <div class="stufe">Trennen Sie zwei Fragen: Was passiert mit dem weißen Licht an der Tomate (Stoff)? Was passiert im einzelnen Molekül, wenn es ein Photon aufnimmt (Teilchen)?</div>
+    <div class="stufe"><b>Satzbausteine:</b> „Die Tomate absorbiert … Licht und reflektiert … . Wir sehen deshalb die … .“ – „Ein Lycopin-Molekül nimmt ein Photon auf, dessen Energie genau … entspricht. Dabei wird ein … aus dem … in den … gehoben.“<br>Skizze: wie Abb. 1, rechte Spalte.</div>
+    <div class="stufe">Prüfen Sie Ihre Antwort: Kommt in Ihrem Text auf der Teilchenebene das Wort „Farbe“ vor? Dann haben Sie die Ebenen vermischt. Moleküle absorbieren Photonen einer bestimmten Energie, Farbe sieht man nur beim Stoff.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe H2</h4><div class="zu">Aufgabe 2b</div>
+    <div class="stufe">Welche Farbe hat das Licht bei 660 nm? Welche Form des Hämoglobins absorbiert dieses Licht stärker, und welche überwiegt im venösen Blut?</div>
+    <div class="stufe"><b>Gedankenkette:</b> venöses Blut → mehr … → absorbiert mehr … Licht → es wird weniger … Licht reflektiert → das Blut wirkt … .</div>
+    <div class="stufe">Vergleichen Sie in Tab. 2 nur die Spalte 660 nm. Um welchen Faktor unterscheiden sich Hb und HbO₂? Was bedeutet „mehr Absorption“ für das Licht, das ins Auge gelangt?</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe H3</h4><div class="zu">Aufgabe 2c</div>
+    <div class="stufe">Bei 80 % Sättigung liegen 80 % des Hämoglobins als HbO~2~ und 20 % als Hb vor. Die Absorption der Mischung setzt sich anteilig zusammen.</div>
+    <div class="stufe"><b>Rechengerüst:</b> A(660) = 0,8 · 1,0 + 0,2 · 10 = … ; A(940) = 0,8 · 3,8 + 0,2 · … = … ; Verhältnis = … : … .<br>Wovon hängt die Absorption bei <b>einer</b> Wellenlänge außer vom Sauerstoff noch ab? Was passiert mit diesen Einflüssen in einem Verhältnis?</div>
+    <div class="stufe">Stellen Sie sich zwei Finger vor, einen dicken und einen dünnen, beide mit 100 % Sättigung. Was ist bei beiden gleich: die Absorption bei 660 nm oder das Verhältnis der beiden Absorptionen?</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe H4</h4><div class="zu">Aufgabe 3b</div>
+    <div class="stufe">Lesen Sie Tab. 3 von oben nach unten: Was passiert mit λ~max~ und ΔE, wenn zwei konjugierte Doppelbindungen hinzukommen? Lesen Sie danach den letzten Abschnitt der Einführung.</div>
+    <div class="stufe"><b>Satzbausteine:</b> „Je mehr konjugierte Doppelbindungen, desto … ΔE und desto … λ~max~. Das liegt daran, dass sich die π-Elektronen über einen … Bereich verteilen. Ab … konjugierten C=C wird sichtbares Licht absorbiert. Lycopin absorbiert … Licht, wir sehen … .“</div>
+    <div class="stufe">Ordnen Sie Ihre Antwort in drei Teile: (1) Beobachtung aus Tab. 3, (2) Erklärung mit dem Modell, (3) Anwendung auf die reifende Tomate mit Tab. 1.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe H5</h4><div class="zu">Aufgabe 3c</div>
+    <div class="stufe">Fahren Sie die Kette ab: Wo folgen Doppel- und Einfachbindung regelmäßig aufeinander? Wo unterbricht eine CH~2~–CH~2~-Einheit die Folge? Zählen Sie bei β-Carotin die Ring-Doppelbindungen mit.</div>
+    <div class="stufe">Gleich viele konjugierte C=C, trotzdem verschiedenes λ~max~: Lesen Sie in der Einführung nach, welche Bedingung für die Delokalisierung gilt (letzter Satz vor „Merke“), und in M2, was am Ring des β-Carotins passiert.</div>
+    <div class="stufe">Ein Stück Papier, das man knickt, ist kein durchgehend ebenes Blatt mehr. Übertragen Sie dieses Bild auf die Doppelbindung im Ring: Was bedeutet es für die Delokalisierung, wenn der Ring aus der Ebene gedreht ist?</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+</div>
+
+<h2>Vertiefungen für Schnelle</h2>
+
+<section class="v-karte" id="v1">
+  <div class="v-kopf"><div class="v-nr">V1</div><h3>Komplementärfarben-Training</h3><span class="punkte" id="v1-punkte"></span></div>
+  <div class="v-inhalt">
+    <p>Ein Stoff absorbiert Licht im angegebenen Wellenlängenbereich. Welche Farbe sehen Sie? Das Farbfeld zeigt das <b>absorbierte</b> Licht.</p>
+    <div style="display:flex;gap:14px;align-items:center;margin:8px 0">
+      <div id="v1-feld" style="width:70px;height:46px;border-radius:8px;border:1px solid #2b2b2b"></div>
+      <div class="fall" id="v1-aufgabe" style="font-size:17px;color:var(--text)"></div>
+    </div>
+    <div class="knoepfe" id="v1-wahl"></div>
+    <div class="rueck" id="v1-rueck"></div>
+    <div class="knoepfe"><button class="knopf haupt" id="v1-weiter">Nächster Stoff →</button></div>
+  </div>
+</section>
+
+<section class="v-karte" id="v2">
+  <div class="v-kopf"><div class="v-nr">V2</div><h3>Pulsoximeter-Modell</h3><span class="punkte" id="v2-wert"></span></div>
+  <div class="v-inhalt">
+    <p>Stellen Sie die Sauerstoffsättigung ein und beobachten Sie, wie sich die Absorption des Blutes bei <b>660 nm</b> (rot) und <b>940 nm</b> (Infrarot) verändert. Die Balkenlängen beruhen auf denselben Werten wie Tab. 2 auf dem Arbeitsblatt.</p>
+    <div class="wahl"><label>Sauerstoffsättigung: <input type="range" id="v2-s" min="50" max="100" step="1" value="98" style="width:220px"> <b id="v2-sz">98 %</b></label></div>
+    <div style="margin:10px 0">
+      <div style="display:flex;align-items:center;gap:8px;margin:6px 0"><span style="width:120px">660 nm (rot)</span><div id="v2-r" style="height:22px;background:#c0392b;border-radius:4px"></div></div>
+      <div style="display:flex;align-items:center;gap:8px;margin:6px 0"><span style="width:120px">940 nm (IR)</span><div id="v2-i" style="height:22px;background:#7a1a1a;border-radius:4px"></div></div>
+    </div>
+    <p class="klein">Beobachtungsfragen: Welcher Balken reagiert stärker auf Sauerstoffmangel? Wie entwickelt sich das Verhältnis der beiden Balken? Warum braucht das Gerät die zweite Wellenlänge, wenn sich die Blutmenge im Finger ändert? (Probieren Sie es gedanklich: Bei doppelter Blutmenge wären beide Balken doppelt so lang.)</p>
+  </div>
+</section>
+
+</main>
+<footer><div class="wrap">Chemie · Leistungskurs · Q3 · Farbstoffe · Hilfen zu Stunde 00. Ohne Lösungen.</div></footer>
+<script>
+// Gestufte Hilfekarten
+(function(){
+  document.querySelectorAll('.hk').forEach(function(k){
+    var st = k.querySelectorAll('.stufe'), btn = k.querySelector('button'), z = k.querySelector('.zaehler'), n = 0;
+    z.textContent = '0 / ' + st.length;
+    btn.addEventListener('click', function(){
+      if (n < st.length) { st[n].classList.add('offen'); n++; }
+      z.textContent = n + ' / ' + st.length;
+      if (n >= st.length) { btn.textContent = 'alle Stufen offen'; btn.disabled = true; } else btn.textContent = 'Stufe ' + (n + 1) + ' aufdecken';
+    });
+  });
+})();
+
+// V1 Komplementärfarben
+(function(){
+  var F = [
+    ['400–435 nm', '#7b2fbf', 'gelbgrün'], ['435–480 nm', '#2b5bd7', 'gelb'], ['480–490 nm', '#1a8fd0', 'orange'],
+    ['490–500 nm', '#17a2a0', 'rot'], ['500–560 nm', '#2fa84f', 'purpur'], ['560–580 nm', '#a3c93a', 'violett'],
+    ['580–595 nm', '#f2d22e', 'blau'], ['595–605 nm', '#f08a24', 'grünblau'], ['605–750 nm', '#d7261e', 'blaugrün']
+  ];
+  var namen = ['gelbgrün','gelb','orange','rot','purpur','violett','blau','grünblau','blaugrün'];
+  var $ = function(id){ return document.getElementById(id); };
+  var akt = 0, gut = 0, versuche = 0, fertig = false;
+  namen.forEach(function(n){
+    var b = document.createElement('button'); b.className = 'knopf'; b.textContent = n;
+    b.onclick = function(){
+      if (fertig) return; fertig = true; versuche++;
+      var r = $('v1-rueck');
+      if (n === F[akt][2]) { gut++; r.className = 'rueck gut'; r.textContent = 'Richtig. Absorbiert wird ' + F[akt][0] + ', das übrige Licht ergibt die Komplementärfarbe ' + F[akt][2] + '.'; }
+      else { r.className = 'rueck nein'; r.textContent = 'Noch nicht. Suchen Sie im Farbkreis die Farbe, die dem absorbierten Licht gegenüberliegt, und versuchen Sie es beim nächsten Stoff erneut.'; }
+      $('v1-punkte').textContent = gut + ' von ' + versuche + ' richtig';
+    };
+    $('v1-wahl').appendChild(b);
+  });
+  function zeige(){ akt = Math.floor(Math.random() * F.length); $('v1-feld').style.background = F[akt][1];
+    $('v1-aufgabe').textContent = 'Absorbiert: ' + F[akt][0]; $('v1-rueck').className = 'rueck'; fertig = false; }
+  $('v1-weiter').onclick = zeige; zeige();
+})();
+
+// V2 Pulsoximeter-Modell (relative Absorption wie Tab. 2: Hb 10 / 2,2; HbO2 1,0 / 3,8)
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  function neu(){
+    var s = +$('v2-s').value / 100;
+    var r = s * 1.0 + (1 - s) * 10, i = s * 3.8 + (1 - s) * 2.2;
+    $('v2-sz').textContent = Math.round(s * 100) + ' %';
+    $('v2-r').style.width = Math.round(r * 32) + 'px';
+    $('v2-i').style.width = Math.round(i * 32) + 'px';
+    $('v2-wert').textContent = s >= .95 ? 'normal' : (s >= .9 ? 'leicht erniedrigt' : 'Sauerstoffmangel');
+  }
+  $('v2-s').oninput = neu; neu();
+})();
+
+</script>
+</body>
+</html>
