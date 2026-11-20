@@ -1,0 +1,199 @@
+<!doctype html>
+    <html lang="de">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Indikatorfarbstoffe – Vertiefung und Hilfen</title>
+    <!-- Chemie · Leistungskurs · Q3 · Farbstoffe · Stunde 02. Erzeugt von quellen/web/bauen.py. Ohne Lösungen (Repo öffentlich). URL steht in den QR-Codes: nicht umbenennen. -->
+    <style>
+:root{
+  --gruen:#2e7d4f; --gruen-d:#1f5e3a; --gruen-hell:#e6f3eb; --blau:#2a7ab8; --tblau:#156e9d; --blau-hell:#e6f0f8;
+  --orange:#d9822b; --orange-hell:#fdf1e4; --violett:#6c2a8c; --violett-hell:#f1e8f6;
+  --grau:#6f7a85; --linie:#d5dde5; --bg:#f6f8fa; --karte:#fff; --text:#222; --betroffen:#0f4c6e;
+  --sans:-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.5}
+a{color:var(--tblau)}
+button,select{font:inherit;cursor:pointer}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px}
+header{background:linear-gradient(135deg,#1f5e3a 0%,#2e7d4f 55%,#3f9a63 100%);color:#fff;padding:28px 0 22px}
+header .kurs{font-size:13px;letter-spacing:.06em;text-transform:uppercase;opacity:.85}
+header h1{margin:4px 0 6px;font-size:clamp(24px,4.5vw,34px);font-weight:600;line-height:1.2}
+header p{margin:0;opacity:.92;max-width:680px}
+nav{position:sticky;top:0;z-index:10;background:rgba(246,248,250,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--linie)}
+nav .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:8px;padding-bottom:8px}
+nav a{flex:none;text-decoration:none;color:var(--gruen-d);border:1px solid var(--linie);background:#fff;border-radius:16px;padding:3px 12px;font-size:14px;font-weight:600}
+nav a.v{color:var(--orange)}
+h2{font-size:21px;color:var(--gruen-d);margin:32px 0 4px;scroll-margin-top:56px}
+h3.teil{font-size:16px;color:var(--grau);text-transform:uppercase;letter-spacing:.05em;margin:22px 0 8px}
+.hinweis{color:var(--grau);font-size:14px;margin:0 0 14px}
+.hilfen{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.hk{background:var(--karte);border:1.5px dashed #b9c4cf;border-radius:10px;padding:14px 16px}
+.hk h4{margin:0 0 2px;font-size:16px;color:var(--gruen)}
+.hk .zu{font-size:13px;color:var(--grau);margin-bottom:8px}
+.stufe{display:none;margin:8px 0 0;padding:8px 10px;background:var(--gruen-hell);border-radius:6px;font-size:15px}
+.stufe.offen{display:block;animation:auf .25s ease}
+@keyframes auf{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.hk button{margin-top:10px;border:1px solid var(--gruen);background:#fff;color:var(--gruen);border-radius:6px;padding:4px 12px;font-size:14px}
+.hk button:hover{background:var(--gruen-hell)}
+.hk button[disabled]{opacity:.4;cursor:default}
+.hk .zaehler{font-size:12px;color:var(--grau);margin-left:8px}
+.v-karte{background:var(--karte);border:1px solid var(--linie);border-radius:12px;margin:14px 0;overflow:hidden;scroll-margin-top:56px}
+.v-kopf{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--linie);background:#fbfcfd}
+.v-nr{flex:none;width:42px;height:42px;border-radius:50%;background:var(--orange);color:#fff;font-weight:700;display:grid;place-items:center}
+.v-kopf h3{margin:0;font-size:18px}
+.v-inhalt{padding:14px 16px 16px}
+.zwei{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+@media (max-width:720px){.zwei{grid-template-columns:1fr}}
+svg{max-width:100%;height:auto;display:block}
+.knopf{border:1px solid var(--linie);background:#fff;border-radius:6px;padding:4px 12px;font-size:14px}
+.knopf.haupt{border-color:var(--gruen);color:var(--gruen);font-weight:600}
+.knopf.an{background:var(--gruen);border-color:var(--gruen);color:#fff}
+.knoepfe{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.rueck{font-size:14px;border-radius:6px;padding:8px 10px;margin-top:8px;display:none}
+.rueck.gut{display:block;background:#e3f4ea;border-left:3px solid var(--gruen)}
+.rueck.nein{display:block;background:#fbe6e3;border-left:3px solid #d0574a}
+.fall{font-size:13px;color:var(--grau)}
+.punkte{font-size:14px;color:var(--grau);margin-left:auto}
+.pedi{background:#fff;border:1px solid var(--linie);border-radius:8px;padding:8px}
+.wahl{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;font-size:15px;margin:6px 0 10px}
+.wahl select{border:1px solid var(--linie);border-radius:6px;padding:3px 8px;background:#fff}
+table.ps{border-collapse:collapse;margin:8px 0}
+table.ps td,table.ps th{border:1px solid var(--linie);width:76px;height:52px;text-align:center;font-size:18px}
+table.ps th{background:var(--blau-hell);color:var(--betroffen)}
+table.ps td.betr{background:var(--orange-hell);color:var(--orange);font-weight:700}
+table.ps .ecke{background:#f4f6f8;font-size:12px;color:var(--grau);font-weight:400}
+.ausgabe{font-variant-numeric:tabular-nums;font-size:15px;background:#f2f5f8;border-radius:6px;padding:8px 12px;margin-top:6px}
+.leiste{display:grid;grid-template-columns:120px 1fr 56px;gap:6px 10px;align-items:center;font-size:14px;margin-top:4px}
+.leiste .spur{background:#eef2f6;border-radius:4px;height:16px;overflow:hidden}
+.leiste .fuell{height:100%;background:var(--orange);width:0;transition:width .5s ease}
+canvas{max-width:100%;height:auto;border-radius:50%;display:block;margin:0 auto}
+.sim{filter:url(#deutan)}
+.klein{font-size:13px;color:var(--grau)}
+footer{margin:36px 0 0;border-top:1px solid var(--linie);padding:16px 0 28px;font-size:12.5px;color:var(--grau)}
+sup{font-size:.7em}
+.schritte{counter-reset:s;list-style:none;padding:0;margin:8px 0}
+.schritte li{counter-increment:s;position:relative;padding:6px 0 6px 40px}
+.schritte li::before{content:counter(s);position:absolute;left:0;top:4px;width:28px;height:28px;border-radius:50%;background:var(--gruen);color:#fff;font-weight:700;display:grid;place-items:center;font-size:14px}
+</style>
+    </head>
+    <body>
+    <header>
+      <div class="wrap">
+        <div class="kurs">Chemie · Leistungskurs · Q3 · Farbstoffe · Stunde 02</div>
+        <h1>Indikatorfarbstoffe: Vertiefung und Hilfen</h1>
+        <p>Hilfen zu den Expertenaufgaben und zur Partnerphase, nur bei Bedarf und stufenweise aufdecken. Zum Üben: Indikatorwahl für Titrationen und ein Rechner für das Verhältnis von Indikatorbase und Indikatorsäure.</p>
+      </div>
+    </header>
+    <nav><div class="wrap"><a href="#fs02">Hilfen Stunde 02</a><a class="v" href="#v1">V1 Welcher Indikator passt?</a><a class="v" href="#v2">V2 Verhältnis-Rechner</a></div></nav>
+    <main class="wrap">
+    <h2 id="fs02">Hilfen zu Farbstoffe 02</h2>
+<p class="hinweis">Erst selbst probieren. Jede Karte deckt ihre Hilfe in Stufen auf: so wenig wie möglich, so viel wie nötig. Die ersten beiden Stufen entsprechen den Papierkarten am Pult.</p>
+<div class="hilfen">
+  <div class="hk"><h4>Hilfe H1</h4><div class="zu">Expertise A2</div>
+    <div class="stufe">Vergleichen Sie Abb. A1 und A2: Welche H-Atome fehlen im Dianion? Welche Bindung des zentralen C-Atoms hat sich geändert, und welcher Ring hat sich geöffnet?</div>
+    <div class="stufe"><b>Satzbausteine:</b> „Die Hydroxid-Ionen nehmen … Protonen auf, Phenolphthalein ist also … . Im Lacton hat das zentrale C-Atom … Einfachbindungen; dadurch ist die Konjugation … . Im Dianion ist das zentrale C-Atom Teil eines … Systems über … Ringe; die Anregungsenergie ist … , absorbiert wird … Licht.“</div>
+    <div class="stufe">Zählen Sie die Bindungen des zentralen C-Atoms in beiden Formeln. Wo steht in Abb. A2 eine Doppelbindung, die es in Abb. A1 nicht gibt? Über welche Atome reicht deshalb das konjugierte System?</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe H2</h4><div class="zu">Expertise A3</div>
+    <div class="stufe">Das zentrale C-Atom in Abb. A3 hat eine Doppelbindung. Was ändert sich, wenn sich daran ein OH⁻-Ion anlagert? Wie viele Einfachbindungen hat das C-Atom dann?</div>
+    <div class="stufe">Zeichnen Sie Abb. A3 ab, ersetzen Sie die Doppelbindung zum oberen Ring durch eine Einfachbindung, zeichnen Sie den oberen Ring wieder als Benzolring mit –N(CH₃)₂ und hängen Sie an das zentrale C-Atom eine OH-Gruppe. Ladung: neutral.</div>
+    <div class="stufe">Vergleichen Sie Ihr Produkt mit dem Lacton des Phenolphthaleins (Abb. A1): Was haben beide am zentralen C-Atom gemeinsam, und warum sind beide farblos?</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe H3</h4><div class="zu">Expertise B2</div>
+    <div class="stufe">Lesen Sie den Hinweiskasten. Das freie Elektronenpaar des N-Atoms der –N(CH₃)₂-Gruppe bildet eine Doppelbindung zum Ring. Welche Bindungen im Ring und an der Azogruppe müssen dann „umklappen“?</div>
+    <div class="stufe"><b>Gerüst:</b> (CH₃)₂N⁺= Ring (chinoid) =N–NH– Ring–SO₃⁻.<br><b>Satzbaustein:</b> „In der Säureform ist die positive Ladung über … delokalisiert. Der Donator … und der Akzeptor … liegen an den Enden des Systems; dadurch ist die Anregungsenergie … .“</div>
+    <div class="stufe">Prüfen Sie Ihre Grenzformel mit den Regeln aus Stunde 01: gleiche Atome, gleiche Gesamtladung (das Ion ist insgesamt neutral: + am N, − an der Sulfonatgruppe), Oktettregel.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe H4</h4><div class="zu">P1</div>
+    <div class="stufe">Lassen Sie sich vom Partner die Abbildungen der Expertenkarte zeigen. Entsteht das konjugierte System bei der Deprotonierung neu, oder gibt es das schon vorher?</div>
+    <div class="stufe">Phenolphthalein: Lacton → Dianion: Konjugation über das zentrale C-Atom … . Methylorange: Basenform und Säureform sind beide … ; die Protonierung … die Donator-Akzeptor-Wirkung.</div>
+    <div class="stufe">Formulieren Sie für jeden Indikator einen Satz: „Bei der Deprotonierung wird das konjugierte System …“ (länger, kürzer, neu gebildet, unterbrochen).</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe H5</h4><div class="zu">P3</div>
+    <div class="stufe">Wo liegt der pH-Wert am Äquivalenzpunkt? Ein Indikator ist geeignet, wenn sein Umschlagsbereich in den steilen pH-Sprung um den Äquivalenzpunkt fällt.</div>
+    <div class="stufe">Tragen Sie für jede Titration den Äquivalenzpunkt in Abb. 1 als senkrechte Linie ein. Liegt die Kurve des Indikators dort im steilen Bereich? Wenn der Indikator schon weit vorher umschlägt, zeigt er das Ende zu früh an.</div>
+    <div class="stufe">Ein guter Indikator schlägt mit einem einzigen Tropfen Maßlösung am Äquivalenzpunkt um. Was passiert, wenn der Umschlagsbereich mehrere pH-Einheiten vor dem Äquivalenzpunkt liegt?</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+</div>
+
+    <h2>Vertiefungen für Schnelle</h2>
+    
+<section class="v-karte" id="v1">
+  <div class="v-kopf"><div class="v-nr">V1</div><h3>Welcher Indikator passt?</h3><span class="punkte" id="v1-punkte"></span></div>
+  <div class="v-inhalt">
+    <p>Für eine Titration ist der pH-Wert am Äquivalenzpunkt angegeben. Wählen Sie den Indikator, dessen Umschlagsbereich im pH-Sprung liegt.</p>
+    <p class="klein">Methylorange 3,1–4,4 · Methylrot 4,4–6,2 · Bromthymolblau 6,0–7,6 · Phenolphthalein 8,2–10,0 · Thymolphthalein 9,3–10,5</p>
+    <p class="fall" id="v1-fall" style="font-size:17px;color:var(--text)"></p>
+    <div class="knoepfe" id="v1-wahl"></div>
+    <div class="rueck" id="v1-rueck"></div>
+    <div class="knoepfe"><button class="knopf haupt" id="v1-weiter">Nächste Titration →</button></div>
+  </div>
+</section>
+
+<section class="v-karte" id="v2">
+  <div class="v-kopf"><div class="v-nr">V2</div><h3>Verhältnis-Rechner</h3><span class="punkte" id="v2-wert"></span></div>
+  <div class="v-inhalt">
+    <p>Henderson-Hasselbalch: pH = pK<sub>S</sub> + lg (c(Ind⁻) / c(HInd)). Stellen Sie pK<sub>S</sub> und pH ein und beobachten Sie das Verhältnis. Ab etwa 10 : 1 sieht das Auge die Farbe der überwiegenden Form.</p>
+    <div class="wahl"><label>pK<sub>S</sub>: <input type="range" id="v2-k" min="1" max="13" step="0.1" value="9.4" style="width:180px"> <b id="v2-kz"></b></label></div>
+    <div class="wahl"><label>pH: <input type="range" id="v2-p" min="0" max="14" step="0.1" value="8" style="width:180px"> <b id="v2-pz"></b></label></div>
+    <div style="display:flex;height:26px;border:1px solid #2b2b2b;border-radius:5px;overflow:hidden;margin:10px 0;max-width:420px">
+      <div id="v2-s" style="background:#bcd7ee"></div><div id="v2-b" style="background:#0f4c6e"></div></div>
+    <div class="ausgabe" id="v2-aus"></div>
+  </div>
+</section>
+
+    </main>
+    <footer><div class="wrap">Chemie · Leistungskurs · Q3 · Farbstoffe · Hilfen zu Stunde 02. Ohne Lösungen.</div></footer>
+    <script>
+    // Gestufte Hilfekarten
+    (function(){
+      document.querySelectorAll('.hk').forEach(function(k){
+        var st = k.querySelectorAll('.stufe'), btn = k.querySelector('button'), z = k.querySelector('.zaehler'), n = 0;
+        z.textContent = '0 / ' + st.length;
+        btn.addEventListener('click', function(){
+          if (n < st.length) { st[n].classList.add('offen'); n++; }
+          z.textContent = n + ' / ' + st.length;
+          if (n >= st.length) { btn.textContent = 'alle Stufen offen'; btn.disabled = true; } else btn.textContent = 'Stufe ' + (n + 1) + ' aufdecken';
+        });
+      });
+    })();
+    
+(function(){
+  var I = ['Methylorange', 'Methylrot', 'Bromthymolblau', 'Phenolphthalein', 'Thymolphthalein'];
+  var F = [
+    ['Salpetersäure mit Kalilauge: Äquivalenzpunkt pH 7,0 (Sprung etwa 4 bis 10)', ['Methylrot', 'Bromthymolblau', 'Phenolphthalein'], 'Bei starker Säure und starker Base ist der Sprung so groß, dass mehrere Indikatoren passen; Bromthymolblau schlägt genau am Äquivalenzpunkt um.'],
+    ['Methansäure mit Natronlauge: Äquivalenzpunkt pH 8,2 (Sprung etwa 7 bis 11)', ['Phenolphthalein'], 'Schwache Säure mit starker Base: Äquivalenzpunkt im Alkalischen.'],
+    ['Ammoniak-Lösung mit Salpetersäure: Äquivalenzpunkt pH 5,3 (Sprung etwa 7 bis 3)', ['Methylrot', 'Methylorange'], 'Schwache Base mit starker Säure: Äquivalenzpunkt im Sauren; Methylrot liegt am besten, Methylorange ist noch brauchbar.'],
+    ['Propansäure mit Kalilauge: Äquivalenzpunkt pH 8,8 (Sprung etwa 7,5 bis 11)', ['Phenolphthalein', 'Thymolphthalein'], 'Umschlag im Alkalischen nötig.'],
+    ['Natriumcarbonat-Lösung mit Salzsäure bis zum zweiten Äquivalenzpunkt: pH 3,9', ['Methylorange'], 'Der zweite Äquivalenzpunkt liegt im Sauren.']
+  ];
+  var $ = function(x){ return document.getElementById(x); };
+  var akt = 0, gut = 0, versuche = 0, fertig = false;
+  I.forEach(function(n){ var b = document.createElement('button'); b.className = 'knopf'; b.textContent = n;
+    b.onclick = function(){ if (fertig) return; fertig = true; versuche++; var f = F[akt], r = $('v1-rueck');
+      if (f[1].indexOf(n) >= 0) { gut++; r.className = 'rueck gut'; r.textContent = 'Passt. ' + f[2]; }
+      else { r.className = 'rueck nein'; r.textContent = 'Passt nicht: Der Umschlagsbereich von ' + n + ' liegt außerhalb des pH-Sprungs. ' + f[2]; }
+      $('v1-punkte').textContent = gut + ' von ' + versuche + ' richtig'; };
+    $('v1-wahl').appendChild(b); });
+  function zeige(){ akt = Math.floor(Math.random() * F.length); $('v1-fall').textContent = F[akt][0]; $('v1-rueck').className = 'rueck'; fertig = false; }
+  $('v1-weiter').onclick = zeige; zeige();
+})();
+(function(){
+  var $ = function(x){ return document.getElementById(x); };
+  function neu(){
+    var k = +$('v2-k').value, p = +$('v2-p').value, v = Math.pow(10, p - k), anteil = v / (1 + v);
+    $('v2-kz').textContent = k.toFixed(1).replace('.', ','); $('v2-pz').textContent = p.toFixed(1).replace('.', ',');
+    $('v2-s').style.width = (100 * (1 - anteil)) + '%'; $('v2-b').style.width = (100 * anteil) + '%';
+    var txt = v >= 1 ? (v.toPrecision(2) + ' : 1') : ('1 : ' + (1 / v).toPrecision(2));
+    $('v2-aus').innerHTML = 'c(Ind⁻) : c(HInd) = <b>' + txt.replace('.', ',') + '</b> · Anteil Indikatorbase: <b>' + Math.round(anteil * 100) + ' %</b> (hell = Säureform, dunkel = Baseform)';
+    $('v2-wert').textContent = v >= 10 ? 'Basenfarbe' : (v <= 0.1 ? 'Säurefarbe' : 'Mischfarbe');
+  }
+  $('v2-k').oninput = neu; $('v2-p').oninput = neu; neu();
+})();
+
+    </script>
+    </body>
+    </html>
+    
