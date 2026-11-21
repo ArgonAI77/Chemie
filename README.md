@@ -8,3 +8,6 @@ https://argonai77.github.io/Chemie/Fachseminar/bm2-2-3-basiskonzepte-vertiefung-
 
 Fachseminar Chemie (Referendariat), Basismodul 2, Monomer 2.4 „Sicherungsphasen“:
 https://argonai77.github.io/Chemie/Fachseminar/bm2-2-4-sicherungsphasen-vertiefung-und-hilfen.html
+
+Fachseminar Chemie (Referendariat), Basismodul 3, Monomer 3.1 „Einsatz von Buch und Arbeitsblatt“:
+https://argonai77.github.io/Chemie/Fachseminar/bm3-3-1-buch-und-arbeitsblatt-vertiefung-und-hilfen.html
