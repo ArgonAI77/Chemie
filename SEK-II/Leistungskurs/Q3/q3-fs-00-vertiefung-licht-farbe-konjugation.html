@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="de">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Licht, Farbe und Konjugation – Vertiefung und Hilfen</title>
-<!-- Chemie · Leistungskurs · Q3 · Farbstoffe · Stunde 00. Erzeugt von quellen/web/bauen.py. Ohne Lösungen (Repo öffentlich). URL steht in den QR-Codes: nicht umbenennen. -->
-<style>
+    <html lang="de">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Licht, Farbe und Konjugation – Vertiefung und Hilfen</title>
+    <!-- Chemie · Leistungskurs · Q3 · Farbstoffe · Stunde 00. Erzeugt von quellen/web/bauen.py. Ohne Lösungen (Repo öffentlich). URL steht in den QR-Codes: nicht umbenennen. -->
+    <style>
 :root{
   --gruen:#2e7d4f; --gruen-d:#1f5e3a; --gruen-hell:#e6f3eb; --blau:#2a7ab8; --tblau:#156e9d; --blau-hell:#e6f0f8;
   --orange:#d9822b; --orange-hell:#fdf1e4; --violett:#6c2a8c; --violett-hell:#f1e8f6;
@@ -77,49 +77,74 @@ sup{font-size:.7em}
 .schritte li{counter-increment:s;position:relative;padding:6px 0 6px 40px}
 .schritte li::before{content:counter(s);position:absolute;left:0;top:4px;width:28px;height:28px;border-radius:50%;background:var(--gruen);color:#fff;font-weight:700;display:grid;place-items:center;font-size:14px}
 </style>
-</head>
-<body>
-<header>
-  <div class="wrap">
-    <div class="kurs">Chemie · Leistungskurs · Q3 · Farbstoffe · Stunde 00</div>
-    <h1>Licht, Farbe und Konjugation: Vertiefung und Hilfen</h1>
-    <p>Hilfen zu den Aufgaben mit Hilfekarten, nur bei Bedarf und stufenweise aufdecken. Zum Üben: Komplementärfarben sicher zuordnen und am Modell beobachten, wie ein Pulsoximeter auf Sauerstoffmangel reagiert.</p>
-  </div>
-</header>
-<nav><div class="wrap"><a href="#fs00">Hilfen Stunde 00</a><a class="v" href="#v1">V1 Komplementärfarben</a><a class="v" href="#v2">V2 Pulsoximeter-Modell</a></div></nav>
-<main class="wrap">
-<h2 id="fs00">Hilfen zu Farbstoffe 00</h2>
-<p class="hinweis">Erst selbst probieren. Jede Karte deckt ihre Hilfe in Stufen auf: so wenig wie möglich, so viel wie nötig. Die ersten beiden Stufen entsprechen den Papierkarten am Pult.</p>
+    </head>
+    <body>
+    <header>
+      <div class="wrap">
+        <div class="kurs">Chemie · Leistungskurs · Q3 · Farbstoffe · Stunde 00</div>
+        <h1>Licht, Farbe und Konjugation: Vertiefung und Hilfen</h1>
+        <p>Hilfen zu den Aufgaben mit Hilfekarten, nur bei Bedarf und stufenweise aufdecken. Zum Üben: Komplementärfarben sicher zuordnen und am Modell beobachten, wie ein Pulsoximeter auf Sauerstoffmangel reagiert.</p>
+      </div>
+    </header>
+    <nav><div class="wrap"><a href="#fs00">Hilfen Stunde 00</a><a class="v" href="#v1">V1 Komplementärfarben</a><a class="v" href="#v2">V2 Pulsoximeter-Modell</a></div></nav>
+    <main class="wrap">
+    <h2 id="fs00">Hilfen zu Farbstoffe 00</h2>
+<p class="hinweis">Erst selbst probieren. Jede Karte hat drei Stufen: <b>Denkanstoß</b>, <b>Fachbegriffe</b> (Wörter und Wendungen für Ihre Antwort) und <b>Lösungsgerüst</b> (Ihre Antwort mit Lücken). Decken Sie so wenig wie möglich auf. Die Karten H1, H2 … entsprechen den Papierkarten am Pult.</p>
 <div class="hilfen">
+  <div class="hk"><h4>Hilfe zu 1a</h4><div class="zu">Aussagen prüfen</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Denkanstoß</span><br>Fragen Sie bei jeder Aussage: Sendet die Tomate selbst Licht aus? Kann ein einzelnes Molekül eine Farbe haben? Kann man UV-Licht sehen?</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Fachbegriffe</span><br><b>Fachbegriffe:</b> Absorption · Reflexion · Emission · Komplementärfarbe · Stoffebene · Teilchenebene · UV-Strahlung (unsichtbar)</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Lösungsgerüst</span><br>1: „Die Tomate …… blaues und blaugrünes Licht und …… den Rest; wir sehen die …… .“<br>2: „Farbe ist eine ……eigenschaft. Ein Lycopin-Molekül …… Photonen bestimmter Energie.“<br>3: „UV-Licht ist …… . Ein Stoff, der nur UV absorbiert, erscheint …… .“</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
   <div class="hk"><h4>Hilfe H1</h4><div class="zu">Aufgabe 1b</div>
-    <div class="stufe">Trennen Sie zwei Fragen: Was passiert mit dem weißen Licht an der Tomate (Stoff)? Was passiert im einzelnen Molekül, wenn es ein Photon aufnimmt (Teilchen)?</div>
-    <div class="stufe"><b>Satzbausteine:</b> „Die Tomate absorbiert … Licht und reflektiert … . Wir sehen deshalb die … .“ – „Ein Lycopin-Molekül nimmt ein Photon auf, dessen Energie genau … entspricht. Dabei wird ein … aus dem … in den … gehoben.“<br>Skizze: wie Abb. 1, rechte Spalte.</div>
-    <div class="stufe">Prüfen Sie Ihre Antwort: Kommt in Ihrem Text auf der Teilchenebene das Wort „Farbe“ vor? Dann haben Sie die Ebenen vermischt. Moleküle absorbieren Photonen einer bestimmten Energie, Farbe sieht man nur beim Stoff.</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Denkanstoß</span><br>Trennen Sie zwei Ebenen. <b>Stoffebene:</b> Was geschieht mit dem weißen Licht, das auf die Tomate fällt, und welches Licht gelangt in Ihr Auge? <b>Teilchenebene:</b> Was geschieht in einem einzelnen Lycopin-Molekül, wenn es ein Photon aufnimmt?<br>Für die Skizze: Welche zwei Zustände des Moleküls brauchen Sie, und wie stellen Sie die Absorption dar?</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Fachbegriffe</span><br><b>Fachbegriffe:</b> Absorption · Reflexion · Komplementärfarbe · Photon · Energiedifferenz ΔE · Grundzustand · angeregter Zustand · π-Elektron · Absorptionsmaximum λ<sub>max</sub> · ΔE = h · c / λ<br><b>Fachwendungen:</b> „Der Stoff absorbiert Licht der Wellenlänge …“ · „Die Energie des Photons entspricht genau der Energiedifferenz zwischen …“ · „Farbe ist eine Stoffeigenschaft, kein Merkmal einzelner Moleküle.“</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Lösungsgerüst</span><br><b>Stoffebene:</b> „Die Tomate absorbiert aus dem weißen Licht vor allem …… und …… Licht (ca. …… nm). Das übrige Licht wird …… und gelangt ins Auge; wir sehen die …… Rot.“<br><b>Teilchenebene:</b> „Ein Lycopin-Molekül nimmt ein Photon auf, dessen Energie genau der Energiedifferenz …… zwischen …… und …… entspricht. Dabei wird ein ……-Elektron angeregt.“<br><b>Skizze:</b> zwei waagerechte Linien (unten ……, oben ……), Pfeil nach ……, beschriftet mit ΔE = …… und λ ≈ …… nm.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe zu 2a</h4><div class="zu">Absorption von Hb und HbO₂</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Denkanstoß</span><br>Lesen Sie Tab. 2 Zeile für Zeile: Wer absorbiert bei 660 nm stärker, wer bei 940 nm? Um welchen Faktor?</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Fachbegriffe</span><br><b>Fachbegriffe:</b> relative Absorption · rot (660 nm) · Infrarot (940 nm) · Hb · HbO<sub>2</sub> · Faktor</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Lösungsgerüst</span><br>„Bei 660 nm absorbiert Hb etwa ……-mal so stark wie HbO<sub>2</sub>. Bei 940 nm ist es umgekehrt: …… absorbiert stärker als …… (3,8 zu 2,2, also etwa ……-mal so stark).“</div>
     <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
   <div class="hk"><h4>Hilfe H2</h4><div class="zu">Aufgabe 2b</div>
-    <div class="stufe">Welche Farbe hat das Licht bei 660 nm? Welche Form des Hämoglobins absorbiert dieses Licht stärker, und welche überwiegt im venösen Blut?</div>
-    <div class="stufe"><b>Gedankenkette:</b> venöses Blut → mehr … → absorbiert mehr … Licht → es wird weniger … Licht reflektiert → das Blut wirkt … .</div>
-    <div class="stufe">Vergleichen Sie in Tab. 2 nur die Spalte 660 nm. Um welchen Faktor unterscheiden sich Hb und HbO₂? Was bedeutet „mehr Absorption“ für das Licht, das ins Auge gelangt?</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Denkanstoß</span><br>Welche Farbe hat Licht der Wellenlänge 660 nm? Welche Form des Hämoglobins absorbiert dieses Licht stärker (Tab. 2), und welche Form überwiegt im venösen Blut?<br>Was bedeutet „mehr Absorption“ für das Licht, das ins Auge gelangt?</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Fachbegriffe</span><br><b>Fachbegriffe:</b> Hämoglobin (Hb) · mit Sauerstoff beladenes Hämoglobin (HbO<sub>2</sub>) · Absorption · Reflexion · rotes Licht (660 nm) · Sauerstoffsättigung<br><b>Fachwendungen:</b> „… absorbiert rotes Licht etwa zehnmal so stark wie …“ · „Es gelangt weniger rotes Licht ins Auge.“</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Lösungsgerüst</span><br>„Venöses Blut enthält mehr …… und weniger …… als arterielles Blut. Hb absorbiert rotes Licht (660 nm) etwa ……-mal so stark wie HbO<sub>2</sub>. Venöses Blut absorbiert deshalb mehr rotes Licht und reflektiert …… rotes Licht ins Auge; es erscheint …… rot.“</div>
     <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
   <div class="hk"><h4>Hilfe H3</h4><div class="zu">Aufgabe 2c</div>
-    <div class="stufe">Bei 80 % Sättigung liegen 80 % des Hämoglobins als HbO~2~ und 20 % als Hb vor. Die Absorption der Mischung setzt sich anteilig zusammen.</div>
-    <div class="stufe"><b>Rechengerüst:</b> A(660) = 0,8 · 1,0 + 0,2 · 10 = … ; A(940) = 0,8 · 3,8 + 0,2 · … = … ; Verhältnis = … : … .<br>Wovon hängt die Absorption bei <b>einer</b> Wellenlänge außer vom Sauerstoff noch ab? Was passiert mit diesen Einflüssen in einem Verhältnis?</div>
-    <div class="stufe">Stellen Sie sich zwei Finger vor, einen dicken und einen dünnen, beide mit 100 % Sättigung. Was ist bei beiden gleich: die Absorption bei 660 nm oder das Verhältnis der beiden Absorptionen?</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Denkanstoß</span><br>Bei 80 % Sättigung liegen 80 % des Hämoglobins als HbO<sub>2</sub> und 20 % als Hb vor; die Absorption der Mischung setzt sich anteilig aus den Werten in Tab. 2 zusammen.<br>Zum zweiten Teil: Wovon hängt die gemessene Absorption bei <b>einer</b> Wellenlänge außer vom Sauerstoff noch ab? Was passiert mit diesen Einflüssen, wenn man zwei Absorptionen durcheinander teilt?</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Fachbegriffe</span><br><b>Fachbegriffe:</b> anteilige Absorption (gewichteter Mittelwert) · Verhältnis A(660) : A(940) · Blutmenge · Schichtdicke · Störgröße · Kalibrierung<br><b>Fachwendungen:</b> „Im Verhältnis kürzen sich Einflüsse heraus, die beide Wellenlängen gleich betreffen.“ · „Das Verhältnis hängt nur noch vom Anteil … ab.“</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Lösungsgerüst</span><br>100 %: A(660) : A(940) = 1,0 : …… ≈ …… .<br>80 %: A(660) = 0,8 · 1,0 + 0,2 · 10 = …… ; A(940) = 0,8 · 3,8 + 0,2 · 2,2 = …… ; Verhältnis ≈ …… .<br>„Sinkt die Sättigung, so …… das Verhältnis stark. Die Absorption bei einer Wellenlänge hängt auch von ……, …… und der Haut ab. Im Verhältnis zweier Wellenlängen …… sich diese Einflüsse weitgehend heraus; übrig bleibt die Information über den Anteil von …… und …… .“</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe zu 2d ★</h4><div class="zu">Pulsoximeter und Hautfarbe</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Denkanstoß</span><br>Welcher Farbstoff in der Haut absorbiert ebenfalls Licht? An welchen Menschen wurden die Geräte vermutlich überwiegend geeicht? Was bedeutet ein zu hoher Messwert für die Behandlung?</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Fachbegriffe</span><br><b>Fachbegriffe:</b> Melanin · Absorption · Kalibrierung · systematischer Messfehler · unbemerkter Sauerstoffmangel · Blutgasanalyse<br><b>Fachwendungen:</b> „Ich vermute, dass …“ · „Daraus folgt für die Versorgung …“</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Lösungsgerüst</span><br>„Hypothese: Der Hautfarbstoff …… absorbiert rotes Licht stärker als Infrarot und verändert so das gemessene …… . Die Geräte wurden überwiegend an Menschen mit …… Haut kalibriert. Folge: Ein Sauerstoffmangel wird …… und zu spät behandelt. Deshalb müssen Geräte an Menschen …… geprüft und Werte im Grenzbereich durch eine …… kontrolliert werden.“</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe zu 3a</h4><div class="zu">Anregungsenergien</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Denkanstoß</span><br>Setzen Sie λ<sub>max</sub> in nm direkt in ΔE = 1240 eV · nm / λ<sub>max</sub> ein; das Ergebnis erhalten Sie in eV.</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Fachbegriffe</span><br><b>Fachbegriffe:</b> Anregungsenergie ΔE · Elektronenvolt (eV) · h · c = 1240 eV · nm · Absorptionsmaximum</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Lösungsgerüst</span><br>Phytoen: 1240 / 286 = …… eV; ζ-Carotin: 1240 / …… = …… eV; Lycopin: 1240 / …… = …… eV.<br>Kontrolle: Je größer λ<sub>max</sub>, desto …… ΔE.</div>
     <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
   <div class="hk"><h4>Hilfe H4</h4><div class="zu">Aufgabe 3b</div>
-    <div class="stufe">Lesen Sie Tab. 3 von oben nach unten: Was passiert mit λ~max~ und ΔE, wenn zwei konjugierte Doppelbindungen hinzukommen? Lesen Sie danach den letzten Abschnitt der Einführung.</div>
-    <div class="stufe"><b>Satzbausteine:</b> „Je mehr konjugierte Doppelbindungen, desto … ΔE und desto … λ~max~. Das liegt daran, dass sich die π-Elektronen über einen … Bereich verteilen. Ab … konjugierten C=C wird sichtbares Licht absorbiert. Lycopin absorbiert … Licht, wir sehen … .“</div>
-    <div class="stufe">Ordnen Sie Ihre Antwort in drei Teile: (1) Beobachtung aus Tab. 3, (2) Erklärung mit dem Modell, (3) Anwendung auf die reifende Tomate mit Tab. 1.</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Denkanstoß</span><br>Lesen Sie Tab. 3 von oben nach unten: Was geschieht mit λ<sub>max</sub> und ΔE, wenn zwei konjugierte Doppelbindungen hinzukommen? Ab welcher Zeile liegt die Absorption im Sichtbaren?<br>Über welchen Bereich können sich die π-Elektronen in einem längeren System verteilen, und was bedeutet das für ΔE?</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Fachbegriffe</span><br><b>Fachbegriffe:</b> konjugierte Doppelbindungen · delokalisierte π-Elektronen · Anregungsenergie ΔE · Absorptionsmaximum λ<sub>max</sub> · sichtbarer Bereich (380–750 nm) · UV · Komplementärfarbe · Chlorophyll<br><b>Fachwendungen:</b> „Je …, desto …“ · „Die π-Elektronen verteilen sich über einen größeren Bereich.“ · „Die Absorption verschiebt sich zu größeren Wellenlängen.“</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Lösungsgerüst</span><br>„Mit jeder weiteren konjugierten Doppelbindung …… ΔE und …… λ<sub>max</sub> (3 C=C: 286 nm … 11 C=C: …… nm); die Zunahme wird dabei …… . Die π-Elektronen sind über das ganze konjugierte System ……; je größer dieses System, desto …… ist die Energiedifferenz und desto …… Licht wird absorbiert. Phytoen und Phytofluen absorbieren nur ……, sie sind farblos; ab …… konjugierten C=C liegt die Absorption im Sichtbaren. Lycopin absorbiert …… Licht, wir sehen die Komplementärfarbe …… . Beim Reifen wird das grüne …… abgebaut und Lycopin gebildet.“</div>
     <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
   <div class="hk"><h4>Hilfe H5</h4><div class="zu">Aufgabe 3c</div>
-    <div class="stufe">Fahren Sie die Kette ab: Wo folgen Doppel- und Einfachbindung regelmäßig aufeinander? Wo unterbricht eine CH~2~–CH~2~-Einheit die Folge? Zählen Sie bei β-Carotin die Ring-Doppelbindungen mit.</div>
-    <div class="stufe">Gleich viele konjugierte C=C, trotzdem verschiedenes λ~max~: Lesen Sie in der Einführung nach, welche Bedingung für die Delokalisierung gilt (letzter Satz vor „Merke“), und in M2, was am Ring des β-Carotins passiert.</div>
-    <div class="stufe">Ein Stück Papier, das man knickt, ist kein durchgehend ebenes Blatt mehr. Übertragen Sie dieses Bild auf die Doppelbindung im Ring: Was bedeutet es für die Delokalisierung, wenn der Ring aus der Ebene gedreht ist?</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Denkanstoß</span><br>Fahren Sie die Kette mit dem Finger ab: Wo folgen Doppel- und Einfachbindung regelmäßig aufeinander? Wo unterbricht eine CH<sub>2</sub>–CH<sub>2</sub>-Einheit die Folge? Zählen Sie bei β-Carotin die Ring-Doppelbindungen mit.<br>Gleiche Zahl, aber verschiedenes λ<sub>max</sub>: Welche Bedingung für die Delokalisierung nennt die Einführung (letzter Satz vor „Merke“)? Was sagt M2 über den Ring?</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Fachbegriffe</span><br><b>Fachbegriffe:</b> konjugiertes System · isolierte Doppelbindung · Ebene (planar) · Verdrillung des Rings · Methylgruppe · räumliche Abstoßung · wirksames konjugiertes System · ΔE · λ<sub>max</sub><br><b>Fachwendungen:</b> „Der Ring wird aus der Ebene der Kette gedreht.“ · „Die Ring-Doppelbindungen tragen nur eingeschränkt zur Delokalisierung bei.“</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Lösungsgerüst</span><br>„Lycopin und β-Carotin besitzen beide …… konjugierte C=C. Bei β-Carotin stoßen die …… am Ring mit H-Atomen der Kette zusammen; der Ring wird aus der …… gedreht. Die π-Elektronen der Ring-Doppelbindungen können sich deshalb nur …… am delokalisierten System beteiligen; das wirksame konjugierte System ist …… . ΔE ist größer (…… statt 2,63 eV), λ<sub>max</sub> kleiner (…… statt 472 nm). β-Carotin absorbiert vor allem …… Licht; wir sehen …… statt Rot.“</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe zu 3d ★</h4><div class="zu">Voraussage für 13 C=C</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Denkanstoß</span><br>Berechnen Sie in Tab. 3 die Zunahme von λ<sub>max</sub> je zwei zusätzliche konjugierte Doppelbindungen. Wie entwickeln sich diese Zuwächse? Setzen Sie den Trend fort.</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Fachbegriffe</span><br><b>Fachbegriffe:</b> Trend · Extrapolation · abnehmende Zunahme · λ<sub>max</sub> · Komplementärfarbe (Tab. 1)</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Lösungsgerüst</span><br>Zuwächse: 348 − 286 = ……, 400 − 348 = ……, 440 − 400 = ……, 472 − 440 = …… nm. Nächster Zuwachs etwa …… nm → λ<sub>max</sub> ≈ …… nm. Absorbiert wird …… Licht; der Stoff erscheint …… .</div>
     <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
 </div>
 
-<h2>Vertiefungen für Schnelle</h2>
-
+    <h2>Vertiefungen für Schnelle</h2>
+    
 <section class="v-karte" id="v1">
   <div class="v-kopf"><div class="v-nr">V1</div><h3>Komplementärfarben-Training</h3><span class="punkte" id="v1-punkte"></span></div>
   <div class="v-inhalt">
@@ -147,22 +172,22 @@ sup{font-size:.7em}
   </div>
 </section>
 
-</main>
-<footer><div class="wrap">Chemie · Leistungskurs · Q3 · Farbstoffe · Hilfen zu Stunde 00. Ohne Lösungen.</div></footer>
-<script>
-// Gestufte Hilfekarten
-(function(){
-  document.querySelectorAll('.hk').forEach(function(k){
-    var st = k.querySelectorAll('.stufe'), btn = k.querySelector('button'), z = k.querySelector('.zaehler'), n = 0;
-    z.textContent = '0 / ' + st.length;
-    btn.addEventListener('click', function(){
-      if (n < st.length) { st[n].classList.add('offen'); n++; }
-      z.textContent = n + ' / ' + st.length;
-      if (n >= st.length) { btn.textContent = 'alle Stufen offen'; btn.disabled = true; } else btn.textContent = 'Stufe ' + (n + 1) + ' aufdecken';
-    });
-  });
-})();
-
+    </main>
+    <footer><div class="wrap">Chemie · Leistungskurs · Q3 · Farbstoffe · Hilfen zu Stunde 00. Ohne Lösungen.</div></footer>
+    <script>
+    // Gestufte Hilfekarten
+    (function(){
+      document.querySelectorAll('.hk').forEach(function(k){
+        var st = k.querySelectorAll('.stufe'), btn = k.querySelector('button'), z = k.querySelector('.zaehler'), n = 0;
+        z.textContent = '0 / ' + st.length;
+        btn.addEventListener('click', function(){
+          if (n < st.length) { st[n].classList.add('offen'); n++; }
+          z.textContent = n + ' / ' + st.length;
+          if (n >= st.length) { btn.textContent = 'alle Stufen offen'; btn.disabled = true; } else btn.textContent = 'Stufe ' + (n + 1) + ' aufdecken';
+        });
+      });
+    })();
+    
 // V1 Komplementärfarben
 (function(){
   var F = [
@@ -203,6 +228,7 @@ sup{font-size:.7em}
   $('v2-s').oninput = neu; neu();
 })();
 
-</script>
-</body>
-</html>
+    </script>
+    </body>
+    </html>
+    
