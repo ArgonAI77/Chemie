@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mehrfunktionelle Säuren – Vertiefung und Hilfen</title>
+<!-- Chemie Klasse 10 · Stationenlernen Mehrfunktionelle Carbonsäuren und Aminosäuren. Ohne Lösungen (Repo öffentlich). URL steht im QR-Code des Aufgabenblatts: nicht umbenennen. -->
+<style>
+:root{
+  --blau:#2a7ab8; --tblau:#156e9d; --dunkel:#0f4c6e; --blau-hell:#e8f1f8; --orange:#d9822b; --orange-hell:#fcefdf;
+  --gruen:#2e7d4f; --gruen-hell:#e6f3eb; --violett:#6c2a8c; --rot:#b03a2e;
+  --grau:#6f7a85; --linie:#d5dde5; --bg:#f6f8fa; --karte:#fff; --text:#222;
+  --sans:-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.5}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px}
+header{background:linear-gradient(135deg,#0f4c6e 0%,#156e9d 60%,#2a7ab8 100%);color:#fff;padding:28px 0 22px}
+header .kurs{font-size:13px;letter-spacing:.06em;text-transform:uppercase;opacity:.85}
+header h1{margin:4px 0 6px;font-size:clamp(24px,4.5vw,34px);font-weight:600;line-height:1.2}
+header p{margin:0;opacity:.92;max-width:680px}
+nav{position:sticky;top:0;z-index:10;background:rgba(246,248,250,.95);border-bottom:1px solid var(--linie)}
+nav .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:8px;padding-bottom:8px}
+nav a{flex:none;text-decoration:none;color:var(--dunkel);border:1px solid var(--linie);background:#fff;border-radius:16px;padding:3px 12px;font-size:14px;font-weight:600}
+nav a.v{color:var(--orange)}
+h2{font-size:21px;color:var(--dunkel);margin:32px 0 4px;scroll-margin-top:56px}
+.hinweis{color:var(--grau);font-size:14px;margin:0 0 14px}
+.hilfen{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.hk{background:var(--karte);border:1.5px dashed #b9c4cf;border-radius:10px;padding:14px 16px}
+.hk h4{margin:0 0 2px;font-size:16px;color:var(--tblau)}
+.hk .zu{font-size:13px;color:var(--grau);margin-bottom:8px}
+.stufe{display:none;margin:8px 0 0;padding:8px 10px;background:var(--blau-hell);border-radius:6px;font-size:15px}
+.stufe.offen{display:block}
+.hk button{margin-top:10px;border:1px solid var(--blau);background:#fff;color:var(--blau);border-radius:6px;padding:4px 12px;font-size:14px}
+.hk button[disabled]{opacity:.4;cursor:default}
+.hk .zaehler{font-size:12px;color:var(--grau);margin-left:8px}
+.nr{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;color:#fff;font-weight:700;font-size:14px;margin-right:6px;vertical-align:middle}
+.v-karte{background:var(--karte);border:1px solid var(--linie);border-radius:12px;margin:14px 0;padding:14px 16px;scroll-margin-top:56px}
+.aufgabe{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin:6px 0}
+.formel{font-size:20px;font-weight:600;letter-spacing:.01em}
+.wahl{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.wahl label{border:1px solid var(--linie);border-radius:6px;padding:4px 10px;background:#fff;font-size:15px;cursor:pointer}
+.wahl input{margin-right:6px}
+.knopf{border:1px solid var(--blau);background:var(--blau);color:#fff;border-radius:6px;padding:5px 14px;font-size:15px}
+.knopf.leise{background:#fff;color:var(--blau)}
+.rueck{font-size:15px;border-radius:6px;padding:8px 10px;margin-top:8px;display:none}
+.rueck.gut{display:block;background:#e3f4ea;border-left:3px solid var(--gruen)}
+.rueck.nein{display:block;background:#fbe6e3;border-left:3px solid #d0574a}
+.stand{font-size:14px;color:var(--grau)}
+table.gr{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}
+table.gr th,table.gr td{border:1px solid var(--linie);padding:6px 8px;text-align:left;vertical-align:top}
+table.gr th{background:var(--blau-hell);color:var(--dunkel)}
+footer{margin:36px 0 0;border-top:1px solid var(--linie);padding:16px 0 28px;font-size:12.5px;color:var(--grau)}
+sub,sup{font-size:.7em}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="kurs">Chemie · Klasse 10 · Stationenlernen</div>
+    <h1>Mehrfunktionelle Säuren: Vertiefung und Hilfen</h1>
+    <p>Weitere Hilfen zu allen vier Stationen, nur bei Bedarf und stufenweise aufdecken. Für Schnelle: Stoffklassen erkennen üben.</p>
+  </div>
+</header>
+<nav><div class="wrap">
+  <a href="#gruppen">Gruppen</a><a href="#s1">Station 1</a><a href="#s2">Station 2</a><a href="#s3">Station 3</a><a href="#s4">Station 4</a><a class="v" href="#uebung">Übung: Stoffklassen</a>
+</div></nav>
+
+<main class="wrap">
+
+<h2 id="gruppen">Werkzeug: drei funktionelle Gruppen</h2>
+<table class="gr">
+  <tr><th>Gruppe</th><th>Formel</th><th>Eigenschaft</th><th>kennst du aus</th></tr>
+  <tr><td>Carboxygruppe</td><td>–COOH</td><td>polar, Wasserstoffbrücken, gibt ein Proton ab (Säure)</td><td>Alkansäuren (Essigsäure)</td></tr>
+  <tr><td>Hydroxygruppe</td><td>–OH</td><td>polar, Wasserstoffbrücken; <b>kein</b> Hydroxid-Ion, nicht basisch</td><td>Alkoholen (Ethanol)</td></tr>
+  <tr><td>Aminogruppe</td><td>–NH<sub>2</sub></td><td>polar, Wasserstoffbrücken, nimmt ein Proton auf (Base)</td><td>Ammoniak (NH<sub>3</sub>)</td></tr>
+</table>
+<p class="hinweis">Erst selbst probieren. Jede Karte hat drei Stufen: <b>Denkanstoß</b>, <b>Fachbegriffe</b> (Wörter und Wendungen für deine Antwort) und <b>Lösungsgerüst</b> (deine Antwort mit Lücken). Decke so wenig wie möglich auf. Die Karten H1 bis H8 entsprechen den Papierkarten an den Stationen.</p>
+
+<h2 id="s1"><span class="nr" style="background:var(--orange)">1</span>Rhabarber: Oxalsäure</h2>
+<div class="hilfen">
+  <div class="hk"><h4>Hilfe H1 zu 1a</h4><div class="zu">wie die Papierkarte an der Station</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Denkanstoß</span><br>Zerlege HOOC–COOH in zwei Hälften: Jede Hälfte ist eine Carboxygruppe –COOH, die beiden C-Atome sind direkt miteinander verbunden.<br>Zähle beim Zeichnen die Bindungen: Jedes C-Atom braucht vier Bindungsstriche, jedes O-Atom zwei, jedes H-Atom einen.</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Fachbegriffe</span><br><b>Fachbegriffe:</b> Valenzstrichformel · Einfachbindung · Doppelbindung · freies Elektronenpaar · Carboxygruppe · funktionelle Gruppe · Dicarbonsäure<br><b>Fachwendungen:</b> „Ein O-Atom mit zwei Bindungen trägt zwei freie Elektronenpaare.“ · „Das Molekül besitzt zwei Carboxygruppen, es ist eine Dicarbonsäure.“</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Lösungsgerüst</span><br><b>Bauplan:</b> In der Mitte C–C. An jedes C-Atom kommen ein O-Atom mit ……bindung (C=O) und ein O-Atom mit ……bindung, an dem ein ……-Atom hängt (C–O–H).<br>Jedes O-Atom bekommt …… freie Elektronenpaare.<br>Umrande jede –COOH-Gruppe und schreibe daneben „……gruppe“. Das Molekül hat …… solcher Gruppen.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe zu 1b</h4><div class="zu">Namen und Halbstrukturformeln</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Denkanstoß</span><br>Zähle alle C-Atome, auch die beiden in den Carboxygruppen. Welches Alkan hat genauso viele C-Atome?</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Fachbegriffe</span><br><b>Fachbegriffe:</b> Trivialname · systematischer Name · Ethan, Propan, Butan, Pentan, Hexan · Endung „-disäure“ · Halbstrukturformel · CH<sub>2</sub>-Gruppe<br><b>Regel aus M1:</b> Name des Alkans mit gleicher Zahl von C-Atomen + „disäure“.</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Lösungsgerüst</span><br>Malonsäure: …… C-Atome → ……disäure, HOOC–……–COOH. Bernsteinsäure: 4 C-Atome → ……, HOOC–CH<sub>2</sub>–……–COOH. Adipinsäure: …… C-Atome → Hexandisäure, HOOC–(CH<sub>2</sub>)<sub>……</sub>–COOH.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe H2 zu 1c, 1d</h4><div class="zu">wie die Papierkarte an der Station</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Denkanstoß</span><br><b>1c:</b> Eine Carboxygruppe gibt ihr Proton an ein Wassermolekül ab. Die Oxalsäure hat zwei Carboxygruppen. Wie viele Wassermoleküle reagieren also, und wie viele Oxonium-Ionen entstehen?<br><b>1d:</b> Lies in M1 nach: Welche Ionen bilden mit Oxalat-Ionen einen schwer löslichen Stoff? Welche Lebensmittel enthalten viele davon?</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Fachbegriffe</span><br><b>Fachbegriffe:</b> Proton (H<sup>+</sup>) · Oxonium-Ion (H<sub>3</sub>O<sup>+</sup>) · Oxalat-Ion (C<sub>2</sub>O<sub>4</sub><sup>2−</sup>) · Calcium-Ion (Ca<sup>2+</sup>) · Calciumoxalat · schwer löslich · ausscheiden · Nierensteine<br><b>Fachwendungen:</b> „… gibt ein Proton an ein Wassermolekül ab.“ · „… bildet mit … einen schwer löslichen Feststoff.“ · „… gelangt nicht ins Blut.“</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Lösungsgerüst</span><br><b>1c:</b> HOOC–COOH + …… H<sub>2</sub>O → <sup>−</sup>OOC–COO<sup>−</sup> + …… …… <br>Prüfe die Ladungen: links 0, rechts (2−) + (……) = 0.<br><b>1d:</b> „Quark und Vanillesoße enthalten viele ……-Ionen. Sie bilden mit den Oxalat-Ionen schon im Darm schwer lösliches …… . Das gebundene Oxalat wird nicht ins …… aufgenommen, sondern …… . Deshalb lagert sich weniger Calciumoxalat in den …… ab.“</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe zu 1e ★</h4><div class="zu">Ärztlicher Rat</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Denkanstoß</span><br>Was passiert im Darm mit Oxalat, wenn genug Calcium vorhanden ist, und was, wenn wenig Calcium vorhanden ist?</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Fachbegriffe</span><br><b>Fachbegriffe:</b> Calciumoxalat · schwer löslich · im Darm binden · ins Blut aufnehmen · Urin · Nierenstein · Risiko<br><b>Fachwendungen:</b> „Wer auf Calcium verzichtet, …“ · „Der Rat ist schlüssig, weil …“</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Lösungsgerüst</span><br>„Weniger Rhabarber und Spinat bedeutet weniger …… in der Nahrung. Würde die Patientin auch auf Milchprodukte verzichten, wäre im Darm weniger …… vorhanden, um Oxalat als …… zu binden. Dann würde …… Oxalat ins Blut aufgenommen und mit dem Urin ausgeschieden; das Risiko für Nierensteine würde …… . Der Rat ist deshalb …… .“</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+</div>
+
+<h2 id="s2"><span class="nr" style="background:var(--blau)">2</span>Joghurt: Milchsäure</h2>
+<div class="hilfen">
+  <div class="hk"><h4>Hilfe zu 2a</h4><div class="zu">Modell und Formel der Milchsäure</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Denkanstoß</span><br>Baue zuerst die Propansäure: drei C-Atome in einer Kette, am Ende die Carboxygruppe. Ersetze dann am mittleren C-Atom ein H-Atom durch eine O–H-Gruppe.</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Fachbegriffe</span><br><b>Fachbegriffe:</b> Carboxygruppe (–COOH) · Hydroxygruppe (–OH) · Hydroxycarbonsäure · Valenzstrichformel · freies Elektronenpaar<br><b>Achtung:</b> Die Hydroxygruppe ist kein Hydroxid-Ion; sie macht den Stoff nicht basisch.</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Lösungsgerüst</span><br>Kette: CH<sub>3</sub>–CH(……)–COOH. Am mittleren C-Atom hängen ein H-Atom, eine ……gruppe, die CH<sub>3</sub>-Gruppe und die ……gruppe. Zeichne alle Bindungsstriche, gib jedem O-Atom …… freie Elektronenpaare und beschrifte die beiden funktionellen Gruppen.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe H3 zu 2b</h4><div class="zu">wie die Papierkarte an der Station</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Denkanstoß</span><br>Welche Kräfte wirken zwischen Molekülen mit O–H-Gruppen? Erinnere dich an Wasser und an die Alkansäuren.<br>Vergleiche die Valenzstrichformeln: Welche Gruppe besitzt die Milchsäure zusätzlich zur Propansäure? Was bewirkt eine zusätzliche polare Gruppe?</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Fachbegriffe</span><br><b>Fachbegriffe:</b> Wasserstoffbrücke · polare Gruppe · Hydroxygruppe · Carboxygruppe · Kräfte zwischen den Molekülen · Schmelztemperatur · Energie<br><b>Fachwendungen:</b> „Je mehr Wasserstoffbrücken, desto stärker halten die Moleküle zusammen.“ · „Zum Schmelzen müssen die Kräfte zwischen den Molekülen überwunden werden.“</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Lösungsgerüst</span><br>„Beide Moleküle bilden über ihre …… Wasserstoffbrücken zu Nachbarmolekülen. Das Milchsäure-Molekül besitzt zusätzlich eine polare ……gruppe und kann damit …… Wasserstoffbrücken bilden. Die Moleküle halten deshalb …… zusammen. Zum Schmelzen muss …… Energie zugeführt werden; die Schmelztemperatur ist …… .“</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe H4 zu 2c</h4><div class="zu">wie die Papierkarte an der Station</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Denkanstoß</span><br>Zähle die Partner am mittleren C-Atom der Milchsäure: Welche vier Atome oder Atomgruppen sind dort gebunden? Sind alle vier verschieden?<br>Halte deine Hände nebeneinander, Handflächen nach unten: Lassen sie sich so übereinanderlegen, dass alles deckungsgleich ist?</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Fachbegriffe</span><br><b>Fachbegriffe:</b> Spiegelbild · deckungsgleich · mittleres C-Atom · vier verschiedene Bindungspartner · L-Milchsäure · D-Milchsäure · „rechtsdrehend“<br><b>Fachwendungen:</b> „Die Modelle verhalten sich wie Bild und Spiegelbild.“ · „Sie lassen sich durch Drehen nicht zur Deckung bringen.“</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Lösungsgerüst</span><br>„Modell A und Modell B lassen sich …… zur Deckung bringen, egal wie man sie dreht. Sie verhalten sich wie …… und …… Hand. Der Grund ist das mittlere C-Atom: Es trägt …… verschiedene Partner, nämlich ……, ……, …… und …… . Deshalb gibt es zwei …… Formen der Milchsäure, die L- und die D-Milchsäure.“</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe zu 2d ★</h4><div class="zu">Propansäure und Spiegelbild</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Denkanstoß</span><br>Zähle wie bei der Milchsäure die Partner jedes C-Atoms der Propansäure. Gibt es ein C-Atom mit vier verschiedenen Partnern?</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Fachbegriffe</span><br><b>Fachbegriffe:</b> vier verschiedene Partner · Spiegelbild · deckungsgleich · drehen<br><b>Regel:</b> Nur wenn ein C-Atom vier verschiedene Partner trägt, gibt es zwei spiegelbildliche Formen.</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Lösungsgerüst</span><br>„Das mittlere C-Atom der Propansäure trägt zwei gleiche Partner, nämlich zwei ……-Atome. Kein C-Atom hat vier …… Partner. Modell und Spiegelbild lassen sich deshalb durch Drehen zur …… bringen; es gibt …… zwei spiegelbildlichen Formen.“</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+</div>
+
+<h2 id="s3"><span class="nr" style="background:var(--violett)">3</span>Cola light: Aspartam</h2>
+<div class="hilfen">
+  <div class="hk"><h4>Hilfe zu 3a</h4><div class="zu">Alanin</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Denkanstoß</span><br>Baue Glycin: ein C-Atom in der Mitte, daran eine Aminogruppe, eine Carboxygruppe und zwei H-Atome. Für Alanin ersetzt du eines der beiden H-Atome durch eine andere Gruppe (M3).</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Fachbegriffe</span><br><b>Fachbegriffe:</b> Aminogruppe (–NH<sub>2</sub>; das N-Atom hat drei Bindungen und ein freies Elektronenpaar) · Carboxygruppe · Aminosäure · Methylgruppe (–CH<sub>3</sub>)</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Lösungsgerüst</span><br>Alanin: H<sub>2</sub>N–CH(……)–COOH. Das N-Atom hat …… Bindungen und …… freies Elektronenpaar. Markiere –NH<sub>2</sub> als ……gruppe und –COOH als ……gruppe.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe H5 zu 3b</h4><div class="zu">wie die Papierkarte an der Station</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Denkanstoß</span><br>Lege Glycin links und Alanin rechts hin. Welche Gruppe des Glycins zeigt zum Alanin, welche Gruppe des Alanins zum Glycin?<br>Aus welchen Atomen dieser beiden Gruppen entsteht das Wassermolekül, das abgespalten wird?</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Fachbegriffe</span><br><b>Fachbegriffe:</b> Aminogruppe (–NH<sub>2</sub>) · Carboxygruppe (–COOH) · Peptidbindung (–CO–NH–) · Dipeptid · Kondensation · Wasserabspaltung<br><b>Fachwendungen:</b> „Die Carboxygruppe des einen Moleküls reagiert mit der Aminogruppe des anderen.“ · „Dabei wird ein Wassermolekül abgespalten.“</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Lösungsgerüst</span><br><b>Vorgemacht an zwei Glycin-Molekülen:</b><br>H<sub>2</sub>N–CH<sub>2</sub>–CO–<b>OH</b> + <b>H</b>–NH–CH<sub>2</sub>–COOH → H<sub>2</sub>N–CH<sub>2</sub>–<b>CO–NH</b>–CH<sub>2</sub>–COOH + H<sub>2</sub>O<br><b>Für Glycin + Alanin:</b> H<sub>2</sub>N–CH<sub>2</sub>–CO–OH + H–NH–CH(……)–COOH → H<sub>2</sub>N–CH<sub>2</sub>–CO–……–CH(CH<sub>3</sub>)–COOH + ……<br>Kreise in deiner Valenzstrichformel –CO–NH– ein: die …… . Zweites Produkt: …… .</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe H6 zu 3c</h4><div class="zu">wie die Papierkarte an der Station</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Denkanstoß</span><br>Lies in M3 nach: Aus welchen zwei Bausteinen besteht Aspartam, und wie sind sie miteinander verbunden?<br>Was geschieht bei der Verdauung mit dieser Bindung? Was wird dabei frei?</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Fachbegriffe</span><br><b>Fachbegriffe:</b> Aspartam · Dipeptid · Peptidbindung · Asparaginsäure · Phenylalanin · Spaltung unter Anlagerung von Wasser · Verdauung · Phenylketonurie (PKU)<br><b>Fachwendungen:</b> „Bei der Verdauung wird die Peptidbindung gespalten.“ · „Dabei wird … freigesetzt.“</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Lösungsgerüst</span><br>„Aspartam enthält kein freies Phenylalanin. Es ist ein …… aus Asparaginsäure und ……, die über eine …… verbunden sind. Bei der Verdauung wird diese Bindung unter Anlagerung von …… gespalten; dabei wird …… frei. Menschen mit …… können Phenylalanin nicht abbauen. Der Hinweis auf der Dose …… sie deshalb.“</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe zu 3d ★</h4><div class="zu">Wie viele Dipeptide?</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Denkanstoß</span><br>Ein Dipeptid hat zwei verschiedene Enden: eines mit Aminogruppe, eines mit Carboxygruppe. Ist Gly-Ala also dasselbe wie Ala-Gly?</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Fachbegriffe</span><br><b>Fachbegriffe:</b> Reihenfolge (Sequenz) · Dipeptid · Kombinationen · Protein<br><b>Rechenidee:</b> Für jede Position gibt es so viele Möglichkeiten, wie es Aminosäuren gibt; die Möglichkeiten werden multipliziert.</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Lösungsgerüst</span><br>„Mögliche Dipeptide: Gly-Gly, Gly-……, ……-Gly und Ala-Ala, also …… . Mit 20 Aminosäuren gibt es 20 · 20 = …… Dipeptide. Bei Proteinen aus vielen Bausteinen wird die Zahl der Möglichkeiten riesig, deshalb gibt es …… verschiedene Proteine.“</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+</div>
+
+<h2 id="s4"><span class="nr" style="background:var(--rot)">4</span>Tütensuppe: Glutamat</h2>
+<div class="hilfen">
+  <div class="hk"><h4>Hilfe zu 4a</h4><div class="zu">Glutaminsäure</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Denkanstoß</span><br>Lies in M4 die Halbstrukturformel der Glutaminsäure. Zeichne die Kette und setze jede Gruppe ein. Zähle danach: Wie viele Carboxygruppen und wie viele Aminogruppen hat das Molekül?</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Fachbegriffe</span><br><b>Fachbegriffe:</b> Aminosäure (Amino- und Carboxygruppe am selben C-Atom) · Dicarbonsäure (zwei Carboxygruppen) · Valenzstrichformel</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Lösungsgerüst</span><br>„Glutaminsäure besitzt am selben C-Atom eine ……gruppe und eine ……gruppe, deshalb ist sie eine …… . Am anderen Ende der Kette trägt sie eine zweite ……gruppe. Mit insgesamt …… Carboxygruppen ist sie auch eine …… .“</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe H7 zu 4b</h4><div class="zu">wie die Papierkarte an der Station</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Denkanstoß</span><br>Welche Teilchen liegen in festem Glycin vor, welche in fester Essigsäure (Tabelle in M4)? Welche Ladungen tragen sie?<br>Vergleiche mit Kochsalz (Schmelztemperatur 801 °C): Welche Kräfte wirken zwischen geladenen Teilchen?</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Fachbegriffe</span><br><b>Fachbegriffe:</b> Zwitterion · positiv geladene Gruppe (–NH<sub>3</sub><sup>+</sup>) · negativ geladene Gruppe (–COO<sup>−</sup>) · elektrostatische Anziehung · Ionengitter · Wasserstoffbrücke · Schmelztemperatur<br><b>Fachwendungen:</b> „Zwischen entgegengesetzt geladenen Gruppen wirken starke Anziehungskräfte.“ · „Diese Kräfte sind viel stärker als Wasserstoffbrücken.“</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Lösungsgerüst</span><br>„Festes Glycin besteht aus ……: Jedes Teilchen trägt eine positiv geladene ……-Gruppe und eine negativ geladene ……-Gruppe. Zwischen entgegengesetzt geladenen Gruppen benachbarter Teilchen wirken starke …… Anziehungskräfte, ähnlich wie im Ionengitter von …… . Zwischen den ungeladenen Essigsäure-Molekülen wirken nur ……, die viel …… sind. Deshalb schmilzt Glycin erst bei etwa …… °C.“</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe H8 zu 4c</h4><div class="zu">wie die Papierkarte an der Station</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Denkanstoß</span><br>Natronlauge enthält Hydroxid-Ionen (OH<sup>−</sup>). Sie nehmen von einer Carboxygruppe ein Proton (H<sup>+</sup>) auf. Was entsteht aus OH<sup>−</sup> und H<sup>+</sup>?<br><b>Mono</b>natriumglutamat: Wie viele Carboxygruppen geben dabei ihr Proton ab?</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Fachbegriffe</span><br><b>Fachbegriffe:</b> Natronlauge (Na<sup>+</sup> und OH<sup>−</sup>) · Hydroxid-Ion · Proton · Neutralisation · Carboxylatgruppe (–COO<sup>−</sup>) · Natrium-Ion · Salz · Wasser<br><b>Fachwendung:</b> „Das Hydroxid-Ion nimmt ein Proton auf, es entsteht Wasser.“</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Lösungsgerüst</span><br><b>Vorgemacht an Essigsäure:</b> CH<sub>3</sub>–COOH + NaOH → CH<sub>3</sub>–COO<sup>−</sup> Na<sup>+</sup> + H<sub>2</sub>O<br><b>Für Glutaminsäure:</b> HOOC–CH<sub>2</sub>–CH<sub>2</sub>–CH(NH<sub>2</sub>)–COOH + NaOH → Na<sup>+</sup> <sup>−</sup>OOC–CH<sub>2</sub>–CH<sub>2</sub>–CH(……)–COOH + ……<br>Nur …… der beiden Carboxygruppen gibt ihr Proton ab.</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+  <div class="hk"><h4>Hilfe zu 4d ★</h4><div class="zu">Glutamat beurteilen</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Denkanstoß</span><br>Lies in M4: Wo kommt Glutamat natürlich vor? Ist das Glutamat aus der Tomate ein anderes Teilchen als das aus der Tütensuppe? Was sagt M4 über die Menge?</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Fachbegriffe</span><br><b>Fachbegriffe:</b> natürlich vorkommend · Zusatzstoff (E 621) · gleiches Teilchen · Menge · Grenzwert (30 mg pro kg Körpergewicht) · Urteil<br><b>Fachwendungen:</b> „Einerseits …, andererseits …“ · „Ich komme zu dem Urteil, dass …“</div>
+    <div class="stufe"><span style="color:var(--orange);font-weight:700">Lösungsgerüst</span><br>„Die Aussage trifft so nicht zu: Glutamat kommt …… in Tomaten, Parmesan und Pilzen vor, und es ist …… Teilchen wie im Zusatzstoff. Berechtigt ist aber der Hinweis auf die ……: Wer viele Fertigprodukte isst, kann die Grenze von …… mg pro kg Körpergewicht überschreiten. Ich komme zu dem Urteil, dass …“</div>
+    <button type="button">Stufe 1 aufdecken</button><span class="zaehler"></span></div>
+</div>
+
+<h2 id="uebung">Übung: Stoffklassen erkennen</h2>
+<p class="hinweis">Neue Stoffe, die an keiner Station vorkommen. Kreuze alle passenden Stoffklassen an – manche Stoffe gehören zu zwei Klassen, manche zu keiner.</p>
+<div class="v-karte">
+  <div class="aufgabe"><span class="stand" id="stand"></span></div>
+  <div class="aufgabe"><span class="formel" id="formel"></span><span class="stand" id="name"></span></div>
+  <div class="wahl">
+    <label><input type="checkbox" value="di">Dicarbonsäure</label>
+    <label><input type="checkbox" value="hy">Hydroxycarbonsäure</label>
+    <label><input type="checkbox" value="am">Aminosäure</label>
+    <label><input type="checkbox" value="kein">keine davon</label>
+  </div>
+  <button class="knopf" id="pruefen" type="button">Prüfen</button>
+  <button class="knopf leise" id="weiter" type="button">Nächster Stoff</button>
+  <div class="rueck" id="rueck"></div>
+</div>
+
+</main>
+<footer><div class="wrap">Chemie · Klasse 10 · Mehrfunktionelle Carbonsäuren und Aminosäuren · Noto La Diega · Hilfen ohne Lösungen</div></footer>
+
+<script>
+document.querySelectorAll(".hk").forEach(function (k) {
+  var st = k.querySelectorAll(".stufe"), b = k.querySelector("button"), z = k.querySelector(".zaehler"), n = 0;
+  function info() { z.textContent = n + " von " + st.length; }
+  info();
+  b.addEventListener("click", function () {
+    if (n < st.length) { st[n].classList.add("offen"); n++; info(); }
+    if (n < st.length) b.textContent = "Stufe " + (n + 1) + " aufdecken"; else { b.textContent = "alle Stufen offen"; b.disabled = true; }
+  });
+});
+
+var stoffe = [
+  {f: "HOOC–CH=CH–COOH", n: "Fumarsäure (Säuerungsmittel E 297)", k: ["di"], t: "Zwei Carboxygruppen, keine weitere Gruppe."},
+  {f: "HO–CH<sub>2</sub>–COOH", n: "Glykolsäure (Peeling-Creme)", k: ["hy"], t: "Eine Carboxy- und eine Hydroxygruppe."},
+  {f: "(CH<sub>3</sub>)<sub>2</sub>CH–CH(NH<sub>2</sub>)–COOH", n: "Valin (in Proteinen)", k: ["am"], t: "Amino- und Carboxygruppe am selben C-Atom."},
+  {f: "CH<sub>3</sub>–CH(OH)–CH(NH<sub>2</sub>)–COOH", n: "Threonin (in Proteinen)", k: ["am", "hy"], t: "Aminosäure mit zusätzlicher Hydroxygruppe."},
+  {f: "HOOC–CH<sub>2</sub>–CH(NH<sub>2</sub>)–COOH", n: "Asparaginsäure (in Proteinen)", k: ["am", "di"], t: "Aminogruppe und zwei Carboxygruppen."},
+  {f: "CH<sub>3</sub>–CH<sub>2</sub>–OH", n: "Ethanol", k: ["kein"], t: "Nur eine Hydroxygruppe, keine Carboxygruppe: ein Alkohol, keine Säure."},
+  {f: "CH<sub>3</sub>–COOH", n: "Essigsäure", k: ["kein"], t: "Nur eine Carboxygruppe: eine Alkansäure."},
+  {f: "HOOC–CH(OH)–CH(OH)–CH(OH)–CH(OH)–COOH", n: "Schleimsäure", k: ["di", "hy"], t: "Zwei Carboxygruppen und vier Hydroxygruppen."},
+  {f: "H<sub>2</sub>N–CH<sub>2</sub>–CH<sub>2</sub>–NH<sub>2</sub>", n: "Ethylendiamin", k: ["kein"], t: "Zwei Aminogruppen, aber keine Carboxygruppe: keine Säure."}
+];
+var i = 0, richtig = 0, gezaehlt = {};
+var boxen = document.querySelectorAll(".wahl input"), rueck = document.getElementById("rueck");
+function zeigen() {
+  var s = stoffe[i];
+  document.getElementById("formel").innerHTML = s.f;
+  document.getElementById("name").textContent = "";
+  document.getElementById("stand").textContent = "Stoff " + (i + 1) + " von " + stoffe.length + " · richtig: " + richtig;
+  boxen.forEach(function (b) { b.checked = false; });
+  rueck.className = "rueck"; rueck.textContent = "";
+}
+document.getElementById("pruefen").addEventListener("click", function () {
+  var s = stoffe[i], gew = [];
+  boxen.forEach(function (b) { if (b.checked) gew.push(b.value); });
+  if (!gew.length) { rueck.className = "rueck nein"; rueck.textContent = "Kreuze mindestens ein Feld an."; return; }
+  var ok = gew.length === s.k.length && gew.every(function (g) { return s.k.indexOf(g) >= 0; });
+  if (ok) {
+    if (!gezaehlt[i]) { richtig++; gezaehlt[i] = true; }
+    rueck.className = "rueck gut"; rueck.textContent = "Richtig! " + s.t;
+    document.getElementById("name").textContent = s.n;
+  } else {
+    gezaehlt[i] = true;
+    rueck.className = "rueck nein";
+    rueck.textContent = "Noch nicht. Zähle die Gruppen: Wie viele –COOH, –OH (ohne =O am selben C) und –NH₂ findest du?";
+  }
+  document.getElementById("stand").textContent = "Stoff " + (i + 1) + " von " + stoffe.length + " · richtig: " + richtig;
+});
+document.getElementById("weiter").addEventListener("click", function () { i = (i + 1) % stoffe.length; zeigen(); });
+zeigen();
+</script>
+</body>
+</html>
